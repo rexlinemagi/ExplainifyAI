@@ -104,7 +104,7 @@ ExplainifyAI/
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/ExplainifyAI.git
+git clone https://github.com/rexlinemagi/ExplainifyAI.git
 cd ExplainifyAI
 
 # Install dependencies
@@ -140,20 +140,6 @@ Six SQLite tables, all keyed by `user_id` with `ON DELETE CASCADE`:
 | `quiz_scores` | Quiz results — topic, score, total, date |
 | `chat_messages` | Persistent chat history — role, content, timestamp |
 | `study_days` | One row per calendar day studied — powers streak calculation |
-
----
-
-## Key Technical Decisions
-
-**Singleton database connection** — `openDatabaseAsync` is called exactly once at startup. Concurrent calls on Android caused `NullPointerException` on the native layer. The singleton pattern using a module-level promise coalesces concurrent init requests.
-
-**Fisher-Yates shuffle with index remapping** — MCQ answer options are shuffled at quiz-build time. The correct option text is saved before the shuffle and located again after to remap the `correct` index accurately.
-
-**Extended Levenshtein fuzzy search** — the standard Wagner-Fischer algorithm returns one best match. Our implementation collects all dataset topics within edit distance ≤ 2, sorts by distance ascending, and returns the top three as ranked suggestion chips.
-
-**Bilingual quiz display** — quiz questions are stored in English in all language datasets. The `translatedQ` field (populated by the translation pipeline) is rendered below the English question in italic when the user's language is not English.
-
-**CMap-based PDF parsing (mobile)** — modern PDFs encode text using CID font glyph IDs, not readable characters. The mobile parser decompresses FlateDecode streams using fflate, reads the ToUnicode CMap tables to build a glyph-ID-to-unicode map, then decodes the page content streams using that map.
 
 ---
 
