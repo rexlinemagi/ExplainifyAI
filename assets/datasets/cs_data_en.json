@@ -1,0 +1,2459 @@
+[
+  {
+    "topic": "deadlock",
+    "prompt": "Explain Deadlock in operating systems.",
+    "response": "In concurrent computing, deadlock is any situation in which no member of some group of entities can proceed because each waits for another member, including itself, to take action, such as sending a message or, more commonly, releasing a lock. Deadlocks are a common problem in multiprocessing systems, parallel computing, and distributed systems, because in these contexts systems often use software or hardware locks to arbitrate shared resources and implement process synchronization. In an operating system, a deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process. If a process remains indefinitely unable to change its state because resources requested by it are being used by another process that itself is waiting, then the system is said to be in a deadlock.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Deadlock involves multiple entities.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "Deadlocks occur only in multi-threaded environments.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "The term 'deadlock' applies exclusively to processes in multiprocessor systems.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "In an operating system, a deadlock happens whenever a process requests two exclusive resources simultaneously.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "If all processes in a system remain indefinitely unable to change their states due to resource constraints, they will always form a deadlock.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Deadlocks are inevitable in large-scale distributed systems.",
+          "answer": "False"
+        },
+        {
+          "question": "Deadlocks can be avoided through proper management of system resources.",
+          "answer": "True"
+        },
+        {
+          "question": "A deadlock cannot happen if there are enough free resources available.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "starvation",
+    "prompt": "Explain Starvation in operating systems.",
+    "response": "In computer science, resource starvation is a problem encountered in concurrent computing where a process is perpetually denied necessary resources to process its work. Starvation may be caused by errors in a scheduling or mutual exclusion algorithm, but can also be caused by resource leaks, and can be intentionally caused via a denial-of-service attack such as a fork bomb. When starvation is impossible in a concurrent algorithm, the algorithm is called starvation-free, lockout-freed or said to have finite bypass. This property is an instance of liveness, and is one of the two requirements for any mutual exclusion algorithm; the other being correctness. The name \"finite bypass\" means that any process (concurrent part) of the algorithm is bypassed at most a finite number times before being allowed access to the shared resource.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does 'resource starvation' refer to in concurrent computing?",
+          "options": [
+            "A) A process running too fast",
+            "B) A process waiting indefinitely for resources",
+            "C) A process receiving too many resources",
+            "D) A process getting enough resources"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "How can starvation be intentionally caused in a system?",
+          "options": [
+            "A) By increasing the resource availability",
+            "B) By launching multiple processes simultaneously",
+            "C) By implementing a deadlock prevention mechanism",
+            "D) By using a denial-of-service attack like a fork bomb"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which term describes a concurrency algorithm with the property that every process is bypassed at most a finite number of times before being granted access to the shared resource?",
+          "options": [
+            "A) Liveness",
+            "B) Correctness",
+            "C) Resource Leaks",
+            "D) Finite Bypass"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "What does 'lockout-freedom' mean in the context of concurrent algorithms?",
+          "options": [
+            "A) No locks used in the algorithm",
+            "B) Locks removed from the codebase",
+            "C) Processes do not get locked out",
+            "D) Algorithm performance becomes faster due to fewer locks"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "If an algorithm has both 'liveness' and 'correctness', what additional property might it possess?",
+          "options": [
+            "A) Deadlocks",
+            "B) Stability",
+            "C) Finite Bypass",
+            "D) Safety"
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does a starvation-free algorithm guarantee that all processes will eventually receive their share of resources?",
+          "answer": "False"
+        },
+        {
+          "question": "Can resource leaks cause starvation in a system?",
+          "answer": "True"
+        },
+        {
+          "question": "Is it possible for a single process to starve itself if the only available resource is shared among all processes?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Paging in operating systems.",
+    "response": "In computer operating systems, memory paging is a memory management scheme that allows the physical memory used by a program to be non-contiguous. This also helps avoid the problem of memory fragmentation and requiring compaction to reduce fragmentation. Paging is often combined with the related technique of allocating and freeing page frames and storing pages on and retrieving them from secondary storage[a] in order to allow the aggregate size of the address spaces to exceed the physical memory of the system. For historical reasons, this technique is sometimes referred to as swapping.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "process",
+    "prompt": "Explain Process in operating systems.",
+    "response": "In computing, a process is the instance of a computer program that is being executed by one or many threads. There are many different process models, some of which are light weight, but almost all processes (even entire virtual machines) are rooted in an operating system (OS) process which comprises the program code, assigned system resources, physical and logical access permissions, and data structures to initiate, control and coordinate execution activity. Depending on the OS, a process may be made up of multiple threads of execution that execute instructions concurrently. While a computer program is a passive collection of instructions typically stored in a file on disk, a process is the execution of those instructions after being loaded from the disk into memory. Several processes may be associated with the same program; for example, opening up several instances of the same program often results in more than one process being executed.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a process represent?",
+          "options": [
+            "A) A thread executing instructions",
+            "B) The program's source code",
+            "C) An isolated environment",
+            "D) Multiple instances of the same program"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "How many types of process models exist according to the text?",
+          "options": [
+            "A) 1 type",
+            "B) 2 types",
+            "C) 3 types",
+            "D) 4 types"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "Which statement about processes and programs is true?",
+          "options": [
+            "A) Programs cannot run without processes",
+            "B) Processes can only occur within virtual machines",
+            "C) Programs store their instructions directly on disks",
+            "D) Processes load instructions from disks into memory before execution"
+          ],
+          "answer": "D"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Processes are always lightweight.",
+          "answer": "False"
+        },
+        {
+          "question": "All processes start as OS processes.",
+          "answer": "True"
+        },
+        {
+          "question": "Multiple instances of the same program open up new processes.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "cpu_scheduling",
+    "prompt": "Explain CPU scheduling.",
+    "response": "In computing, scheduling is the action of assigning resources to perform tasks. The resources may be processors, network links or expansion cards. The tasks may be threads, processes or data flows. The scheduling activity is carried out by a mechanism called a scheduler. Schedulers are often designed so as to keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality-of-service.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'scheduling' refer to in computing?",
+          "options": [
+            "A. Assigning tasks to CPU",
+            "B. Allocating memory for programs",
+            "C. Managing disk I/O operations",
+            "D. All of the above"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which of these is NOT typically considered a resource in computing?",
+          "options": [
+            "A. Memory",
+            "B. Network Bandwidth",
+            "C. Printer",
+            "D. Power Supply"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "What role does a scheduler play in managing computer resources?",
+          "options": [
+            "A. Allocating CPU time to tasks",
+            "B. Executing user commands directly",
+            "C. Encrypting data transmissions",
+            "D. Deciding which software applications to run first"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "How can schedulers help with load balancing?",
+          "options": [
+            "A. By reducing memory usage",
+            "B. By increasing processing speed",
+            "C. By ensuring no task goes unattended",
+            "D. By decreasing power consumption"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Is it possible for a scheduler to ensure all computer resources are utilized without any downtime?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does a scheduler need to balance CPU utilization across all available cores?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Can different types of tasks benefit from being scheduled separately?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Are schedulers only used for controlling user access to system resources?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "A"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "thread",
+    "prompt": "Explain Thread in operating systems.",
+    "response": "In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system. In many cases, a thread is a component of a process. The multiple threads of a given process may be executed concurrently (via multithreading capabilities), sharing resources such as memory, while different processes do not share these resources. In particular, the threads of a process share its executable code and the values of its dynamically allocated variables and non-thread-local global variables at any given time.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does each thread of execution represent?",
+          "options": [
+            "A) A single line of code",
+            "B) A specific function call",
+            "C) An independent unit of program flow",
+            "D) A separate instance of an application"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Threads in a process are generally",
+          "options": [
+            "A) Independent units of computation",
+            "B) Part of the same address space",
+            "C) Coherent with shared memory",
+            "D) Exclusive to individual processes"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "Which of the following best describes how threads share resources?",
+          "options": [
+            "A) They exclusively access all shared resources",
+            "B) They synchronize access to shared resources through locks",
+            "C) They never share resources",
+            "D) They communicate directly without using shared resources"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Is it possible for two threads within the same process to run simultaneously?",
+          "options": [
+            "A) No, because they cannot share memory",
+            "B) Yes, due to their ability to execute concurrently",
+            "C) Only under special circumstances like multithreading APIs",
+            "D) Only if both threads request exclusive access"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Threads are always associated with a process.",
+          "answer": "True"
+        },
+        {
+          "question": "Processes are the fundamental building blocks of concurrent programs.",
+          "answer": "False"
+        },
+        {
+          "question": "Threads ensure data consistency across processes by synchronizing operations.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "virtual_memory",
+    "prompt": "Explain Virtual memory.",
+    "response": "In computing, virtual memory, or virtual storage,[b] is a memory management technique that provides an \"idealized abstraction of the storage resources that are actually available on a given machine\" which \"creates the illusion to users of a very large (main) memory\". The computer's operating system, using a combination of hardware and software, maps memory addresses used by a program, called virtual addresses, into physical addresses in computer memory. Main storage, as seen by a process or task, appears as a contiguous address space or collection of contiguous segments. The operating system manages virtual address spaces and the assignment of real memory to virtual memory. Address translation hardware in the CPU, often referred to as a memory management unit (MMU), automatically translates virtual addresses to physical addresses. Software within the operating system may extend these capabilities, utilizing, e.g., disk storage, to provide a virtual address space that can exceed the capacity of real memory and thus reference more memory than is physically present in the computer.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Virtual memory creates what for users?",
+          "options": [
+            "A) A smaller main memory",
+            "B) An idealized abstraction of available storage",
+            "C) Real memory directly accessible by programs",
+            "D) A larger main memory"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "What does the operating system map when mapping virtual addresses to physical addresses?",
+          "options": [
+            "A) Virtual memory to logical addresses",
+            "B) Physical addresses to logical addresses",
+            "C) Logical addresses to physical addresses",
+            "D) Main storage to virtual addresses"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which component automatically translates virtual addresses to physical addresses?",
+          "options": [
+            "A) Disk storage",
+            "B) Memory Management Unit (MMU)",
+            "C) Central Processing Unit (CPU)",
+            "D) Operating System"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "How does the operating system manage virtual address spaces?",
+          "options": [
+            "A) By limiting the size of the virtual address space",
+            "B) By assigning all memory to virtual memory",
+            "C) By allocating memory only to actual tasks",
+            "D) By creating a contiguous address space for each process"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Is it possible to exceed the capacity of real memory with virtual memory?",
+          "options": [
+            "A) No",
+            "B) Yes"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the concept of virtual memory allow processes to access more memory than is physically available?",
+          "answer": "True"
+        },
+        {
+          "question": "Can the operating system completely replace the need for physical memory entirely?",
+          "answer": "False"
+        },
+        {
+          "question": "Is the memory management unit solely responsible for translating virtual addresses to physical addresses?",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "thrashing",
+    "prompt": "Explain Thrashing.",
+    "response": "In computer science, thrashing occurs in a system with memory paging when a computer's real memory (RAM) resources are overcommitted, leading to a constant state of paging (swapping, i.e. moving a page to disk) and page faults, slowing most application-level processing. This causes the performance of the computer to degrade or even collapse. The situation can continue indefinitely until the user closes some running applications or the active processes free up additional virtual memory resources. After initialization, most programs operate on a small number of code and data pages compared to the total memory the program requires. The pages most frequently accessed at any point are called the working set, which may change over time.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a characteristic feature of thrashing?",
+          "options": [
+            "A) A high level of CPU usage",
+            "B) Increased RAM usage",
+            "C) Constant paging/swapping",
+            "D) Decreased application performance"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which statement best describes how thrashing affects the computer’s performance?",
+          "options": [
+            "A) Performance improves as more applications run simultaneously.",
+            "B) Performance decreases significantly due to continuous paging/swapping.",
+            "C) No impact on performance as it only happens rarely.",
+            "D) Thrashing leads to faster processing speeds."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "How does the working set of pages affect an application’s performance?",
+          "options": [
+            "A) It increases the speed by loading more pages into RAM",
+            "B) It has no effect on performance since all pages are loaded initially",
+            "C) It reduces performance because fewer pages are needed",
+            "D) It enhances performance by allowing efficient access to frequently used pages"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "After thrashing is detected, what action typically resolves the issue?",
+          "options": [
+            "A) Increasing the amount of RAM allocated",
+            "B) Removing unnecessary software from the system",
+            "C) Restarting the operating system",
+            "D) None of the above"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "Which type of memory resource is involved in thrashing?",
+          "options": [
+            "A) Main Memory",
+            "B) Secondary Storage",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible for a system without paging mechanisms to experience thrashing?",
+          "answer": "False"
+        },
+        {
+          "question": "Can increasing the number of processors help prevent thrashing?",
+          "answer": "True"
+        },
+        {
+          "question": "Does thrashing occur exclusively during peak load times?",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "context_switch",
+    "prompt": "Explain Context switching.",
+    "response": "In computing, a context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point, and then restoring a different, previously saved, state. This allows multiple processes to share a single central processing unit (CPU), and is an essential feature of a multiprogramming or multitasking operating system. In a traditional CPU, each process – a program in execution – uses the various CPU registers to store data and hold the current state of the running process. However, in a multitasking operating system, the operating system switches between processes or threads to allow the execution of multiple processes simultaneously. For every switch, the operating system must save the state of the currently running process, followed by loading the next process state, which will run on the CPU. This sequence of operations that stores the state of the running process and loads the following running process is called a context switch. The precise meaning of the phrase \"context switch\" varies. In a multitasking context, it refers to the process of storing the system state for one task, so that task can be paused and another task resumed. A context switch can also occur as the result of an interrupt, such as when a task needs to access disk storage, freeing up CPU time for other tasks. Some operating systems also require a context switch to move between user mode and kernel mode tasks. The process of context switching can have a negative impact on system performance.: 28",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a context switch primarily involve?",
+          "options": [
+            "A) Storing the current memory address of a process.",
+            "B) Loading the next instruction into the CPU's cache.",
+            "C) Saving the current state of the running process.",
+            "D) Writing new instructions to RAM"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "How many times per second is a typical modern computer expected to perform context switches?",
+          "options": [
+            "A) Less than once every minute.",
+            "B) Once every few seconds.",
+            "C) About once every millisecond.",
+            "D) More than once per second."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Which term best describes the act of moving from one user-mode task to another within the same process?",
+          "options": [
+            "A) Context switch.",
+            "B) Process synchronization.",
+            "C) Thread scheduling.",
+            "D) Memory paging."
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "When would an operating system typically cause a context switch?",
+          "options": [
+            "A) When a user types a command into the terminal.",
+            "B) To improve CPU utilization during idle periods.",
+            "C) Every time a new process is created.",
+            "D) Whenever a network request is processed."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "True/False: Context switches in multitasking environments are solely aimed at saving and restoring memory addresses.",
+          "answer": "False"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "True/False: Each process in a multi-threaded environment requires its own independent set of registers.",
+          "answer": "False"
+        },
+        {
+          "question": "True/False: Modern CPUs generally do not support hardware-based context switching.",
+          "answer": "False"
+        },
+        {
+          "question": "True/False: All modern operating systems implement some form of context switching mechanism.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "memory_management",
+    "prompt": "Explain Memory management.",
+    "response": "Memory management (also dynamic memory management, dynamic storage allocation, or dynamic memory allocation) is a form of resource management applied to computer memory. The essential requirement of memory management is to provide ways to dynamically allocate portions of memory to programs at their request, and free it for reuse when no longer needed. This is critical to any advanced computer system where more than a single process might be underway (multitasking) at any time. Several methods have been devised that increase the effectiveness of memory management. Virtual memory systems separate the memory addresses used by a process from actual physical addresses, allowing separation of processes and increasing the size of the virtual address space beyond the available amount of RAM using paging or swapping to secondary storage. The quality of the virtual memory manager can have an extensive effect on overall system performance. The system allows a computer to appear as if it may have more memory available than physically present, thereby allowing multiple processes to share it.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a key requirement of memory management in computer systems?",
+          "options": [
+            "A) Providing fixed-size partitions of memory for all processes.",
+            "B) Allocating memory only during program execution.",
+            "C) Allowing real-time response to hardware failures.",
+            "D) Ensuring efficient use of physical memory through techniques like paging and swapping."
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which method increases the size of a virtual address space beyond the available amount of RAM?",
+          "options": [
+            "A) Paging",
+            "B) Swapping",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "How does a virtual memory system enhance multitasking capabilities?",
+          "options": [
+            "A) By synchronizing CPU access to both main memory and disk I/O simultaneously.",
+            "B) By providing exclusive access to each process's memory region.",
+            "C) By enabling multiple processes to run concurrently without interference.",
+            "D) None of the above"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "What can affect the overall performance of a virtual memory system?",
+          "options": [
+            "A) The color depth of displayed images",
+            "B) The brand of computer components",
+            "C) The number of processes running in parallel",
+            "D) The resolution of screen displays"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Can multiple processes share memory efficiently with paging and swapping?",
+          "options": [
+            "A) No, because they interfere with each other's operations.",
+            "B) Yes, but only within the same partition.",
+            "C) Yes, effectively sharing memory resources across different processes.",
+            "D) Only theoretically possible with modern technology."
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Virtual memory increases the effective amount of memory available for multitasking.",
+          "answer": "True"
+        },
+        {
+          "question": "Processes cannot run concurrently without coordination between them.",
+          "answer": "False"
+        },
+        {
+          "question": "All computer systems require explicit allocation and deallocation of memory.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dbms",
+    "prompt": "Explain Database management system.",
+    "response": "In computing, a database is an organized collection of data or a type of data store based on the use of a database management system (DBMS), the software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a database system. Often the term \"database\" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database. Before digital storage and retrieval of data have become widespread, index cards were used for data storage in a wide range of applications and environments: in the home to record and store recipes, shopping lists, contact information and other organizational data; in business to record presentation notes, project research and notes, and contact information; in schools as flash cards or other visual aids; and in academic research to hold data such as bibliographical citations or notes in a card file. Professional book indexers used index cards in the creation of book indexes until they were replaced by indexing software in the 1980s and 1990s.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database consist of?",
+          "options": [
+            "A) Data alone",
+            "B) A type of data store based on a DBMS",
+            "C) An organized collection of data and its associated applications",
+            "D) All of the above"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which component does NOT belong to a typical database system?",
+          "options": [
+            "A) Database Management System (DBMS)",
+            "B) End user",
+            "C) Applications",
+            "D) Hardware"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Before digital storage became common, what was often used to store data?",
+          "options": [
+            "A) Paper-based records",
+            "B) Index cards",
+            "C) Digital databases",
+            "D) Cloud storage"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it true that a database refers only to the DBMS?",
+          "answer": "False"
+        },
+        {
+          "question": "Can a database include both the DBMS and related applications?",
+          "answer": "True"
+        },
+        {
+          "question": "Is it accurate to say that before digital storage, books used index cards for data organization?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dbms_types",
+    "prompt": "Explain Types of databases.",
+    "response": "In computing, a database is an organized collection of data or a type of data store based on the use of a database management system (DBMS), the software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a database system. Often the term \"database\" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database. Before digital storage and retrieval of data have become widespread, index cards were used for data storage in a wide range of applications and environments: in the home to record and store recipes, shopping lists, contact information and other organizational data; in business to record presentation notes, project research and notes, and contact information; in schools as flash cards or other visual aids; and in academic research to hold data such as bibliographical citations or notes in a card file. Professional book indexers used index cards in the creation of book indexes until they were replaced by indexing software in the 1980s and 1990s.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database consist of?",
+          "options": [
+            "A) A collection of data stored digitally.",
+            "B) A single piece of hardware.",
+            "C) An organization's personnel records.",
+            "D) A combination of both A and B"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which component of a database includes all the core facilities needed to manage the database?",
+          "options": [
+            "A) The DBMS.",
+            "B) The end user.",
+            "C) The applications.",
+            "D) All of the above"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "How do we often refer to a database before it becomes widely adopted for storing data?",
+          "options": [
+            "A) As a physical device.",
+            "B) As a logical concept only.",
+            "C) Both A and B equally.",
+            "D) None of the above"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Before digital storage and retrieval of data became common, what did people use instead?",
+          "options": [
+            "A) Hard drives.",
+            "B) Magnetic tapes.",
+            "C) CD-ROMs.",
+            "D) Floppy disks"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "How was professional book indexing traditionally done before the advent of indexing software?",
+          "options": [
+            "A) By hand.",
+            "B) Using mechanical tools.",
+            "C) Through optical scanning.",
+            "D) Online searching."
+          ],
+          "answer": "A"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "True or False: Indexing software completely replaced manual indexing methods.",
+          "answer": "False"
+        },
+        {
+          "question": "True or False: Index cards were primarily used for organizing personal data like contacts and recipes.",
+          "answer": "True"
+        },
+        {
+          "question": "True or False: Before digital storage, books were indexed using magnetic tape.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dbms_advantages",
+    "prompt": "Explain Advantages of DBMS.",
+    "response": "In computing, a database is an organized collection of data or a type of data store based on the use of a database management system (DBMS), the software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a database system. Often the term \"database\" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database. Before digital storage and retrieval of data have become widespread, index cards were used for data storage in a wide range of applications and environments: in the home to record and store recipes, shopping lists, contact information and other organizational data; in business to record presentation notes, project research and notes, and contact information; in schools as flash cards or other visual aids; and in academic research to hold data such as bibliographical citations or notes in a card file. Professional book indexers used index cards in the creation of book indexes until they were replaced by indexing software in the 1980s and 1990s.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a Database?",
+          "options": [
+            "A) A physical device for storing data.",
+            "B) An organized collection of data managed by a DBMS.",
+            "C) A type of software that stores data.",
+            "D) A set of instructions for processing data."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Which of the following best describes the role of the DBMS in a database system?",
+          "options": [
+            "A) To retrieve data from the database.",
+            "B) To manage the entire database including data access and security.",
+            "C) To encrypt data stored in the database.",
+            "D) To compile programs related to the database."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "When was index cards first used for data storage?",
+          "options": [
+            "A) In the late 19th century.",
+            "B) In the early 20th century.",
+            "C) In the mid-20th century.",
+            "D) Earlier than all of the above"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "In what year did professional book indexers start using indexing software instead of index cards?",
+          "options": [
+            "A) 1960.",
+            "B) 1970.",
+            "C) 1980.",
+            "D) 1990."
+          ],
+          "answer": "D"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible to classify databases into two main categories?",
+          "answer": "True"
+        },
+        {
+          "question": "Did index cards replace traditional methods like paper notebooks before their widespread adoption?",
+          "answer": "True"
+        },
+        {
+          "question": "Could you describe how an index card-based system might work?",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Data independence.",
+    "response": "Data independence is the type of data transparency that matters for a centralized DBMS. It refers to the immunity of user applications to changes made in the definition and organization of data. Application programs should not, ideally, be exposed to details of data representation and storage. The DBMS provides an abstract view of the data that hides such details. There are two types of data independence: physical and logical data independence.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "primary_key",
+    "prompt": "Explain Primary key.",
+    "response": "In the relational model of databases, a primary key is a designated set of attributes (column(s)) that can reliably identify and distinguish between each individual record in a table. The database creator can choose an existing unique attribute or combination of attributes from the table (a natural key) to act as its primary key, or create a new attribute containing a unique ID that exists solely for this purpose (a surrogate key). Examples of natural keys that could be suitable primary keys include data that is already by definition unique to all items in the table such as a national identification number attribute for person records, or the combination of a very precise timestamp attribute with a very precise location attribute for event records.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a primary key in the relational model of databases do?",
+          "options": [
+            "A) It ensures that every record has at least one attribute.",
+            "B) It uniquely identifies each record in a table without relying on another attribute.",
+            "C) It allows multiple records to share the same value.",
+            "D) It combines all records into a single entity."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Which of the following cannot serve as a primary key?",
+          "options": [
+            "A) A column containing a unique identifier.",
+            "B) An attribute that changes over time.",
+            "C) A combination of two distinct columns.",
+            "D) A constant value across all rows."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Natural keys in primary keys should ideally be:",
+          "options": [
+            "A) Derived from external sources.",
+            "B) Manually created by the developer.",
+            "C) Unique within the context of the table.",
+            "D) Always identical for every row."
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "A surrogate key is always more efficient than a natural key.",
+          "answer": "False"
+        },
+        {
+          "question": "Every table must have a primary key.",
+          "answer": "False"
+        },
+        {
+          "question": "The uniqueness of a natural key is guaranteed by default.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "foreign_key",
+    "prompt": "Explain Foreign key.",
+    "response": "A foreign key is a set of attributes in a table that refers to the primary key of another table, linking these two tables. In the context of relational databases, a foreign key is subject to an inclusion dependency constraint that the tuples consisting of the foreign key attributes in one relation, R, must also exist in some other (not necessarily distinct) relation, S; furthermore that those attributes must also be a candidate key in S. In other words, a foreign key is a set of attributes that references a candidate key. For example, a table called TEAM may have an attribute, MEMBER_NAME, which is a foreign key referencing a candidate key, PERSON_NAME, in the PERSON table. Since MEMBER_NAME is a foreign key, any value existing as the name of a member in TEAM must also exist as a person's name in the PERSON table; in other words, every member of a TEAM is also a PERSON.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a foreign key refer to?",
+          "options": [
+            "A) A unique identifier within the same table",
+            "B) An attribute or combination of attributes from another table",
+            "C) Both B and C",
+            "D) None of the above"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which of the following is true about the inclusion dependency constraint related to foreign keys?",
+          "options": [
+            "A) It ensures uniqueness across multiple relations",
+            "B) It restricts values to only existing entries in the referenced table",
+            "C) It requires all foreign key values to be present in both tables simultaneously",
+            "D) It allows for null values in the foreign key"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "In the context of TEAM and PERSON tables, what can we infer if TEAM has a MEMBER_NAME foreign key referring to PERSON_NAME?",
+          "options": [
+            "A) All members of TEAM are people",
+            "B) There is no relationship between TEAM and PERSON",
+            "C) Only some members of TEAM are people",
+            "D) The number of teams and persons is equal"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "How many types of constraints are mentioned in the given definition of foreign keys?",
+          "options": [
+            "A) One",
+            "B) Two",
+            "C) Three",
+            "D) Four"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "If a FOREIGN KEY in TABLE_A references a PRIMARY KEY in TABLE_B, what kind of constraint does this establish?",
+          "options": [
+            "A) Referential Integrity Constraint",
+            "B) Entity-Attribute-Value Mapping Constraint",
+            "C) Data Manipulation Language Constraint",
+            "D) Object-Oriented Programming Constraint"
+          ],
+          "answer": "A"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it always necessary for a foreign key to reference a primary key?",
+          "answer": "False"
+        },
+        {
+          "question": "Can a foreign key consist solely of non-candidate key attributes?",
+          "answer": "False"
+        },
+        {
+          "question": "Does the presence of a foreign key guarantee that there will be no NULL values in the referenced column?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "candidate_key",
+    "prompt": "Explain Candidate key.",
+    "response": "A candidate key, or simply a key, of a relational database is any set of columns that have a unique combination of values in each row, with the additional constraint that removing any column could produce duplicate combinations of values. A candidate key is a minimal superkey, i.e., a superkey that does not contain a smaller one. Therefore, a relation can have multiple candidate keys, each with a different number of attributes.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What defines a candidate key?",
+          "options": [
+            "A. All non-prime attributes",
+            "B. A set of attributes where each value is unique for each row",
+            "C. The primary key only",
+            "D. A subset of all attributes"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Which statement about a candidate key is true?",
+          "options": [
+            "A. It must be composed of more than two attributes.",
+            "B. Removing any attribute will result in duplicates.",
+            "C. There can be more than one candidate key for a relation.",
+            "D. A candidate key is always unique within a table."
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "In a relation with three attributes, how many candidate keys are possible?",
+          "options": [
+            "A. One",
+            "B. Two",
+            "C. Three",
+            "D. Four"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Is it necessary to have a candidate key to ensure uniqueness of data in a relation?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "Can a superkey without an attribute be considered a candidate key?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "A candidate key is always a prime key.",
+          "answer": "False"
+        },
+        {
+          "question": "Removing any attribute from a candidate key cannot cause duplication.",
+          "answer": "True"
+        },
+        {
+          "question": "There can be more than one candidate key for a relation.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "super_key",
+    "prompt": "Explain Super key.",
+    "response": "In the relational data model, a superkey is any set of attributes that uniquely identifies each tuple of a relation. Because superkey values are unique, tuples with the same superkey value must also have the same non-key attribute values. That is, non-key attributes are functionally dependent on the superkey. The set of all attributes is always a superkey (the trivial superkey). Tuples in a relation are by definition unique, with duplicates removed after each operation, so the set of all attributes is always uniquely valued for every tuple. A candidate key (or minimal superkey) is a superkey that can't be reduced to a simpler superkey by removing an attribute.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a superkey represent in the relational data model?",
+          "options": [
+            "A) Attributes",
+            "B) Data entries",
+            "C) Key attributes",
+            "D) Tuple identifiers"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which of the following is always considered a superkey?",
+          "options": [
+            "A) A single attribute",
+            "B) Two or more attributes",
+            "C) A combination of two attributes",
+            "D) An empty set of attributes"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "If a relation has a superkey consisting of three attributes, what is true about these attributes?",
+          "options": [
+            "A) They form a primary key.",
+            "B) They are not enough to identify a tuple.",
+            "C) They cannot be further simplified into another superkey.",
+            "D) They are not functionally dependent on each other."
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Can a relation's set of all attributes ever be considered a superkey?",
+          "options": [
+            "A) Yes",
+            "B) No"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "Is it possible to have a relation where duplicate tuples exist before operations like insertion, deletion, or update?",
+          "options": [
+            "A) Yes",
+            "B) No"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "All superkeys contain at least one non-key attribute.",
+          "answer": "True"
+        },
+        {
+          "question": "Every superkey can be derived from fewer attributes without losing its uniqueness.",
+          "answer": "False"
+        },
+        {
+          "question": "The total number of attributes in a relation is never a superkey.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "normalization",
+    "prompt": "Explain Database normalization.",
+    "response": "Database normalization is the process of structuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity. It was first proposed by British computer scientist Edgar F. Codd as part of his relational model. Normalization entails organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints. It is accomplished by applying some formal rules either by a process of synthesis (creating a new database design) or decomposition (improving an existing database design).",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does Database Normalization primarily aim at?",
+          "options": [
+            "Data Integrity",
+            "Reducing Data Redundancy",
+            "Improving Performance",
+            "Enhancing User Interface"
+          ],
+          "answer": "Reducing Data Redundancy"
+        },
+        {
+          "question": "Who introduced the concept of Database Normalization?",
+          "options": [
+            "Edgar F. Codd",
+            "Donald Knuth",
+            "E.F. Codd",
+            "Niklaus Wirth"
+          ],
+          "answer": "Edgar F. Codd"
+        },
+        {
+          "question": "How many normal forms can be achieved through normalization?",
+          "options": [
+            10,
+            7,
+            6,
+            8
+          ],
+          "answer": "8"
+        },
+        {
+          "question": "Which of these statements about normalization is incorrect?",
+          "options": [
+            "Normalization improves data integrity.",
+            "Normalization involves breaking down large tables into smaller ones.",
+            "Normalization requires all primary keys to uniquely identify records.",
+            "Normalization can eliminate duplicate values within a table."
+          ],
+          "answer": "Normalization eliminates duplicate values within a table."
+        },
+        {
+          "question": "In which year did Edgar F. Codd propose the concept of Database Normalization?",
+          "options": [
+            "1960s",
+            "1970s",
+            "1980s",
+            "1950s"
+          ],
+          "answer": "1970s"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it true that normalization helps reduce data redundancy?",
+          "answer": "True"
+        },
+        {
+          "question": "Can normalization completely eliminate duplicate data across multiple tables?",
+          "answer": "False"
+        },
+        {
+          "question": "Are there fewer than three normal forms possible for databases?",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain First normal form.",
+    "response": "First normal form (1NF) is the most basic level of database normalization defined by English computer scientist Edgar F. Codd, the inventor of the relational database. A relation (or a table, in SQL) can be said to be in first normal form if each field is atomic, containing a single value rather than a set of values or a nested table. In other words, a relation complies with first normal form if no attribute domain (the set of values allowed in a given column) has relations as elements. Most relational database management systems, including standard SQL, do not support creating or using table-valued columns, which means most relational databases will be in first normal form by necessity. Otherwise, normalization to 1NF involves eliminating nested relations by breaking them up into separate relations associated with each other using foreign keys.: 381 This process is a necessary step when moving data from a non-relational (or NoSQL) database, such as one using a hierarchical or document-oriented model, to a relational database.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Second normal form.",
+    "response": "Second normal form (2NF) is a level of database normalization defined by English computer scientist Edgar F. Codd. A relation (or a table, in SQL) is in 2NF if it is in first normal form (1NF) and contains no partial dependencies. A partial dependency occurs when a non-prime attribute (that is, one not part of any candidate key) is functionally dependent on only a proper subset of the attributes making up a candidate key. To be in 2NF, a relation must have every non-prime attribute depend on the whole set of attributes of every candidate key. For instance, a relation with the composite key {Country, District} would violate 2NF if any attribute was added whose values' meanings didn't depend on both the Country and the District to which they applied. A CountryLeader attribute would vary between and provide information specific to each Country but not specific to each District, and would therefore depend on only half of the composite key. This would have several drawbacks, including that any leader would be redundantly duplicated for each District in their Country.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Third normal form.",
+    "response": "Third normal form (3NF) is a level of database normalization defined by English computer scientist Edgar F. Codd. A relation (or table, in SQL) is in third normal form if it is in second normal form and also lacks non-key dependencies, meaning that no non-prime attribute is functionally dependent on (that is, contains a fact about) any other non-prime attribute. In other words, each non-prime attribute must depend solely and non-transitively on each candidate key. William Kent summarised 3NF with the dictum that \"a non-key field must provide a fact about the key, the whole key, and nothing but the key\".[citation needed] An example of a violation of 3NF would be a Patient relation with the attributes PatientID, DoctorID and DoctorName, in which DoctorName would depend first and foremost on DoctorID and only transitively on the key, PatientID (via DoctorID's dependency on PatientID). Such a design would cause a doctor's name to be redundantly duplicated across each of their patients. A database compliant with 3NF would store doctors' names in a separate Doctor relation which Patient could reference via a foreign key.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "functional_dependency",
+    "prompt": "Explain Functional dependency.",
+    "response": "In relational database theory, a functional dependency (FD) is constraint between two attribute sets, whereby values in one set (the determinant set) determine the values of the other set (the dependent set). A functional dependency between a determinant set X and a dependent set Y can be described as follows: Given a relation R and attribute sets X,Y ⊆ {\\displaystyle \\subseteq } R, then X is said to functionally determine Y (written X → Y) if each X value is associated with precisely one Y value. R is then said to satisfy the functional dependency X → Y. Equivalently, the projection Π X , Y R {\\displaystyle \\Pi _{X,Y}R} is a function, that is, Y is a function of X.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a functional dependency represent in a relational database?",
+          "options": [
+            "a relationship between tables",
+            "a rule for data normalization",
+            "an operation performed on attributes",
+            "a constraint linking attributes"
+          ],
+          "answer": "a constraint linking attributes"
+        },
+        {
+          "question": "Given a relation R and attribute sets X, Y ⊆ R, what condition determines X → Y?",
+          "options": [
+            "Y being independent of X",
+            "each X value being uniquely determined by Y",
+            "no common elements between X and Y",
+            "all combinations of X and Y exist"
+          ],
+          "answer": "each X value being uniquely determined by Y"
+        },
+        {
+          "question": "If X → Y in a relation R, which statement is true about the projection Π_X, Y R?",
+          "options": [
+            "Π_X, Y R is not a function",
+            "Π_X, Y R maps every element in R to at least one unique element",
+            "Π_X, Y R maps some elements in R to multiple elements",
+            "Π_X, Y R is a function"
+          ],
+          "answer": "Π_X, Y R is a function"
+        },
+        {
+          "question": "Which statement correctly describes the definition of a functional dependency X → Y?",
+          "options": [
+            "X depends on Y",
+            "Y depends on X",
+            "X determines all values of Y",
+            "Y determines all values of X"
+          ],
+          "answer": "X determines all values of Y"
+        },
+        {
+          "question": "Does R satisfy the functional dependency X → Y if there exists an instance where a single X value corresponds to more than one Y value?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Functional dependencies always imply a direct mapping from X to Y.",
+          "answer": "True"
+        },
+        {
+          "question": "A functional dependency implies that X and Y should never share any common values.",
+          "answer": "False"
+        },
+        {
+          "question": "The term 'functional' refers to the process of determining relationships between attributes in a table.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "transaction",
+    "prompt": "Explain Transaction in DBMS.",
+    "response": "A database transaction symbolizes a unit of work, performed within a database management system (or similar system) against a database, that is treated in a coherent and reliable way independent of other transactions. A transaction generally represents any change in a database. Transactions in a database environment have two main purposes: In a database management system, a transaction is a single unit of logic or work, sometimes made up of multiple operations. Any logical calculation done in a consistent mode in a database is known as a transaction. One example is a transfer from one bank account to another: the complete transaction requires subtracting the amount to be transferred from one account and adding that same amount to the other.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database transaction represent?",
+          "options": [
+            "A] Any operation within a database",
+            "B] Multiple changes in a single database",
+            "C] A single logical operation in a database",
+            "D] None of the above"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which purpose does a transaction serve in a database management system?",
+          "options": [
+            "A] To increase data redundancy",
+            "B] To enhance user experience",
+            "C] To reduce database complexity",
+            "D] Both B and C"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Inconsistent modes of logical calculations in databases are referred to as:",
+          "options": [
+            "A] Database inconsistencies",
+            "B] Transaction failures",
+            "C] Data corruption",
+            "D] None of the above"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "A bank account transfer involves what type of transaction?",
+          "options": [
+            "A] Atomic transaction",
+            "B] Non-atomic transaction",
+            "C] Batch transaction",
+            "D] No transaction"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "What is an atomic transaction?",
+          "options": [
+            "A] A transaction that can be partially completed",
+            "B] A series of related updates",
+            "C] An update with zero or more actions grouped together",
+            "D] None of the above"
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible for a database to handle multiple concurrent transactions simultaneously?",
+          "answer": "True"
+        },
+        {
+          "question": "Does every transaction require interaction with the database?",
+          "answer": "False"
+        },
+        {
+          "question": "Can transactions affect the entire database at once without breaking down into smaller parts?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "acid",
+    "prompt": "Explain ACID properties.",
+    "response": "In computer science, ACID (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps. For example, a transfer of funds from one bank account to another, involving multiple changes such as debiting one account and crediting another, is a single transaction. In 1983, Andreas Reuter and Theo Härder coined the acronym ACID, building on earlier work by Jim Gray who named atomicity, consistency, and durability, but not isolation, when characterizing the transaction concept. These four properties are the major guarantees of the transaction paradigm, which has influenced many aspects of development in database systems.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'ACID' stand for?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "answer": "Atomicity"
+        },
+        {
+          "question": "Who first proposed the idea of atomicity, consistency, and durability?",
+          "options": [
+            "Jim Gray",
+            "Andreas Reuter",
+            "Theo Härder",
+            "None of the above"
+          ],
+          "answer": "Jim Gray"
+        },
+        {
+          "question": "Which property ensures that all parts of a transaction are executed atomically?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "answer": "Atomicity"
+        },
+        {
+          "question": "According to the passage, what was the year Andreas Reuter and Theo Härder introduced the term ACID?",
+          "options": [
+            1982,
+            1983,
+            1984,
+            1985
+          ],
+          "answer": "1983"
+        },
+        {
+          "question": "How many main guarantees do ACID properties provide for transactions?",
+          "options": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "answer": "3"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Transactions with ACID properties can always be completed successfully.",
+          "answer": "False"
+        },
+        {
+          "question": "All operations within a transaction need to be either committed or rolled back.",
+          "answer": "True"
+        },
+        {
+          "question": "Data integrity is maintained even if there are system failures during the execution of a transaction.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Concurrency control.",
+    "response": "In information technology and computer science, especially in the fields of computer programming, operating systems, multiprocessors, and databases, concurrency control ensures that correct results for concurrent operations are generated, while getting those results as quickly as possible. Computer systems, both software and hardware, consist of modules, or components. Each component is designed to operate correctly, i.e., to obey or to meet certain consistency rules. When components that operate concurrently interact by messaging or by sharing accessed data (in memory or storage), a certain component's consistency may be violated by another component. The general area of concurrency control provides rules, methods, design methodologies, and theories to maintain the consistency of components operating concurrently while interacting, and thus the consistency and correctness of the whole system. Introducing concurrency control into a system means applying operation constraints which typically result in some performance reduction. Operation consistency and correctness should be achieved with as good as possible efficiency, without reducing performance below reasonable levels. Concurrency control can require significant additional complexity and overhead in a concurrent algorithm compared to the simpler sequential algorithm.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "indexing",
+    "prompt": "Explain Indexing in DBMS.",
+    "response": "A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space to maintain the index data structure. Indexes are used to quickly locate data without having to search every row in a database table every time said table is accessed. Indexes can be created using one or more columns of a database table, providing the basis for both rapid random lookups and efficient access of ordered records. An index is a copy of selected columns of data, from a table, that is designed to enable very efficient search. An index normally includes a \"key\" or direct link to the original row of data from which it was copied, to allow the complete row to be retrieved efficiently. Some databases extend the power of indexing by letting developers create indexes on column values that have been transformed by functions or expressions. For example, an index could be created on upper(last_name), which would only store the upper-case versions of the last_name field in the index. Another option sometimes supported is the use of partial index, where index entries are created only for those records that satisfy some conditional expression. A further aspect of flexibility is to permit indexing on user-defined functions, as well as expressions formed from an assortment of built-in functions.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does an index do?",
+          "options": [
+            "A) Increases memory usage",
+            "B) Speeds up data retrieval",
+            "C) Decreases storage capacity",
+            "D) Encrypts data"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "How many columns can be indexed simultaneously?",
+          "options": [
+            "A) One column",
+            "B) Two columns",
+            "C) Three columns",
+            "D) Multiple columns"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Can you create an index on multiple tables?",
+          "options": [
+            "A) Yes, but it's complex",
+            "B) No",
+            "C) Yes, with proper design",
+            "D) Sometimes yes, depending on DBMS support"
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Indexes always improve query performance.",
+          "answer": "False"
+        },
+        {
+          "question": "Partial indexes reduce storage space needed for indices.",
+          "answer": "True"
+        },
+        {
+          "question": "User-defined functions cannot be used to create indexes.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "relational_model",
+    "prompt": "Explain Relational model.",
+    "response": "The relational model (RM) is an approach to managing data using a structure and language consistent with first-order predicate logic, first described in 1969 by English computer scientist Edgar F. Codd, where all data are represented in terms of tuples, grouped into relations. A database organized in terms of the relational model is a relational database. The purpose of the relational model is to provide a declarative method for specifying data and queries: users directly state what information the database contains and what information they want from it, and let the database management system software take care of describing data structures for storing the data and retrieval procedures for answering queries.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What was the year when the relational model was first described?",
+          "options": [
+            "1970",
+            "1980",
+            "1969",
+            "1950"
+          ],
+          "answer": "1969"
+        },
+        {
+          "question": "Who is credited as the inventor of the relational model?",
+          "options": [
+            "Edgar F. Codd",
+            "Noah Webster",
+            "Ada Lovelace",
+            "Charles Babbage"
+          ],
+          "answer": "Edgar F. Codd"
+        },
+        {
+          "question": "What does the term 'declarative method' refer to in the context of databases?",
+          "options": [
+            "Methodology for defining algorithms",
+            "Methodology for describing data structures",
+            "Methodology for executing queries",
+            "Methodology for manipulating objects"
+          ],
+          "answer": "Methodology for describing data structures"
+        },
+        {
+          "question": "Which type of database organization uses the relational model?",
+          "options": [
+            "Hierarchical Database",
+            "Network Database",
+            "Relational Database",
+            "Object-oriented Database"
+          ],
+          "answer": "Relational Database"
+        },
+        {
+          "question": "What does the purpose of the relational model aim to achieve?",
+          "options": [
+            "Optimize query execution speed",
+            "Reduce data redundancy",
+            "Ensure data consistency across multiple systems",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the relational model allow direct user input for specifying data and queries without any processing?",
+          "answer": "False"
+        },
+        {
+          "question": "Can the relational model ensure the security of sensitive data within the database?",
+          "answer": "True"
+        },
+        {
+          "question": "Is the relational model compatible with other types of data models?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "osi_model",
+    "prompt": "Explain OSI model.",
+    "response": "The Open Systems Interconnection (OSI) model is a reference model developed by the International Organization for Standardization (ISO) that \"provides a common basis for the coordination of standards development for the purpose of systems interconnection.\" In the OSI reference model, the components of a communication system are distinguished in seven abstraction layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'Open Systems Interconnection' refer to?",
+          "options": [
+            "A) A standard for internet communication",
+            "B) A physical layer component in an OSI model",
+            "C) A type of data encryption protocol",
+            "D) The ISO's approach to standardizing network protocols"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "How many layers does the OSI model consist of?",
+          "options": [
+            "A) 6",
+            "B) 7",
+            "C) 8",
+            "D) 9"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "Which layer of the OSI model deals with the conversion of information into a format suitable for transmission over a communications channel?",
+          "options": [
+            "A) Application Layer",
+            "B) Session Layer",
+            "C) Presentation Layer",
+            "D) Transport Layer"
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the OSI model include a session layer?",
+          "answer": "True"
+        },
+        {
+          "question": "Is the Data Link layer part of the OSI model?",
+          "answer": "True"
+        },
+        {
+          "question": "In which layer would you find the concept of IP addresses?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "tcp_ip",
+    "prompt": "Explain TCP/IP model.",
+    "response": "The Internet protocol suite, commonly known as TCP/IP, is a framework for organizing the communication protocols used in the Internet and similar computer networks according to functional criteria. The foundational protocols in the suite are the Transmission Control Protocol (TCP), the User Datagram Protocol (UDP), and the Internet Protocol (IP). Early versions of this networking model were known as the Department of Defense (DoD) Internet Architecture Model because the research and development were funded by the Defense Advanced Research Projects Agency (DARPA) of the United States Department of Defense. The Internet protocol suite provides end-to-end data communication specifying how data should be packetized, addressed, transmitted, routed, and received. This functionality is organized into four abstraction layers, which classify all related protocols according to each protocol's scope of networking. An implementation of the layers for a particular application forms a protocol stack. From lowest to highest, the layers are the link layer, containing communication methods for data that remains within a single network segment (link); the internet layer, providing internetworking between independent networks; the transport layer, handling host-to-host communication; and the application layer, providing process-to-process data exchange for applications.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the Internet protocol suite provide?",
+          "options": [
+            "A) Packetization",
+            "B) Addressing",
+            "C) Routing",
+            "D) All of the above"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "How many layers does the Internet protocol suite consist of?",
+          "options": [
+            "A) 1",
+            "B) 2",
+            "C) 3",
+            "D) 4"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Which protocol is responsible for end-to-end data communication?",
+          "options": [
+            "A) TCP",
+            "B) UDP",
+            "C) IP",
+            "D) ICMP"
+          ],
+          "answer": "A"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is the DARPA-funded Internet Architecture Model still relevant today?",
+          "answer": "True"
+        },
+        {
+          "question": "Does the TCP/IP suite include only four protocols?",
+          "answer": "False"
+        },
+        {
+          "question": "Are the link, internet, transport, and application layers part of the TCP/IP suite?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "ip_address",
+    "prompt": "Explain IP address.",
+    "response": "An Internet Protocol address (IP address) is a numerical label, such as 192.0.2.1 or 2001:db8::42, that is assigned to a device connected to a computer network that uses the Internet Protocol for communication. IP addresses serve two main functions: network interface identification, and location addressing. Internet Protocol version 4 (IPv4) was the first standalone specification for the IP address, and has been in use since 1983. IPv4 addresses are defined as a 32-bit number, which later then became too small to provide enough addresses as the internet grew, leading to IPv4 address exhaustion over the 2010s. Its designated successor, IPv6, uses 128 bits for the IP address, giving it a larger address space. Although IPv6 deployment has been ongoing since the mid-2000s, both IPv4 and IPv6 are still used side-by-side as of 2025[update].",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does an Internet Protocol address consist of?",
+          "options": [
+            "Binary digits",
+            "Hexadecimal numbers",
+            "Decimal numerals",
+            "Octal numerals"
+          ],
+          "answer": "Decimal numerals"
+        },
+        {
+          "question": "Which of the following is NOT true about IP addresses?",
+          "options": [
+            "IP addresses can be reused if they run out",
+            "IP addresses identify devices uniquely",
+            "IP addresses are assigned by local networks",
+            "IP addresses help locate hosts on the network"
+          ],
+          "answer": "IP addresses can be reused if they run out"
+        },
+        {
+          "question": "What did IPv4 become too small for after its initial use?",
+          "options": [
+            "Too big",
+            "Not enough",
+            "Just right",
+            "Still working fine"
+          ],
+          "answer": "Too big"
+        },
+        {
+          "question": "In what year did IPv6 deployment start?",
+          "options": [
+            "1990",
+            "2000",
+            "2010",
+            "2020"
+          ],
+          "answer": "2000"
+        },
+        {
+          "question": "How many bits do IPv4 addresses originally use?",
+          "options": [
+            "32 bits",
+            "64 bits",
+            "128 bits",
+            "256 bits"
+          ],
+          "answer": "32 bits"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is IPv6 designed specifically to replace IPv4?",
+          "answer": "True"
+        },
+        {
+          "question": "Can IP addresses be assigned without running out of them?",
+          "answer": "False"
+        },
+        {
+          "question": "Does IPv6 allow more unique addresses than IPv4?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dns",
+    "prompt": "Explain DNS.",
+    "response": "The Domain Name System (DNS) is a hierarchical and distributed name service that provides a naming system for computers, services, and other resources on the Internet or other Internet Protocol (IP) networks. It associates various information with domain names (identification strings) assigned to each of the associated entities. Most prominently, it translates readily memorized domain names to the numerical IP addresses needed for locating and identifying computer services and devices with the underlying network protocols. The Domain Name System has been an essential component of the functionality of the Internet since 1985. The Domain Name System delegates the responsibility of assigning domain names and mapping those names to Internet resources by designating authoritative name servers for each domain. Network administrators may delegate authority over subdomains of their allocated name space to other name servers. This mechanism provides distributed and fault-tolerant service and was designed to avoid a single large central database. In addition, the DNS specifies the technical functionality of the database service that is at its core. It defines the DNS protocol, a detailed specification of the data structures and data communication exchanges used in the DNS, as part of the Internet protocol suite.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the Domain Name System (DNS) provide?",
+          "options": [
+            "A) A centralized repository for all internet resources",
+            "B) An identification string for computers",
+            "C) A distributed and fault-tolerant name service",
+            "D) All of the above"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "When translating a domain name into an IP address, what role does the DNS play?",
+          "options": [
+            "A) Assigns IP addresses to users",
+            "B) Converts human-readable names into binary code",
+            "C) Manages the allocation of domains globally",
+            "D) Provides a map from names to numbers"
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "Who typically manages the delegation of authority over subdomains within a domain?",
+          "options": [
+            "A) Individual users",
+            "B) Local governments",
+            "C) Network administrators",
+            "D) International organizations"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which statement accurately describes the purpose of the DNS protocol?",
+          "options": [
+            "A) To establish a direct connection between two computers",
+            "B) To convert domain names to numerical IP addresses",
+            "C) To ensure the security of user data",
+            "D) To control network traffic patterns"
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "How does the DNS achieve fault tolerance?",
+          "options": [
+            "A) By having multiple central databases",
+            "B) Through decentralized name server architectures",
+            "C) By limiting access to authorized systems only",
+            "D) None of the above"
+          ],
+          "answer": "B"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "The DNS ensures that every website can be accessed using a unique domain name.",
+          "answer": "True"
+        },
+        {
+          "question": "Domain names cannot be translated into IP addresses.",
+          "answer": "False"
+        },
+        {
+          "question": "Network administrators do not manage any delegated authority over subdomains.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "http",
+    "prompt": "Explain HTTP protocol.",
+    "response": "HTTP (Hypertext Transfer Protocol) is an application layer protocol in the Internet protocol suite for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the World Wide Web, where hypertext documents include hyperlinks to other resources that the user can easily access, for example by a mouse click or by tapping the screen in a web browser. HTTP is a request–response protocol in the client–server model. A transaction starts with a client submitting a request to the server, the server attempts to satisfy the request and returns a response to the client that describes the disposition of the request and optionally contains a requested resource such as an HTML document or other content.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does HTTP stand for?",
+          "options": [
+            "A. Hypertext Transmission Protocol",
+            "B. Hyper-text Transfer Protocol",
+            "C. Hypertext Transfer Protocol",
+            "D. Hyper-text Transport Protocol"
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which type of protocol is HTTP?",
+          "options": [
+            "A. Request-Response",
+            "B. Peer-to-Peer",
+            "C. Client-Server",
+            "D. None of the above"
+          ],
+          "answer": "A"
+        },
+        {
+          "question": "In which mode does HTTP operate?",
+          "options": [
+            "A. Single-threaded",
+            "B. Asynchronous",
+            "C. Multithreaded",
+            "D. Non-blocking"
+          ],
+          "answer": "C"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is HTTP used only for transferring images?",
+          "answer": "False"
+        },
+        {
+          "question": "Can HTTP be used without any servers?",
+          "answer": "True"
+        },
+        {
+          "question": "Is HTTP's primary function limited to fetching static files like HTML pages?",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "algorithm",
+    "prompt": "Explain Algorithm.",
+    "response": "In mathematics and computer science, an algorithm (/ˈælɡərɪðəm/ ⓘ) is a finite sequence of mathematically rigorous instructions, typically used to solve a class of specific problems or to perform a computation. Algorithms are used as specifications for performing calculations and data processing. More advanced algorithms can use conditionals to divert the code execution through various routes (referred to as automated decision-making) and deduce valid inferences (referred to as automated reasoning). In contrast, a heuristic is an approach to solving problems without well-defined correct or optimal results. For example, although social media recommender systems are commonly called \"algorithms\", they actually rely on heuristics as there is no truly \"correct\" recommendation.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What distinguishes an algorithm from a heuristic?",
+          "options": [
+            "A) An algorithm always has a correct solution.",
+            "B) A heuristic guarantees efficient computation.",
+            "C) An algorithm specifies step-by-step instructions.",
+            "D) Heuristics are used for mathematical computations."
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "Which statement about algorithms is true?",
+          "options": [
+            "A) Algorithms cannot be used for optimization purposes.",
+            "B) Algorithms guarantee perfect results every time.",
+            "C) Heuristics ensure deterministic outcomes.",
+            "D) Conditions in algorithms determine automatic divergent paths."
+          ],
+          "answer": "D"
+        },
+        {
+          "question": "How do algorithms differ from social media recommendation systems?",
+          "options": [
+            "A) Social media recommendations involve conditional paths.",
+            "B) Social media recommendations are purely heuristic-based.",
+            "C) Social media recommendations require definitive correctness.",
+            "D) All of the above"
+          ],
+          "answer": "D"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Are all algorithms deterministic?",
+          "answer": "False"
+        },
+        {
+          "question": "Can algorithms guarantee perfect performance?",
+          "answer": "False"
+        },
+        {
+          "question": "Do algorithms need to follow logical steps?",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "binary_search",
+    "prompt": "Explain Binary search.",
+    "response": "In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop, is a search algorithm that finds the position of a target value within a sorted array. Binary search compares the target value to the middle element of the array. If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half, again taking the middle element to compare to the target value, and repeating this until the target value is found. If the search ends with the remaining half being empty, the target is not in the array. Binary search runs in logarithmic time in the worst case, making O ( log ⁡ n ) {\\displaystyle O(\\log n)} comparisons, where n {\\displaystyle n} is the number of elements in the array.[a] Binary search is faster than linear search except for small arrays. However, the array must be sorted first to be able to apply binary search. There are specialized data structures designed for fast searching, such as hash tables, that can be searched more efficiently than binary search. However, binary search can be used to solve a wider range of problems, such as finding the next-smallest or next-largest element in the array relative to the target even if it is absent from the array.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Binary search is a sorting algorithm.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No"
+        },
+        {
+          "question": "Binary search requires an unsorted array to work.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No"
+        },
+        {
+          "question": "The best scenario for using binary search involves an array of size 1024.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Binary search has better performance than linear search.",
+          "answer": "True"
+        },
+        {
+          "question": "Binary search only works with integer values.",
+          "answer": "False"
+        },
+        {
+          "question": "Binary search always returns the exact position of the target value.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "linear_search",
+    "prompt": "Explain Linear search.",
+    "response": "In computer science, linear search or sequential search is a method for finding an element within a list. It sequentially checks each element of the list until a match is found or the whole list has been searched. A linear search runs in linear time in the worst case, and makes at most n comparisons, where n is the length of the list. If each element is equally likely to be searched, then linear search has an average case of ⁠n+1/2⁠ comparisons, but the average case can be affected if the search probabilities for each element vary. Linear search is rarely practical because other search algorithms and schemes, such as the binary search algorithm and hash tables, allow significantly faster searching for all but short lists.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does linear search do?",
+          "options": [
+            "A) Finds elements randomly.",
+            "B) Checks elements sequentially from start to end.",
+            "C) Uses probability-based searches.",
+            "D) Compares elements only once."
+          ],
+          "answer": "B"
+        },
+        {
+          "question": "How many comparisons does linear search make in the worst-case scenario?",
+          "options": [
+            "A) Less than n.",
+            "B) Exactly n.",
+            "C) More than n.",
+            "D) At least n+1."
+          ],
+          "answer": "C"
+        },
+        {
+          "question": "If elements' search probabilities vary, how does this affect linear search's average case?",
+          "options": [
+            "A) Average case becomes less predictable.",
+            "B) Average case improves due to varied probabilities.",
+            "C) Average case stays constant.",
+            "D) No impact on average case."
+          ],
+          "answer": "A"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Linear search always takes longer compared to more efficient search methods.",
+          "answer": "False"
+        },
+        {
+          "question": "The best-known search algorithm uses fewer comparisons than linear search.",
+          "answer": "True"
+        },
+        {
+          "question": "Hash tables cannot efficiently handle large datasets better than linear search.",
+          "answer": "False"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "big_o",
+    "prompt": "Explain Big O notation.",
+    "response": "Big O notation is a mathematical notation that describes the approximate size of a function on a domain. Big O is a member of a family of notations invented by German mathematicians Paul Bachmann and Edmund Landau and expanded by others, collectively called Bachmann–Landau notation. The letter O was chosen by Bachmann to stand for Ordnung, meaning the order of approximation. In computer science, big O notation is used to classify algorithms according to how their run time or space requirements [a] grow as the input size grows. In analytic number theory, big O notation is often used to express bounds on the growth of an arithmetical function; one well-known example is the remainder term in the prime number theorem. In mathematical analysis, including calculus, Big O notation is used to bound the error when truncating a power series and to express the quality of approximation of a real or complex valued function by a simpler function.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does 'O' represent in Big O notation?",
+          "options": [
+            "Order of Approximation",
+            "Order of Complexity",
+            "Order of Error",
+            "Order of Growth"
+          ],
+          "answer": "Order of Approximation"
+        },
+        {
+          "question": "In which field is Big O notation primarily applied?",
+          "options": [
+            "Computer Science",
+            "Mathematics",
+            "Physics",
+            "Economics"
+          ],
+          "answer": "Computer Science"
+        },
+        {
+          "question": "Who first introduced the concept of Big O notation?",
+          "options": [
+            "Paul Bachmann",
+            "Edmund Landau",
+            "Both Paul Bachmann and Edmund Landau",
+            "Neither Paul Bachmann nor Edmund Landau"
+          ],
+          "answer": "Both Paul Bachmann and Edmund Landau"
+        },
+        {
+          "question": "Which statement about Big O notation's usage in computer science is true?",
+          "options": [
+            "It measures memory usage only.",
+            "It always provides exact runtime estimates.",
+            "It categorizes algorithms based on complexity.",
+            "It is unrelated to algorithm complexity."
+          ],
+          "answer": "It categorizes algorithms based on complexity."
+        },
+        {
+          "question": "What does the letter 'o' signify in the context of the Prime Number Theorem?",
+          "options": [
+            "Order of Approximation",
+            "Order of Size",
+            "Order of Error",
+            "Order of Growth"
+          ],
+          "answer": "Order of Growth"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "The letter 'O' stands for Order of Growth in Big O notation.",
+          "answer": "True"
+        },
+        {
+          "question": "Big O notation can be used in both mathematics and computer science.",
+          "answer": "True"
+        },
+        {
+          "question": "All arithmetic functions in math use Big O notation to express their growth rate.",
+          "answer": "False"
+        }
+      ]
+    }
+  }
+]

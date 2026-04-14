@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "ExplainifyAI",
+    "slug": "ExplainifyAI",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "explainifyai",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+  "softwareKeyboardLayoutMode": "pan",
+  "adaptiveIcon": {
+    "backgroundImage": "./assets/images/android-icon-background.png",
+    "foregroundImage": "./assets/images/icon.png"
+  }
+},
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundImage": "./assets/images/android-icon-background.png"
+        }
+      ],
+      "expo-secure-store",
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

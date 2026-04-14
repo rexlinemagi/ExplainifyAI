@@ -1,0 +1,2693 @@
+[
+  {
+    "topic": "deadlock",
+    "prompt": "Explain Deadlock in operating systems.",
+    "response": "समवर्ती संगणन में, डेडलॉक (deadlock) किसी भी ऐसी स्थिति को कहते हैं जिसमें किसी समूह के किसी भी सदस्य के लिए आगे बढ़ना संभव नहीं होता क्योंकि प्रत्येक सदस्य किसी अन्य सदस्य के लिए प्रतीक्षा करता है, जिसमें वह स्वयं भी शामिल है, जैसे कि कोई संदेश भेजना या, अधिक सामान्यतः, किसी लॉक को छोड़ना। मल्टीप्रोसेसिंग सिस्टम, समानांतर संगणन और वितरित सिस्टम में डेडलॉक एक आम समस्या है, क्योंकि इन संदर्भों में सिस्टम अक्सर साझा संसाधनों को मध्यस्थता करने और प्रक्रिया सिंक्रोनाइज़ेशन को लागू करने के लिए सॉफ़्टवेयर या हार्डवेयर लॉक का उपयोग करते हैं। किसी ऑपरेटिंग सिस्टम में, डेडलॉक तब होता है जब कोई प्रक्रिया या थ्रेड प्रतीक्षा करने की स्थिति में प्रवेश करता है क्योंकि अनुरोधित सिस्टम संसाधन किसी अन्य प्रतीक्षा करने वाली प्रक्रिया द्वारा रखा गया है, जो बदले में किसी अन्य प्रतीक्षा करने वाली प्रक्रिया द्वारा रखे गए किसी अन्य संसाधन की प्रतीक्षा कर रही है। यदि कोई प्रक्रिया अनिश्चित काल तक अपनी स्थिति को बदलने में असमर्थ रहती है क्योंकि उसके द्वारा अनुरोधित संसाधनों का उपयोग किसी अन्य प्रक्रिया द्वारा किया जा रहा है जो स्वयं प्रतीक्षा कर रही है, तो कहा जाता है कि सिस्टम डेडलॉक में है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Deadlock involves multiple entities.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A",
+          "translatedQ": "डीलॉक में बहुत से निगम शामिल हैं."
+        },
+        {
+          "question": "Deadlocks occur only in multi-threaded environments.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "मृतलॉक सिर्फ बहु- कालिक वातावरण में ही होते हैं."
+        },
+        {
+          "question": "The term 'deadlock' applies exclusively to processes in multiprocessor systems.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "शब्द 'अमारक' सिर्फ बहुप्रोक तंत्रों में प्रक्रियाओं के लिए लागू होता है."
+        },
+        {
+          "question": "In an operating system, a deadlock happens whenever a process requests two exclusive resources simultaneously.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "किसी काम की व्यवस्था में, जब कोई प्रक्रिया एक साथ दो अलग - अलग साधनों की माँग करती है, तो मृतलॉक होता है ।"
+        },
+        {
+          "question": "If all processes in a system remain indefinitely unable to change their states due to resource constraints, they will always form a deadlock.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "यदि व्यवस्था में सभी प्रक्रियाओं को हमेशा के लिए बदला नहीं जा सकता, तो वे हमेशा के लिए एक कब्र बन जाएँगे ।"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Deadlocks are inevitable in large-scale distributed systems.",
+          "answer": "False",
+          "translatedQ": "बड़े-बड़े वितरित तंत्रों में मृतलॉक्स अनिवार्य हैं."
+        },
+        {
+          "question": "Deadlocks can be avoided through proper management of system resources.",
+          "answer": "True",
+          "translatedQ": "दुनिया के साधनों का सही इस्तेमाल करने के ज़रिए डीलॉकों को बचाया जा सकता है ।"
+        },
+        {
+          "question": "A deadlock cannot happen if there are enough free resources available.",
+          "answer": "False",
+          "translatedQ": "कोई मरा घड़ी नहीं हो सकती यदि पर्याप्त स्वतंत्र संसाधन उपलब्ध हों."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "starvation",
+    "prompt": "Explain Starvation in operating systems.",
+    "response": "कंप्यूटर विज्ञान में, संसाधन अभाव एक समवर्ती संगणन में आने वाली समस्या है जिसमें किसी प्रक्रिया को अपने कार्य को संसाधित करने के लिए आवश्यक संसाधनों से लगातार वंचित रखा जाता है। अभाव एक शेड्यूलिंग या पारस्परिक अपवर्जन एल्गोरिथ्म में त्रुटियों के कारण हो सकता है, लेकिन संसाधन रिसाव के कारण भी हो सकता है, और जानबूझकर एक इनकार-सेवा हमले जैसे कि एक फोर्क बम के माध्यम से किया जा सकता है। जब एक समवर्ती एल्गोरिथ्म में अभाव असंभव होता है, तो एल्गोरिथ्म को अभाव-मुक्त, लॉकआउट-मुक्त कहा जाता है या कहा जाता है कि इसमें परिमित बाईपास है। यह गुण जीवन का एक उदाहरण है, और किसी भी पारस्परिक अपवर्जन एल्गोरिथ्म के लिए दो आवश्यकताओं में से एक है; दूसरा शुद्धता है। \"परिमित बाईपास\" नाम का अर्थ है कि एल्गोरिथ्म की कोई भी प्रक्रिया (समवर्ती भाग) साझा संसाधन तक पहुंच की अनुमति देने से पहले अधिकतम एक परिमित संख्या में बाईपास की जाती है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does 'resource starvation' refer to in concurrent computing?",
+          "options": [
+            "A) A process running too fast",
+            "B) A process waiting indefinitely for resources",
+            "C) A process receiving too many resources",
+            "D) A process getting enough resources"
+          ],
+          "answer": "B",
+          "translatedQ": "'source भूखा' का क्या मतलब है जो वर्तमान गणना में है?"
+        },
+        {
+          "question": "How can starvation be intentionally caused in a system?",
+          "options": [
+            "A) By increasing the resource availability",
+            "B) By launching multiple processes simultaneously",
+            "C) By implementing a deadlock prevention mechanism",
+            "D) By using a denial-of-service attack like a fork bomb"
+          ],
+          "answer": "D",
+          "translatedQ": "( ख) इस लेख में किन सवालों पर चर्चा की जाएगी?"
+        },
+        {
+          "question": "Which term describes a concurrency algorithm with the property that every process is bypassed at most a finite number of times before being granted access to the shared resource?",
+          "options": [
+            "A) Liveness",
+            "B) Correctness",
+            "C) Resource Leaks",
+            "D) Finite Bypass"
+          ],
+          "answer": "D",
+          "translatedQ": "कौन सा पद संपत्ति कि प्रत्येक प्रक्रिया से बाहर हो जाता है सबसे पहले साझा संसाधन तक पहुँच प्रदान करने से पहले?"
+        },
+        {
+          "question": "What does 'lockout-freedom' mean in the context of concurrent algorithms?",
+          "options": [
+            "A) No locks used in the algorithm",
+            "B) Locks removed from the codebase",
+            "C) Processes do not get locked out",
+            "D) Algorithm performance becomes faster due to fewer locks"
+          ],
+          "answer": "C",
+          "translatedQ": "कैश्स एल्गोरिदम के संदर्भ में 'लॉक आउट स्वतंत्रता' का क्या मतलब है?"
+        },
+        {
+          "question": "If an algorithm has both 'liveness' and 'correctness', what additional property might it possess?",
+          "options": [
+            "A) Deadlocks",
+            "B) Stability",
+            "C) Finite Bypass",
+            "D) Safety"
+          ],
+          "answer": "C",
+          "translatedQ": "यदि एक एल्गोरिथ्म दोनों 'जीवनीयता' और 'संशयता' है, तो क्या अतिरिक्‍त संपत्ति यह अधिकारी हो सकता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does a starvation-free algorithm guarantee that all processes will eventually receive their share of resources?",
+          "answer": "False",
+          "translatedQ": "क्या एक भूखा मुक्त एल्गोरिथ्म गारंटी देता है कि सभी प्रक्रियाओं को अंततः संसाधनों का उनका हिस्सा मिलेगा?"
+        },
+        {
+          "question": "Can resource leaks cause starvation in a system?",
+          "answer": "True",
+          "translatedQ": "क्या संसाधन पानी से भरी हुई व्यवस्था में भूख पैदा हो सकती है?"
+        },
+        {
+          "question": "Is it possible for a single process to starve itself if the only available resource is shared among all processes?",
+          "answer": "True",
+          "translatedQ": "क्या यह संभव है कि एक एकल प्रक्रिया स्वयं को भूखा रखे, यदि केवल उपलब्ध संसाधन सभी प्रक्रियाओं के बीच साझेदारी हो?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Paging in operating systems.",
+    "response": "कंप्यूटर प्रचालन प्रणालियों में, मेमोरी पेजिंग एक मेमोरी प्रबंधन योजना है जो प्रोग्राम द्वारा उपयोग की जाने वाली भौतिक मेमोरी को गैर-संलग्न होने की अनुमति देती है। यह मेमोरी विखंडन की समस्या से बचने और विखंडन को कम करने के लिए संकुचन की आवश्यकता से भी बचाता है। पेजिंग को अक्सर पेज फ्रेमों को आवंटित करने और मुक्त करने और पृष्ठों को संग्रहीत करने और उन्हें पुनः प्राप्त करने की संबंधित तकनीक के साथ जोड़ा जाता है। [a] ताकि पता स्थानों का समग्र आकार सिस्टम की भौतिक मेमोरी से अधिक हो सके। ऐतिहासिक कारणों से, इस तकनीक को कभी-कभी स्वैपिंग के रूप में जाना जाता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory",
+          "translatedQ": "याददाश्‍त का इस्तेमाल करने का सबसे खास मकसद क्या है?"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space.",
+          "translatedQ": "कौन - सी सबसे बेहतरीन बात दिखाती है कि ऑपरेटिंग सिस्टम में काम करना कितना ज़रूरी है?"
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C.",
+          "translatedQ": "याददाश्‍त कम करने में मदद कैसे मिलती है?"
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory.",
+          "translatedQ": "एक ऑपरेटिंग सिस्टम में क्यों 'वेलिंग' की स्मृति का उल्लेख किया जा सकता है?"
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above",
+          "translatedQ": "इस तरह के दूसरे तकनीकों का इस्तेमाल करने से क्या हासिल होता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False",
+          "translatedQ": "स्मृतििंग सीधे ही रैम से डाटा पढ़ने की गति को बढ़ाता है."
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False",
+          "translatedQ": "बड़े अनुप्रयोगों के साथ व्यवहार करते वक्‍त सिर्फ काम पर ध्यान देना काफी नहीं है ।"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True",
+          "translatedQ": "स्मृतििंग बाहरी भंडार उपकरणों का उपयोग करने की आवश्यकता को हटा देता है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "process",
+    "prompt": "Explain Process in operating systems.",
+    "response": "कंप्यूटिंग में, एक प्रोसेस (process) एक कंप्यूटर प्रोग्राम का वह उदाहरण है जिसे एक या अनेक थ्रेड्स (threads) द्वारा निष्पादित किया जा रहा है। कई अलग-अलग प्रोसेस मॉडल हैं, जिनमें से कुछ हल्के होते हैं, लेकिन लगभग सभी प्रोसेस (यहाँ तक कि पूरे वर्चुअल मशीन भी) एक ऑपरेटिंग सिस्टम (OS) प्रोसेस में निहित होते हैं, जिसमें प्रोग्राम कोड, आवंटित सिस्टम संसाधन, भौतिक और तार्किक एक्सेस अनुमतियाँ, और निष्पादन गतिविधि को शुरू करने, नियंत्रित करने और समन्वयित करने के लिए डेटा संरचनाएँ शामिल होती हैं। OS के आधार पर, एक प्रोसेस निष्पादन के कई थ्रेड्स से बना हो सकता है जो एक साथ निर्देशों को निष्पादित करते हैं। जबकि एक कंप्यूटर प्रोग्राम निर्देशों का एक निष्क्रिय संग्रह है जो आमतौर पर डिस्क पर एक फ़ाइल में संग्रहीत होता है, एक प्रोसेस डिस्क से मेमोरी में लोड होने के बाद उन निर्देशों का निष्पादन है। एक ही प्रोग्राम से कई प्रोसेस जुड़े हो सकते हैं; उदाहरण के लिए, एक ही प्रोग्राम के कई इंस्टेंस खोलने से अक्सर एक से अधिक प्रोसेस निष्पादित होते हैं।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a process represent?",
+          "options": [
+            "A) A thread executing instructions",
+            "B) The program's source code",
+            "C) An isolated environment",
+            "D) Multiple instances of the same program"
+          ],
+          "answer": "D",
+          "translatedQ": "एक प्रक्रिया क्या चित्रित करती है?"
+        },
+        {
+          "question": "How many types of process models exist according to the text?",
+          "options": [
+            "A) 1 type",
+            "B) 2 types",
+            "C) 3 types",
+            "D) 4 types"
+          ],
+          "answer": "A",
+          "translatedQ": "पाठ के अनुसार कितने प्रकार की प्रक्रिया मॉडल हैं?"
+        },
+        {
+          "question": "Which statement about processes and programs is true?",
+          "options": [
+            "A) Programs cannot run without processes",
+            "B) Processes can only occur within virtual machines",
+            "C) Programs store their instructions directly on disks",
+            "D) Processes load instructions from disks into memory before execution"
+          ],
+          "answer": "D",
+          "translatedQ": "प्रक्रियाओं और प्रोग्रामों के बारे में कौन - सी बात सच है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Processes are always lightweight.",
+          "answer": "False",
+          "translatedQ": "प्रक्रिया हमेशा हल्का होती है."
+        },
+        {
+          "question": "All processes start as OS processes.",
+          "answer": "True",
+          "translatedQ": "सभी प्रक्रिया ओएस प्रक्रिया के रूप में प्रारंभ होती है."
+        },
+        {
+          "question": "Multiple instances of the same program open up new processes.",
+          "answer": "True",
+          "translatedQ": "एक ही प्रोग्राम के अनेक उदाहरण नया प्रक्रियाओं को खोलता है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "cpu_scheduling",
+    "prompt": "Explain CPU scheduling.",
+    "response": "कम्प्यूटिंग में, शेड्यूलिंग कार्यों को करने के लिए संसाधनों को आवंटित करने की क्रिया है। संसाधन प्रोसेसर, नेटवर्क लिंक या विस्तार कार्ड हो सकते हैं। कार्य थ्रेड, प्रक्रिया या डेटा प्रवाह हो सकते हैं। शेड्यूलिंग गतिविधि एक शेड्यूलर नामक तंत्र द्वारा की जाती है। शेड्यूलर को अक्सर इस तरह से डिज़ाइन किया जाता है कि सभी कंप्यूटर संसाधनों को व्यस्त रखा जा सके (जैसा कि लोड बैलेंसिंग में), कई उपयोगकर्ताओं को सिस्टम संसाधनों को प्रभावी ढंग से साझा करने की अनुमति दी जा सके, या सेवा की गुणवत्ता के लक्ष्य को प्राप्त किया जा सके।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'scheduling' refer to in computing?",
+          "options": [
+            "A. Assigning tasks to CPU",
+            "B. Allocating memory for programs",
+            "C. Managing disk I/O operations",
+            "D. All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "शब्द का मतलब क्या है 'किंगिंग' का गणना में है?"
+        },
+        {
+          "question": "Which of these is NOT typically considered a resource in computing?",
+          "options": [
+            "A. Memory",
+            "B. Network Bandwidth",
+            "C. Printer",
+            "D. Power Supply"
+          ],
+          "answer": "C",
+          "translatedQ": "इन में से कौन सा विशेष रूप से गणना में एक संसाधन माना जाता है?"
+        },
+        {
+          "question": "What role does a scheduler play in managing computer resources?",
+          "options": [
+            "A. Allocating CPU time to tasks",
+            "B. Executing user commands directly",
+            "C. Encrypting data transmissions",
+            "D. Deciding which software applications to run first"
+          ],
+          "answer": "A",
+          "translatedQ": "कंप्यूटर संसाधनों का प्रबंधन करने में एक कार्यक्रम क्या भूमिका निभाता है?"
+        },
+        {
+          "question": "How can schedulers help with load balancing?",
+          "options": [
+            "A. By reducing memory usage",
+            "B. By increasing processing speed",
+            "C. By ensuring no task goes unattended",
+            "D. By decreasing power consumption"
+          ],
+          "answer": "C",
+          "translatedQ": "काम - काज में संतुलन बनाए रखने में शेड्‌यूल बनाए रखने में क्या बात आपकी मदद कर सकती है?"
+        },
+        {
+          "question": "Is it possible for a scheduler to ensure all computer resources are utilized without any downtime?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A",
+          "translatedQ": "क्या कंप्यूटर के सभी साधनों को बिना किसी भी समय के इस्तेमाल किया जा सकता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does a scheduler need to balance CPU utilization across all available cores?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "B",
+          "translatedQ": "क्या एक कार्यक्रमर को सभी उपलब्ध को पूरा करने के लिए सीपीयू सिंक्रोनाइज़ेशन को संतुलित करने की जरूरत है?"
+        },
+        {
+          "question": "Can different types of tasks benefit from being scheduled separately?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "B",
+          "translatedQ": "क्या अलग - अलग तरह के कामों से हमें फायदा हो सकता है?"
+        },
+        {
+          "question": "Are schedulers only used for controlling user access to system resources?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "A",
+          "translatedQ": "क्या रिसोर्सों में उपयोक्ता पहुँच को नियंत्रित करने के लिए प्रयोग किया जाता है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "thread",
+    "prompt": "Explain Thread in operating systems.",
+    "response": "कंप्यूटर विज्ञान में, निष्पादन का एक थ्रेड प्रोग्राम किए गए निर्देशों का सबसे छोटा अनुक्रम है जिसे एक शेड्यूलर द्वारा स्वतंत्र रूप से प्रबंधित किया जा सकता है, जो आम तौर पर ऑपरेटिंग सिस्टम का एक हिस्सा होता है। कई मामलों में, एक थ्रेड एक प्रक्रिया का एक घटक है। किसी दिए गए प्रक्रिया के कई थ्रेड एक साथ निष्पादित किए जा सकते हैं (मल्टीथ्रेडिंग क्षमताओं के माध्यम से), मेमोरी जैसे संसाधनों को साझा करते हैं, जबकि विभिन्न प्रक्रियाएं इन संसाधनों को साझा नहीं करती हैं। विशेष रूप से, एक प्रक्रिया के थ्रेड किसी भी समय पर इसके निष्पादन योग्य कोड और गतिशील रूप से आवंटित चर और गैर-थ्रेड-स्थानीय वैश्विक चर के मान साझा करते हैं।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does each thread of execution represent?",
+          "options": [
+            "A) A single line of code",
+            "B) A specific function call",
+            "C) An independent unit of program flow",
+            "D) A separate instance of an application"
+          ],
+          "answer": "C",
+          "translatedQ": "हर लड़ी किस बात को दर्शाती है?"
+        },
+        {
+          "question": "Threads in a process are generally",
+          "options": [
+            "A) Independent units of computation",
+            "B) Part of the same address space",
+            "C) Coherent with shared memory",
+            "D) Exclusive to individual processes"
+          ],
+          "answer": "A",
+          "translatedQ": "थ्रेडेड प्रक्रिया में आमतौर पर"
+        },
+        {
+          "question": "Which of the following best describes how threads share resources?",
+          "options": [
+            "A) They exclusively access all shared resources",
+            "B) They synchronize access to shared resources through locks",
+            "C) They never share resources",
+            "D) They communicate directly without using shared resources"
+          ],
+          "answer": "B",
+          "translatedQ": "निम्नलिखित में से कौन - सा सबसे अच्छा वर्णन करता है कि कैसे थ्रेड संसाधनों में हिस्सा लेता है?"
+        },
+        {
+          "question": "Is it possible for two threads within the same process to run simultaneously?",
+          "options": [
+            "A) No, because they cannot share memory",
+            "B) Yes, due to their ability to execute concurrently",
+            "C) Only under special circumstances like multithreading APIs",
+            "D) Only if both threads request exclusive access"
+          ],
+          "answer": "B",
+          "translatedQ": "क्या एक ही प्रक्रिया के भीतर दो थ्रेड के लिए एक साथ चलाने के लिए संभव है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Threads are always associated with a process.",
+          "answer": "True",
+          "translatedQ": "लड़ियाँ डिफ़ॉल्ट पर हमेशा ही प्रक्रिया के साथ सम्बद्ध हैं."
+        },
+        {
+          "question": "Processes are the fundamental building blocks of concurrent programs.",
+          "answer": "False",
+          "translatedQ": "कनेक्शन स्थापित प्रोग्रामों के प्राथमिक निर्माण ब्लॉक हैं."
+        },
+        {
+          "question": "Threads ensure data consistency across processes by synchronizing operations.",
+          "answer": "False",
+          "translatedQ": "थ्रेडेड आपरेशनों द्वारा डाटा सुसंगतता सुनिश्चित करें."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "virtual_memory",
+    "prompt": "Explain Virtual memory.",
+    "response": "कंप्यूटिंग में, आभासी मेमोरी, या आभासी भंडारण,[b] एक मेमोरी प्रबंधन तकनीक है जो \"वास्तव में उपलब्ध स्टोरेज संसाधनों का एक आदर्श अमूर्तता प्रदान करती है\" जो \"उपयोगकर्ताओं को एक बहुत बड़ी (मुख्य) मेमोरी का भ्रम पैदा करती है\"। कंप्यूटर का ऑपरेटिंग सिस्टम, हार्डवेयर और सॉफ्टवेयर के संयोजन का उपयोग करते हुए, एक प्रोग्राम द्वारा उपयोग किए जाने वाले मेमोरी पतों, जिन्हें आभासी पते कहा जाता है, को कंप्यूटर मेमोरी में भौतिक पतों में मैप करता है। मुख्य स्टोरेज, जैसा कि एक प्रक्रिया या कार्य द्वारा देखा जाता है, एक सन्निहित पते स्थान या सन्निहित खंडों के संग्रह के रूप में दिखाई देता है। ऑपरेटिंग सिस्टम आभासी पते स्थानों और आभासी मेमोरी को वास्तविक मेमोरी के असाइनमेंट का प्रबंधन करता है। सीपीयू में एड्रेस ट्रांसलेशन हार्डवेयर, जिसे अक्सर मेमोरी मैनेजमेंट यूनिट (एमएमयू) कहा जाता है, स्वचालित रूप से आभासी पतों को भौतिक पतों में अनुवादित करता है। ऑपरेटिंग सिस्टम के भीतर सॉफ्टवेयर इन क्षमताओं का विस्तार कर सकता है, उदाहरण के लिए, डिस्क स्टोरेज का उपयोग करके, एक आभासी पते स्थान प्रदान करने के लिए जो वास्तविक मेमोरी की क्षमता से अधिक हो सकता है और इस प्रकार कंप्यूटर में भौतिक रूप से मौजूद मेमोरी से अधिक मेमोरी को संदर्भित कर सकता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Virtual memory creates what for users?",
+          "options": [
+            "A) A smaller main memory",
+            "B) An idealized abstraction of available storage",
+            "C) Real memory directly accessible by programs",
+            "D) A larger main memory"
+          ],
+          "answer": "B",
+          "translatedQ": "आभासी याददाश्‍त उपयोक्ताओं के लिए क्या बनाती है?"
+        },
+        {
+          "question": "What does the operating system map when mapping virtual addresses to physical addresses?",
+          "options": [
+            "A) Virtual memory to logical addresses",
+            "B) Physical addresses to logical addresses",
+            "C) Logical addresses to physical addresses",
+            "D) Main storage to virtual addresses"
+          ],
+          "answer": "C",
+          "translatedQ": "जब भौतिक पते पर आभासी पता लगाया जा रहा हो तो ऑपरेटिंग सिस्टम का नक्शा क्या करता है?"
+        },
+        {
+          "question": "Which component automatically translates virtual addresses to physical addresses?",
+          "options": [
+            "A) Disk storage",
+            "B) Memory Management Unit (MMU)",
+            "C) Central Processing Unit (CPU)",
+            "D) Operating System"
+          ],
+          "answer": "B",
+          "translatedQ": "कौन - से घटकों का अनुवाद भौतिक पते तक किया जा सकता है?"
+        },
+        {
+          "question": "How does the operating system manage virtual address spaces?",
+          "options": [
+            "A) By limiting the size of the virtual address space",
+            "B) By assigning all memory to virtual memory",
+            "C) By allocating memory only to actual tasks",
+            "D) By creating a contiguous address space for each process"
+          ],
+          "answer": "D",
+          "translatedQ": "ऑपरेटिंग सिस्टम आभासी पता स्पेसेस का प्रबंधन कैसे करता है?"
+        },
+        {
+          "question": "Is it possible to exceed the capacity of real memory with virtual memory?",
+          "options": [
+            "A) No",
+            "B) Yes"
+          ],
+          "answer": "B",
+          "translatedQ": "क्या असल याददाश्‍त के साथ - साथ वास्तविक याददाश्‍त की क्षमता से ज़्यादा संभव है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the concept of virtual memory allow processes to access more memory than is physically available?",
+          "answer": "True",
+          "translatedQ": "क्या आभासी याददाश्‍त की धारणा शारीरिक रूप से ज़्यादा याददाश्‍त तक पहुँचने में मदद देती है?"
+        },
+        {
+          "question": "Can the operating system completely replace the need for physical memory entirely?",
+          "answer": "False",
+          "translatedQ": "क्या यह पूरी तरह से शरीर की याददाश्‍त की ज़रूरत को पूरी तरह बदल सकता है?"
+        },
+        {
+          "question": "Is the memory management unit solely responsible for translating virtual addresses to physical addresses?",
+          "answer": "False",
+          "translatedQ": "क्या याददाश्‍त प्रबंधन इकाई केवल शारीरिक पते तक अनुवाद करने के लिए ही ज़िम्मेदार है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "thrashing",
+    "prompt": "Explain Thrashing.",
+    "response": "कंप्यूटर विज्ञान में, थ्रेशिंग मेमोरी पेजिंग वाले सिस्टम में तब होता है जब कंप्यूटर के वास्तविक मेमोरी (रैम) संसाधन ओवरकमिट हो जाते हैं, जिससे पेजिंग (स्वैपिंग, यानी एक पेज को डिस्क पर ले जाना) और पेज दोष की एक निरंतर स्थिति होती है, जिससे अधिकांश एप्लिकेशन-स्तरीय प्रोसेसिंग धीमी हो जाती है। इससे कंप्यूटर के प्रदर्शन में गिरावट आती है या यहां तक कि वह बंद भी हो सकता है। स्थिति अनिश्चित काल तक जारी रह सकती है जब तक कि उपयोगकर्ता कुछ चल रहे एप्लिकेशन को बंद नहीं कर देता या सक्रिय प्रक्रियाएं अतिरिक्त आभासी मेमोरी संसाधनों को मुक्त नहीं कर देतीं। आरंभीकरण के बाद, अधिकांश प्रोग्राम प्रोग्राम की आवश्यक कुल मेमोरी की तुलना में कोड और डेटा पेजों की एक छोटी संख्या पर काम करते हैं। किसी भी समय सबसे अधिक एक्सेस किए जाने वाले पृष्ठों को कार्य सेट कहा जाता है, जो समय के साथ बदल सकते हैं।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a characteristic feature of thrashing?",
+          "options": [
+            "A) A high level of CPU usage",
+            "B) Increased RAM usage",
+            "C) Constant paging/swapping",
+            "D) Decreased application performance"
+          ],
+          "answer": "C",
+          "translatedQ": "क्या बात दमदारपन की एक विशेषता है?"
+        },
+        {
+          "question": "Which statement best describes how thrashing affects the computer’s performance?",
+          "options": [
+            "A) Performance improves as more applications run simultaneously.",
+            "B) Performance decreases significantly due to continuous paging/swapping.",
+            "C) No impact on performance as it only happens rarely.",
+            "D) Thrashing leads to faster processing speeds."
+          ],
+          "answer": "B",
+          "translatedQ": "कौन - सी बात सबसे अच्छी तरह बताती है कि कंप्यूटर के प्रदर्शन का असर कैसे होता है?"
+        },
+        {
+          "question": "How does the working set of pages affect an application’s performance?",
+          "options": [
+            "A) It increases the speed by loading more pages into RAM",
+            "B) It has no effect on performance since all pages are loaded initially",
+            "C) It reduces performance because fewer pages are needed",
+            "D) It enhances performance by allowing efficient access to frequently used pages"
+          ],
+          "answer": "D",
+          "translatedQ": "पृष्ठ के कार्य - नियुक्‍ति का अनुप्रयोग के प्रदर्शन पर क्या प्रभाव पड़ता है?"
+        },
+        {
+          "question": "After thrashing is detected, what action typically resolves the issue?",
+          "options": [
+            "A) Increasing the amount of RAM allocated",
+            "B) Removing unnecessary software from the system",
+            "C) Restarting the operating system",
+            "D) None of the above"
+          ],
+          "answer": "A",
+          "translatedQ": "क्या बात इस मसले को सुलझाने के लिए कदम उठाती है?"
+        },
+        {
+          "question": "Which type of memory resource is involved in thrashing?",
+          "options": [
+            "A) Main Memory",
+            "B) Secondary Storage",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "answer": "C",
+          "translatedQ": "कौन सी स्मृति संसाधन backing में शामिल है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible for a system without paging mechanisms to experience thrashing?",
+          "answer": "False",
+          "translatedQ": "क्या ऐसा हो सकता है कि कोई भी काम न कर रहे हों, जिसकी न तो उसे ज़रूरत है और ना ही वह काम कर रहा है?"
+        },
+        {
+          "question": "Can increasing the number of processors help prevent thrashing?",
+          "answer": "True",
+          "translatedQ": "क्या ऑपरेशन करनेवालों की संख्या बढ़ सकती है?"
+        },
+        {
+          "question": "Does thrashing occur exclusively during peak load times?",
+          "answer": "False",
+          "translatedQ": "क्या केवल शिखर भार के समय ही हिलना होता है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "context_switch",
+    "prompt": "Explain Context switching.",
+    "response": "कम्प्यूटिंग में, सन्दर्भ स्विच (context switch) किसी प्रक्रिया या थ्रेड की स्थिति को संचित करने की प्रक्रिया है, ताकि उसे पुनःस्थापित कर के बाद के समय में फिर से निष्पादन किया जा सके, और फिर एक भिन्न, पूर्व-सहेजी स्थिति को पुनःस्थापित किया जा सके। यह एक ही केन्द्रीय संसाधन इकाई (CPU) को कई प्रक्रियाओं द्वारा साझा करने की अनुमति देता है, और एक बहुप्रोग्रामिंग या बहुकार्य प्रणाली का एक आवश्यक विशेषता है। एक पारम्परिक CPU में, प्रत्येक प्रक्रिया - निष्पादन में एक प्रोग्राम - विभिन्न CPU रजिस्टरों का उपयोग करके डेटा को संचित करता है और वर्तमान में चल रही प्रक्रिया की स्थिति को रखता है। हालांकि, एक बहुकार्य प्रणाली में, ऑपरेटिंग सिस्टम प्रक्रियाओं या थ्रेड्स के बीच स्विच करता है ताकि एक साथ कई प्रक्रियाओं का निष्पादन किया जा सके। प्रत्येक स्विच के लिए, ऑपरेटिंग सिस्टम को वर्तमान में चल रही प्रक्रिया की स्थिति को सहेजना होगा, जिसके बाद अगली प्रक्रिया की स्थिति को लोड करना होगा, जो CPU पर चलेगी। संचालन का यह क्रम जो चल रही प्रक्रिया की स्थिति को संचित करता है और निम्नलिखित चल रही प्रक्रिया को लोड करता है, एक सन्दर्भ स्विच कहलाता है। \"सन्दर्भ स्विच\" वाक्यांश का सटीक अर्थ भिन्न होता है। एक बहुकार्य सन्दर्भ में, यह एक कार्य के लिए सिस्टम स्थिति को संचित करने की प्रक्रिया को संदर्भित करता है, ताकि कार्य को रोका जा सके और एक अन्य कार्य को फिर से शुरू किया जा सके। एक सन्दर्भ स्विच एक व्यवधान के परिणाम के रूप में भी हो सकता है, जैसे कि जब किसी कार्य को डिस्क भंडारण तक पहुंचने की आवश्यकता होती है, जिससे अन्य कार्यों के लिए CPU समय मुक्त हो जाता है। कुछ ऑपरेटिंग सिस्टम को उपयोगकर्ता मोड और कर्नेल मोड कार्यों के बीच जाने के लिए भी एक सन्दर्भ स्विच की आवश्यकता होती है। सन्दर्भ स्विचिंग की प्रक्रिया का सिस्टम प्रदर्शन पर नकारात्मक प्रभाव पड़ सकता है। : 28",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a context switch primarily involve?",
+          "options": [
+            "A) Storing the current memory address of a process.",
+            "B) Loading the next instruction into the CPU's cache.",
+            "C) Saving the current state of the running process.",
+            "D) Writing new instructions to RAM"
+          ],
+          "answer": "C",
+          "translatedQ": "संदर्भ बदलने का खास मतलब क्या है?"
+        },
+        {
+          "question": "How many times per second is a typical modern computer expected to perform context switches?",
+          "options": [
+            "A) Less than once every minute.",
+            "B) Once every few seconds.",
+            "C) About once every millisecond.",
+            "D) More than once per second."
+          ],
+          "answer": "B",
+          "translatedQ": "दूसरी बार, कंप्यूटर के लिए कंप्यूटर कितनी बार इस्तेमाल किया जाता है, यह उम्मीद की जाती है कि संदर्भ बदलता रहे?"
+        },
+        {
+          "question": "Which term best describes the act of moving from one user-mode task to another within the same process?",
+          "options": [
+            "A) Context switch.",
+            "B) Process synchronization.",
+            "C) Thread scheduling.",
+            "D) Memory paging."
+          ],
+          "answer": "A",
+          "translatedQ": "कौन सा वाक्यांश सबसे अच्छी तरह वर्णन करता है एक उपयोक्ता मोड से दूसरे को उसी प्रक्रिया में ले जाने के कार्य के बारे में?"
+        },
+        {
+          "question": "When would an operating system typically cause a context switch?",
+          "options": [
+            "A) When a user types a command into the terminal.",
+            "B) To improve CPU utilization during idle periods.",
+            "C) Every time a new process is created.",
+            "D) Whenever a network request is processed."
+          ],
+          "answer": "B",
+          "translatedQ": "एक ऑपरेटिंग सिस्टम को आम तौर पर क्यों एक संदर्भ स्विच करता है?"
+        },
+        {
+          "question": "True/False: Context switches in multitasking environments are solely aimed at saving and restoring memory addresses.",
+          "answer": "False",
+          "translatedQ": "सही/ असत्य: बहुकार्य वातावरण में कॉन्टेक्स्ट स्विच सिर्फ सहेजने और स्मृति पते बहाल करने के लिए किया जाता है."
+        }
+      ],
+      "true_false": [
+        {
+          "question": "True/False: Each process in a multi-threaded environment requires its own independent set of registers.",
+          "answer": "False",
+          "translatedQ": "सही/ असत्य: बहु- कालिक वातावरण में प्रत्येक प्रक्रिया की आवश्यकता होती है रजिस्टरों के अपने स्वतंत्र सेट."
+        },
+        {
+          "question": "True/False: Modern CPUs generally do not support hardware-based context switching.",
+          "answer": "False",
+          "translatedQ": "सही/ असत्य: आधुनिक सीपीयू सामान्यतः हार्डवेयर- आधारित संदर्भ स्विच का समर्थन नहीं करते."
+        },
+        {
+          "question": "True/False: All modern operating systems implement some form of context switching mechanism.",
+          "answer": "True",
+          "translatedQ": "सही/ असत्य: सभी आधुनिक ऑपरेटिंग सिस्टम के अंत में संदर्भ स्विच यांत्रिकी के कुछ रूप लागू होते हैं."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "memory_management",
+    "prompt": "Explain Memory management.",
+    "response": "स्मृति प्रबन्धन (या गतिशील स्मृति प्रबन्धन, गतिशील भण्डारण आवंटन, या गतिशील स्मृति आवंटन) संसाधन प्रबन्धन का एक रूप है जो कम्प्यूटर स्मृति पर लागू होता है। स्मृति प्रबन्धन की आवश्यक आवश्यकता है कि स्मृति के कुछ हिस्सों को प्रोग्रामों को उनके अनुरोध पर गतिशील रूप से आवंटित करने के तरीके प्रदान करना, और जब पुनः उपयोग की आवश्यकता न हो तो मुक्त करना। यह किसी भी उन्नत कम्प्यूटर प्रणाली के लिए महत्वपूर्ण है जहाँ किसी भी समय एक से अधिक प्रक्रियाएँ चल रही हों (मल्टीटास्किंग)। स्मृति प्रबन्धन की प्रभावशीलता बढ़ाने के लिए कई विधियाँ तैयार की गई हैं। आभासी स्मृति प्रणालियाँ किसी प्रक्रिया द्वारा उपयोग किए जाने वाले स्मृति पतों को वास्तविक भौतिक पतों से अलग करती हैं, जिससे प्रक्रियाओं को अलग किया जा सकता है और पृष्ठण या स्वैपिंग का उपयोग करके द्वितीयक भण्डारण में उपलब्ध रैम की मात्रा से परे आभासी पते के आकार को बढ़ाया जा सकता है। आभासी स्मृति प्रबन्धक की गुणवत्ता का समग्र प्रणाली प्रदर्शन पर व्यापक प्रभाव पड़ सकता है। प्रणाली एक कम्प्यूटर को इस रूप में प्रकट होने देती है कि उसके पास भौतिक रूप से मौजूद से अधिक स्मृति उपलब्ध हो सकती है, जिससे कई प्रक्रियाओं को इसे साझा करने की अनुमति मिलती है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a key requirement of memory management in computer systems?",
+          "options": [
+            "A) Providing fixed-size partitions of memory for all processes.",
+            "B) Allocating memory only during program execution.",
+            "C) Allowing real-time response to hardware failures.",
+            "D) Ensuring efficient use of physical memory through techniques like paging and swapping."
+          ],
+          "answer": "D",
+          "translatedQ": "कंप्यूटर व्यवस्थाों में स्मृति प्रबंधन की एक कुंजी क्या है?"
+        },
+        {
+          "question": "Which method increases the size of a virtual address space beyond the available amount of RAM?",
+          "options": [
+            "A) Paging",
+            "B) Swapping",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "answer": "C",
+          "translatedQ": "कौन - सी विधि एक आभासी पता जगह के आकार को रैम की उपलब्ध मात्रा के बाहर बढ़ाता है?"
+        },
+        {
+          "question": "How does a virtual memory system enhance multitasking capabilities?",
+          "options": [
+            "A) By synchronizing CPU access to both main memory and disk I/O simultaneously.",
+            "B) By providing exclusive access to each process's memory region.",
+            "C) By enabling multiple processes to run concurrently without interference.",
+            "D) None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "एक आभासी स्मरण प्रणाली विविध कार्य - क्षमता को बढ़ाने में कैसे मदद करती है?"
+        },
+        {
+          "question": "What can affect the overall performance of a virtual memory system?",
+          "options": [
+            "A) The color depth of displayed images",
+            "B) The brand of computer components",
+            "C) The number of processes running in parallel",
+            "D) The resolution of screen displays"
+          ],
+          "answer": "C",
+          "translatedQ": "याददाश्‍त की व्यवस्था के हर प्रदर्शन पर क्या असर हो सकता है?"
+        },
+        {
+          "question": "Can multiple processes share memory efficiently with paging and swapping?",
+          "options": [
+            "A) No, because they interfere with each other's operations.",
+            "B) Yes, but only within the same partition.",
+            "C) Yes, effectively sharing memory resources across different processes.",
+            "D) Only theoretically possible with modern technology."
+          ],
+          "answer": "C",
+          "translatedQ": "क्या अनेक प्रक्रियाओं के साथ आपको याद रखना है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Virtual memory increases the effective amount of memory available for multitasking.",
+          "answer": "True",
+          "translatedQ": "आभासी मेमोरी बहुकार्य के लिए उपलब्ध मेमोरी की प्रभावी मात्रा को बढ़ाता है."
+        },
+        {
+          "question": "Processes cannot run concurrently without coordination between them.",
+          "answer": "False",
+          "translatedQ": "उन दोनों के बीच के बिना प्रक्रिया मौजूदा रूप से चला नहीं सकता."
+        },
+        {
+          "question": "All computer systems require explicit allocation and deallocation of memory.",
+          "answer": "False",
+          "translatedQ": "सभी कंप्यूटर सिस्टमों के लिए स्मरणीय विकास और डील - डौल की ज़रूरत होती है ।"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dbms",
+    "prompt": "Explain Database management system.",
+    "response": "कंप्यूटिंग में, डेटाबेस डेटा का एक संगठित संग्रह या डेटाबेस प्रबंधन प्रणाली (डीबीएमएस) के उपयोग पर आधारित एक प्रकार का डेटा स्टोर है, जो डेटा को कैप्चर करने और विश्लेषण करने के लिए अंतिम उपयोगकर्ताओं, अनुप्रयोगों और डेटाबेस के साथ इंटरैक्ट करने वाला सॉफ़्टवेयर है। डीबीएमएस में डेटाबेस को प्रशासित करने के लिए प्रदान की जाने वाली मुख्य सुविधाएं भी शामिल हैं। डेटाबेस, डीबीएमएस और संबंधित अनुप्रयोगों के कुल योग को डेटाबेस सिस्टम कहा जा सकता है। अक्सर \"डेटाबेस\" शब्द का उपयोग किसी भी डीबीएमएस, डेटाबेस सिस्टम या डेटाबेस से जुड़े किसी एप्लिकेशन को संदर्भित करने के लिए भी किया जाता है। डिजिटल स्टोरेज और डेटा की पुनर्प्राप्ति व्यापक होने से पहले, इंडेक्स कार्ड का उपयोग विभिन्न प्रकार के अनुप्रयोगों और वातावरणों में डेटा स्टोरेज के लिए किया जाता था: घर में व्यंजनों, खरीदारी की सूचियों, संपर्क जानकारी और अन्य संगठनात्मक डेटा को रिकॉर्ड और स्टोर करने के लिए; व्यवसाय में प्रस्तुति नोट्स, परियोजना अनुसंधान और नोट्स और संपर्क जानकारी रिकॉर्ड करने के लिए; स्कूलों में फ्लैश कार्ड या अन्य दृश्य सहायक सामग्री के रूप में; और अकादमिक अनुसंधान में ग्रंथ सूची उद्धरण या नोट्स जैसे डेटा को कार्ड फ़ाइल में रखने के लिए। पेशेवर पुस्तक इंडेक्सर ने 1980 और 1990 के दशक में इंडेक्सिंग सॉफ़्टवेयर द्वारा प्रतिस्थापित होने तक पुस्तक सूचकांकों के निर्माण में इंडेक्स कार्ड का उपयोग किया।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database consist of?",
+          "options": [
+            "A) Data alone",
+            "B) A type of data store based on a DBMS",
+            "C) An organized collection of data and its associated applications",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "डाटाबेस में क्या है?"
+        },
+        {
+          "question": "Which component does NOT belong to a typical database system?",
+          "options": [
+            "A) Database Management System (DBMS)",
+            "B) End user",
+            "C) Applications",
+            "D) Hardware"
+          ],
+          "answer": "D",
+          "translatedQ": "कौन सा अवयव एक सामान्य डाटाबेस तंत्र का सदस्य नहीं है?"
+        },
+        {
+          "question": "Before digital storage became common, what was often used to store data?",
+          "options": [
+            "A) Paper-based records",
+            "B) Index cards",
+            "C) Digital databases",
+            "D) Cloud storage"
+          ],
+          "answer": "B",
+          "translatedQ": "इंटरनॆट भंडार सामान्य बन जाने से पहले, डेटा जमा करने के लिए अकसर क्या प्रयोग किया जाता था?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it true that a database refers only to the DBMS?",
+          "answer": "False",
+          "translatedQ": "क्या यह सच है कि एक डाटाबेस सिर्फ DBMS को सूचित करता है?"
+        },
+        {
+          "question": "Can a database include both the DBMS and related applications?",
+          "answer": "True",
+          "translatedQ": "क्या डाटाबेस में डीबीएम तथा संबंधित अनुप्रयोगों दोनों शामिल हैं?"
+        },
+        {
+          "question": "Is it accurate to say that before digital storage, books used index cards for data organization?",
+          "answer": "True",
+          "translatedQ": "क्या यह कहना सही है कि डिजिटल भंडार से पहले पुस्तकों ने डेटा संगठन के लिए निर्देशिका कार्ड इस्तेमाल किए?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dbms_types",
+    "prompt": "Explain Types of databases.",
+    "response": "कंप्यूटिंग में, डेटाबेस डेटा का एक संगठित संग्रह या डेटाबेस प्रबंधन प्रणाली (डीबीएमएस) के उपयोग पर आधारित एक प्रकार का डेटा स्टोर है, जो डेटा को कैप्चर करने और विश्लेषण करने के लिए अंतिम उपयोगकर्ताओं, अनुप्रयोगों और डेटाबेस के साथ इंटरैक्ट करने वाला सॉफ़्टवेयर है। डीबीएमएस में डेटाबेस को प्रशासित करने के लिए प्रदान की जाने वाली मुख्य सुविधाएं भी शामिल हैं। डेटाबेस, डीबीएमएस और संबंधित अनुप्रयोगों के कुल योग को डेटाबेस सिस्टम कहा जा सकता है। अक्सर \"डेटाबेस\" शब्द का उपयोग किसी भी डीबीएमएस, डेटाबेस सिस्टम या डेटाबेस से जुड़े किसी एप्लिकेशन को संदर्भित करने के लिए भी किया जाता है। डिजिटल स्टोरेज और डेटा की पुनर्प्राप्ति व्यापक होने से पहले, इंडेक्स कार्ड का उपयोग विभिन्न प्रकार के अनुप्रयोगों और वातावरणों में डेटा स्टोरेज के लिए किया जाता था: घर में व्यंजनों, खरीदारी की सूचियों, संपर्क जानकारी और अन्य संगठनात्मक डेटा को रिकॉर्ड और स्टोर करने के लिए; व्यवसाय में प्रस्तुति नोट्स, परियोजना अनुसंधान और नोट्स और संपर्क जानकारी रिकॉर्ड करने के लिए; स्कूलों में फ्लैश कार्ड या अन्य दृश्य सहायक सामग्री के रूप में; और अकादमिक अनुसंधान में ग्रंथ सूची उद्धरण या नोट्स जैसे डेटा को कार्ड फ़ाइल में रखने के लिए। पेशेवर पुस्तक इंडेक्सर ने 1980 और 1990 के दशक में इंडेक्सिंग सॉफ़्टवेयर द्वारा प्रतिस्थापित होने तक पुस्तक सूचकांकों के निर्माण में इंडेक्स कार्ड का उपयोग किया।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database consist of?",
+          "options": [
+            "A) A collection of data stored digitally.",
+            "B) A single piece of hardware.",
+            "C) An organization's personnel records.",
+            "D) A combination of both A and B"
+          ],
+          "answer": "D",
+          "translatedQ": "डाटाबेस में क्या है?"
+        },
+        {
+          "question": "Which component of a database includes all the core facilities needed to manage the database?",
+          "options": [
+            "A) The DBMS.",
+            "B) The end user.",
+            "C) The applications.",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "डाटाबेस का कौन सा अवयव है जो डाटाबेस का प्रबंधन करने के लिए आवश्यक सभी कोर सुविधाओं में शामिल करता है?"
+        },
+        {
+          "question": "How do we often refer to a database before it becomes widely adopted for storing data?",
+          "options": [
+            "A) As a physical device.",
+            "B) As a logical concept only.",
+            "C) Both A and B equally.",
+            "D) None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "हम अकसर एक डाटाबेस का ज़िक्र कैसे करते हैं, इससे पहले कि वह डाटा को जमा करने के लिए व्यापक रूप से लिया जाए?"
+        },
+        {
+          "question": "Before digital storage and retrieval of data became common, what did people use instead?",
+          "options": [
+            "A) Hard drives.",
+            "B) Magnetic tapes.",
+            "C) CD-ROMs.",
+            "D) Floppy disks"
+          ],
+          "answer": "D",
+          "translatedQ": "इसके बजाय, लोगों ने क्या इस्तेमाल किया?"
+        },
+        {
+          "question": "How was professional book indexing traditionally done before the advent of indexing software?",
+          "options": [
+            "A) By hand.",
+            "B) Using mechanical tools.",
+            "C) Through optical scanning.",
+            "D) Online searching."
+          ],
+          "answer": "A",
+          "translatedQ": "यह कैसे किया गया?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "True or False: Indexing software completely replaced manual indexing methods.",
+          "answer": "False",
+          "translatedQ": "सही या गलत: सॉफ्टवेयर की निर्देशिका बनाना मैनुअल इंडेक्सिंग तरीकों से पूरी तरह बदल सकता है."
+        },
+        {
+          "question": "True or False: Index cards were primarily used for organizing personal data like contacts and recipes.",
+          "answer": "True",
+          "translatedQ": "सही या ग़लत: निर्देशिका कार्ड मुख्यतः संपर्कों और रेसिपि जैसे व्यक्‍तिगत डेटा को आयोजित करने के लिए इस्तेमाल किया जाता था ।"
+        },
+        {
+          "question": "True or False: Before digital storage, books were indexed using magnetic tape.",
+          "answer": "False",
+          "translatedQ": "सही या ग़लत: डिजिटल भंडार से पहले पुस्तकों को चुंबकीय टेप का प्रयोग करने के लिए सूचीबद्ध किया गया था ।"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dbms_advantages",
+    "prompt": "Explain Advantages of DBMS.",
+    "response": "कंप्यूटिंग में, डेटाबेस डेटा का एक संगठित संग्रह या डेटाबेस प्रबंधन प्रणाली (डीबीएमएस) के उपयोग पर आधारित एक प्रकार का डेटा स्टोर है, जो डेटा को कैप्चर करने और विश्लेषण करने के लिए अंतिम उपयोगकर्ताओं, अनुप्रयोगों और डेटाबेस के साथ इंटरैक्ट करने वाला सॉफ़्टवेयर है। डीबीएमएस में डेटाबेस को प्रशासित करने के लिए प्रदान की जाने वाली मुख्य सुविधाएं भी शामिल हैं। डेटाबेस, डीबीएमएस और संबंधित अनुप्रयोगों के कुल योग को डेटाबेस सिस्टम कहा जा सकता है। अक्सर \"डेटाबेस\" शब्द का उपयोग किसी भी डीबीएमएस, डेटाबेस सिस्टम या डेटाबेस से जुड़े किसी एप्लिकेशन को संदर्भित करने के लिए भी किया जाता है। डिजिटल स्टोरेज और डेटा की पुनर्प्राप्ति व्यापक होने से पहले, इंडेक्स कार्ड का उपयोग विभिन्न प्रकार के अनुप्रयोगों और वातावरणों में डेटा स्टोरेज के लिए किया जाता था: घर में व्यंजनों, खरीदारी की सूचियों, संपर्क जानकारी और अन्य संगठनात्मक डेटा को रिकॉर्ड और स्टोर करने के लिए; व्यवसाय में प्रस्तुति नोट्स, परियोजना अनुसंधान और नोट्स और संपर्क जानकारी रिकॉर्ड करने के लिए; स्कूलों में फ्लैश कार्ड या अन्य दृश्य सहायक सामग्री के रूप में; और अकादमिक अनुसंधान में ग्रंथ सूची उद्धरण या नोट्स जैसे डेटा को कार्ड फ़ाइल में रखने के लिए। पेशेवर पुस्तक इंडेक्सर ने 1980 और 1990 के दशक में इंडेक्सिंग सॉफ़्टवेयर द्वारा प्रतिस्थापित होने तक पुस्तक सूचकांकों के निर्माण में इंडेक्स कार्ड का उपयोग किया।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a Database?",
+          "options": [
+            "A) A physical device for storing data.",
+            "B) An organized collection of data managed by a DBMS.",
+            "C) A type of software that stores data.",
+            "D) A set of instructions for processing data."
+          ],
+          "answer": "B",
+          "translatedQ": "एक डाटाबेस क्या है?"
+        },
+        {
+          "question": "Which of the following best describes the role of the DBMS in a database system?",
+          "options": [
+            "A) To retrieve data from the database.",
+            "B) To manage the entire database including data access and security.",
+            "C) To encrypt data stored in the database.",
+            "D) To compile programs related to the database."
+          ],
+          "answer": "B",
+          "translatedQ": "निम्न में से कौन सा सबसे अच्छा वर्णन डाटाबेस तंत्र में डीबीएम की भूमिका के बारे में है?"
+        },
+        {
+          "question": "When was index cards first used for data storage?",
+          "options": [
+            "A) In the late 19th century.",
+            "B) In the early 20th century.",
+            "C) In the mid-20th century.",
+            "D) Earlier than all of the above"
+          ],
+          "answer": "B",
+          "translatedQ": "डाटा भंडार के लिए पहले निर्देशिका कार्ड कब इस्तेमाल किया गया था?"
+        },
+        {
+          "question": "In what year did professional book indexers start using indexing software instead of index cards?",
+          "options": [
+            "A) 1960.",
+            "B) 1970.",
+            "C) 1980.",
+            "D) 1990."
+          ],
+          "answer": "D",
+          "translatedQ": "किस साल पेशेवर बुक इंडेक्सर्स निर्देशिका कार्ड के बजाय अनुक्रमणिका का प्रयोग शुरू कर रहे थे?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible to classify databases into two main categories?",
+          "answer": "True",
+          "translatedQ": "क्या डाटाबेस को दो मुख्य वर्गों में संगठित करना संभव है?"
+        },
+        {
+          "question": "Did index cards replace traditional methods like paper notebooks before their widespread adoption?",
+          "answer": "True",
+          "translatedQ": "उनके व्यापक गोद लेने से पहले निर्देशिका कार्डों को बदल दिया गया था?"
+        },
+        {
+          "question": "Could you describe how an index card-based system might work?",
+          "answer": "False",
+          "translatedQ": "क्या आप व्याख्या कर सकते हैं कि एक निर्देशिका आधारित कार्ड प्रणाली कैसे कार्य कर सकती है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Data independence.",
+    "response": "डेटा स्वतंत्रता डेटा पारदर्शिता का वह प्रकार है जो एक केंद्रीकृत डीबीएमएस के लिए मायने रखता है। यह डेटा की परिभाषा और संगठन में किए गए परिवर्तनों के लिए उपयोगकर्ता अनुप्रयोगों की प्रतिरक्षा को संदर्भित करता है। आदर्श रूप से, एप्लिकेशन प्रोग्राम को डेटा प्रतिनिधित्व और भंडारण के विवरण के लिए उजागर नहीं किया जाना चाहिए। डीबीएमएस डेटा का एक अमूर्त दृश्य प्रदान करता है जो ऐसे विवरणों को छुपाता है। डेटा स्वतंत्रता के दो प्रकार हैं: भौतिक और तार्किक डेटा स्वतंत्रता।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "primary_key",
+    "prompt": "Explain Primary key.",
+    "response": "डेटाबेस के संबंधपरक मॉडल में, प्राथमिक कुंजी (primary key) उन विशेषताओं (कॉलम) का एक नामित समूह है जो किसी तालिका में प्रत्येक व्यक्तिगत रिकॉर्ड को विश्वसनीय रूप से पहचान और अलग कर सकते हैं। डेटाबेस निर्माता एक मौजूदा अद्वितीय विशेषता या तालिका से विशेषताओं के संयोजन (एक प्राकृतिक कुंजी) को अपनी प्राथमिक कुंजी के रूप में चुन सकता है, या एक अद्वितीय आईडी वाली एक नई विशेषता बना सकता है जो केवल इस उद्देश्य के लिए मौजूद है (एक सरोगेट कुंजी)। प्राकृतिक कुंजियों के उदाहरण जो उपयुक्त प्राथमिक कुंजियाँ हो सकती हैं, उनमें वह डेटा शामिल है जो पहले से ही तालिका में सभी वस्तुओं के लिए अद्वितीय है, जैसे कि व्यक्ति रिकॉर्ड के लिए एक राष्ट्रीय पहचान संख्या विशेषता, या घटना रिकॉर्ड के लिए एक बहुत सटीक स्थान विशेषता के साथ एक बहुत सटीक टाइमस्टैम्प विशेषता का संयोजन।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a primary key in the relational model of databases do?",
+          "options": [
+            "A) It ensures that every record has at least one attribute.",
+            "B) It uniquely identifies each record in a table without relying on another attribute.",
+            "C) It allows multiple records to share the same value.",
+            "D) It combines all records into a single entity."
+          ],
+          "answer": "B",
+          "translatedQ": "डाटाबेस के संबंध में एक प्राथमिक कुंजी क्या करता है?"
+        },
+        {
+          "question": "Which of the following cannot serve as a primary key?",
+          "options": [
+            "A) A column containing a unique identifier.",
+            "B) An attribute that changes over time.",
+            "C) A combination of two distinct columns.",
+            "D) A constant value across all rows."
+          ],
+          "answer": "B",
+          "translatedQ": "निम्नलिखित में से कौन सा मुख्य कुंजी के रूप में कार्य नहीं कर सकता?"
+        },
+        {
+          "question": "Natural keys in primary keys should ideally be:",
+          "options": [
+            "A) Derived from external sources.",
+            "B) Manually created by the developer.",
+            "C) Unique within the context of the table.",
+            "D) Always identical for every row."
+          ],
+          "answer": "C",
+          "translatedQ": "प्राथमिक कुंजी में प्राकृतिक कुंजियाँ आदर्श होनी चाहिए:"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "A surrogate key is always more efficient than a natural key.",
+          "answer": "False",
+          "translatedQ": "एक प्रतिनियुक्‍त कुंजी स्वाभाविक कुंजी से हमेशा अधिक कुशल होती है ।"
+        },
+        {
+          "question": "Every table must have a primary key.",
+          "answer": "False",
+          "translatedQ": "हर तालिका में प्राथमिक कुंजी होना चाहिए."
+        },
+        {
+          "question": "The uniqueness of a natural key is guaranteed by default.",
+          "answer": "False",
+          "translatedQ": "स्वाभाविक कुंजी की अद्वितीयता डिफ़ॉल्ट से गारंटी दी जाती है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "foreign_key",
+    "prompt": "Explain Foreign key.",
+    "response": "विदेशी कुंजी (foreign key) किसी तालिका में मौजूद उन विशेषताओं का समूह है जो किसी अन्य तालिका की प्राथमिक कुंजी (primary key) को संदर्भित करते हैं, और इन दो तालिकाओं को आपस में जोड़ते हैं। संबंधपरक डेटाबेस (relational database) के संदर्भ में, एक विदेशी कुंजी एक समावेश निर्भरता बाधा (inclusion dependency constraint) के अधीन होती है कि एक संबंध, R, में विदेशी कुंजी विशेषताओं से युक्त टुपल्स (tuples) किसी अन्य (आवश्यक नहीं कि भिन्न) संबंध, S, में भी मौजूद होने चाहिए; इसके अलावा, वे विशेषताएँ S में एक उम्मीदवार कुंजी (candidate key) भी होनी चाहिए। दूसरे शब्दों में, एक विदेशी कुंजी विशेषताओं का एक समूह है जो एक उम्मीदवार कुंजी को संदर्भित करता है। उदाहरण के लिए, TEAM नामक एक तालिका में एक विशेषता, MEMBER_NAME, हो सकती है, जो PERSON तालिका में एक उम्मीदवार कुंजी, PERSON_NAME, को संदर्भित करने वाली एक विदेशी कुंजी है। चूंकि MEMBER_NAME एक विदेशी कुंजी है, इसलिए TEAM में किसी सदस्य के नाम के रूप में मौजूद कोई भी मान PERSON तालिका में एक व्यक्ति के नाम के रूप में भी मौजूद होना चाहिए; दूसरे शब्दों में, TEAM का प्रत्येक सदस्य एक PERSON भी है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a foreign key refer to?",
+          "options": [
+            "A) A unique identifier within the same table",
+            "B) An attribute or combination of attributes from another table",
+            "C) Both B and C",
+            "D) None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "एक विदेशी कुंजी क्या सूचित करती है?"
+        },
+        {
+          "question": "Which of the following is true about the inclusion dependency constraint related to foreign keys?",
+          "options": [
+            "A) It ensures uniqueness across multiple relations",
+            "B) It restricts values to only existing entries in the referenced table",
+            "C) It requires all foreign key values to be present in both tables simultaneously",
+            "D) It allows for null values in the foreign key"
+          ],
+          "answer": "C",
+          "translatedQ": "इन में से कौन - सी बात विदेशी कुंजियों से संबंधित प्रतिबन्धों के बारे में सच है?"
+        },
+        {
+          "question": "In the context of TEAM and PERSON tables, what can we infer if TEAM has a MEMBER_NAME foreign key referring to PERSON_NAME?",
+          "options": [
+            "A) All members of TEAM are people",
+            "B) There is no relationship between TEAM and PERSON",
+            "C) Only some members of TEAM are people",
+            "D) The number of teams and persons is equal"
+          ],
+          "answer": "A",
+          "translatedQ": "TERSN और व्यक्तिगत तालिका के संदर्भ में, हम क्या कर सकते हैं अगर TENTC के लिए MN_NAME OF TRANSLATORS?"
+        },
+        {
+          "question": "How many types of constraints are mentioned in the given definition of foreign keys?",
+          "options": [
+            "A) One",
+            "B) Two",
+            "C) Three",
+            "D) Four"
+          ],
+          "answer": "B",
+          "translatedQ": "विदेशी कुंजियों की दी गई परिभाषा में कितने तरह के प्रतिबंधों का ज़िक्र किया गया है?"
+        },
+        {
+          "question": "If a FOREIGN KEY in TABLE_A references a PRIMARY KEY in TABLE_B, what kind of constraint does this establish?",
+          "options": [
+            "A) Referential Integrity Constraint",
+            "B) Entity-Attribute-Value Mapping Constraint",
+            "C) Data Manipulation Language Constraint",
+            "D) Object-Oriented Programming Constraint"
+          ],
+          "answer": "A",
+          "translatedQ": "यदि किसी सम्मान में सम्मान _BAR_AAY का उल्लेख कर सकते हैं ... ... ... ... ... किसी खास समारोह में, तो यह किस तरह के प्रतिबंधों को स्थापित करता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it always necessary for a foreign key to reference a primary key?",
+          "answer": "False",
+          "translatedQ": "क्या किसी विदेशी कुंजी के लिए हमेशा एक प्राथमिक कुंजी संदर्भ करना आवश्यक है?"
+        },
+        {
+          "question": "Can a foreign key consist solely of non-candidate key attributes?",
+          "answer": "False",
+          "translatedQ": "क्या कोई विदेशी कुंजी सिर्फ गैर- स्कैन किए गए कुंजी गुण पैदा कर सकती है?"
+        },
+        {
+          "question": "Does the presence of a foreign key guarantee that there will be no NULL values in the referenced column?",
+          "answer": "True",
+          "translatedQ": "क्या विदेशी कुंजी की उपस्थिति गारंटी देती है कि सदर्भ स्तम्भ में कोई रिक्त मान नहीं होगा?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "candidate_key",
+    "prompt": "Explain Candidate key.",
+    "response": "एक उम्मीदवार कुंजी, या केवल एक कुंजी, एक संबंधपरक डेटाबेस के स्तंभों का कोई भी समूह है जिसमें प्रत्येक पंक्ति में मूल्यों का एक अद्वितीय संयोजन होता है, जिसमें अतिरिक्त बाधा यह है कि किसी भी स्तंभ को हटाने से मूल्यों के डुप्लिकेट संयोजन उत्पन्न हो सकते हैं। एक उम्मीदवार कुंजी एक न्यूनतम सुपर कुंजी है, अर्थात, एक सुपर कुंजी जिसमें एक छोटी कुंजी नहीं होती है। इसलिए, एक संबंध में कई उम्मीदवार कुंजियाँ हो सकती हैं, जिनमें से प्रत्येक में अलग-अलग संख्या में विशेषताएँ होती हैं।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What defines a candidate key?",
+          "options": [
+            "A. All non-prime attributes",
+            "B. A set of attributes where each value is unique for each row",
+            "C. The primary key only",
+            "D. A subset of all attributes"
+          ],
+          "answer": "B",
+          "translatedQ": "चेतावनी कुंजी क्या परिभाषित करता है?"
+        },
+        {
+          "question": "Which statement about a candidate key is true?",
+          "options": [
+            "A. It must be composed of more than two attributes.",
+            "B. Removing any attribute will result in duplicates.",
+            "C. There can be more than one candidate key for a relation.",
+            "D. A candidate key is always unique within a table."
+          ],
+          "answer": "C",
+          "translatedQ": "एक उम्मीदवार कुंजी के बारे में कौन - सा कथन सच है?"
+        },
+        {
+          "question": "In a relation with three attributes, how many candidate keys are possible?",
+          "options": [
+            "A. One",
+            "B. Two",
+            "C. Three",
+            "D. Four"
+          ],
+          "answer": "B",
+          "translatedQ": "तीन गुणों के सम्बन्ध में, कितने प्राधिकृत कुंजियाँ संभव हैं?"
+        },
+        {
+          "question": "Is it necessary to have a candidate key to ensure uniqueness of data in a relation?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A",
+          "translatedQ": "क्या किसी संबंध में डाटा की अद्वितीयता को निश्‍चित करने के लिए एक उम्मीदवार कुंजी होना ज़रूरी है?"
+        },
+        {
+          "question": "Can a superkey without an attribute be considered a candidate key?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "एक गुण के बिना एक सुपरकी कुंजी माना जा सकता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "A candidate key is always a prime key.",
+          "answer": "False",
+          "translatedQ": "एक उम्मीदवार कुंजी हमेशा प्रमुख कुंजी है."
+        },
+        {
+          "question": "Removing any attribute from a candidate key cannot cause duplication.",
+          "answer": "True",
+          "translatedQ": "किसी भी विशेष गुण को एक उम्मीदवार कुंजी से हटा नहीं सकता।"
+        },
+        {
+          "question": "There can be more than one candidate key for a relation.",
+          "answer": "True",
+          "translatedQ": "एक संबंध के लिए एक से अधिक विकल्प कुंजी हो सकता है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "super_key",
+    "prompt": "Explain Super key.",
+    "response": "संबंधपरक डेटा मॉडल में, एक सुपरकी उन विशेषताओं का कोई भी समूह है जो किसी संबंध के प्रत्येक टुपल को विशिष्ट रूप से पहचानता है। क्योंकि सुपरकी मान अद्वितीय होते हैं, समान सुपरकी मान वाले टुपल्स में समान गैर-कुंजी विशेषता मान भी होने चाहिए। अर्थात्, गैर-कुंजी विशेषताएँ कार्यात्मक रूप से सुपरकी पर निर्भर हैं। सभी विशेषताओं का समूह हमेशा एक सुपरकी (तुच्छ सुपरकी) होता है। एक संबंध में टुपल्स परिभाषा के अनुसार अद्वितीय होते हैं, प्रत्येक ऑपरेशन के बाद डुप्लिकेट हटा दिए जाते हैं, इसलिए सभी विशेषताओं का समूह हमेशा प्रत्येक टुपल के लिए विशिष्ट रूप से मूल्यवान होता है। एक उम्मीदवार कुंजी (या न्यूनतम सुपरकी) एक सुपरकी है जिसे एक विशेषता को हटाकर एक सरल सुपरकी में नहीं बदला जा सकता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a superkey represent in the relational data model?",
+          "options": [
+            "A) Attributes",
+            "B) Data entries",
+            "C) Key attributes",
+            "D) Tuple identifiers"
+          ],
+          "answer": "D",
+          "translatedQ": "संबंध रखने वाले डेटा मॉडल में सुपरकी क्या प्रतिनिधित्व करता है?"
+        },
+        {
+          "question": "Which of the following is always considered a superkey?",
+          "options": [
+            "A) A single attribute",
+            "B) Two or more attributes",
+            "C) A combination of two attributes",
+            "D) An empty set of attributes"
+          ],
+          "answer": "A",
+          "translatedQ": "निम्नलिखित में से कौन सा एक सुपरकी हमेशा माना जाता है?"
+        },
+        {
+          "question": "If a relation has a superkey consisting of three attributes, what is true about these attributes?",
+          "options": [
+            "A) They form a primary key.",
+            "B) They are not enough to identify a tuple.",
+            "C) They cannot be further simplified into another superkey.",
+            "D) They are not functionally dependent on each other."
+          ],
+          "answer": "C",
+          "translatedQ": "अगर एक संबंध में एक सुपरकी तीन गुणों से संबद्ध है, तो इन गुणों के बारे में क्या सच है?"
+        },
+        {
+          "question": "Can a relation's set of all attributes ever be considered a superkey?",
+          "options": [
+            "A) Yes",
+            "B) No"
+          ],
+          "answer": "A",
+          "translatedQ": "क्या एक संबंध के सभी गुणों का सेट कभी एक सुपरकी माना जा सकता है?"
+        },
+        {
+          "question": "Is it possible to have a relation where duplicate tuples exist before operations like insertion, deletion, or update?",
+          "options": [
+            "A) Yes",
+            "B) No"
+          ],
+          "answer": "B",
+          "translatedQ": "क्या एक रिश्‍तेदार होना संभव है, जहाँ दोहरे टीऑप्टरों को अद्यतन करने, मिटाने या अद्यतन करने से पहले अस्तित्व में है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "All superkeys contain at least one non-key attribute.",
+          "answer": "True",
+          "translatedQ": "सभी सुपरkeys में कम से कम एक नॉन-key गुण हैं."
+        },
+        {
+          "question": "Every superkey can be derived from fewer attributes without losing its uniqueness.",
+          "answer": "False",
+          "translatedQ": "हर सुपरकी अपनी विशिष्टता को खोने के बिना कम गुणों से प्राप्त किया जा सकता है।"
+        },
+        {
+          "question": "The total number of attributes in a relation is never a superkey.",
+          "answer": "True",
+          "translatedQ": "संबंध में गुणों की कुल संख्या कभी सुपरकी नहीं है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "normalization",
+    "prompt": "Explain Database normalization.",
+    "response": "डेटाबेस सामान्यीकरण (Database normalization) एक रिलेशनल डेटाबेस को सामान्य रूप (normal forms) की एक श्रृंखला के अनुसार संरचित करने की प्रक्रिया है ताकि डेटा की अतिरेक को कम किया जा सके और डेटा की अखंडता में सुधार किया जा सके। इसे सबसे पहले ब्रिटिश कंप्यूटर वैज्ञानिक एडगर एफ. कॉड ने अपने रिलेशनल मॉडल के भाग के रूप में प्रस्तावित किया था। सामान्यीकरण में डेटाबेस के कॉलम (विशेषताएँ) और टेबल (संबंध) को व्यवस्थित करना शामिल है ताकि यह सुनिश्चित किया जा सके कि उनकी निर्भरताएँ डेटाबेस अखंडता बाधाओं द्वारा ठीक से लागू की गई हैं। यह कुछ औपचारिक नियमों को लागू करके या तो संश्लेषण की प्रक्रिया (एक नया डेटाबेस डिज़ाइन बनाना) या अपघटन (मौजूदा डेटाबेस डिज़ाइन में सुधार करना) द्वारा पूरा किया जाता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does Database Normalization primarily aim at?",
+          "options": [
+            "Data Integrity",
+            "Reducing Data Redundancy",
+            "Improving Performance",
+            "Enhancing User Interface"
+          ],
+          "answer": "Reducing Data Redundancy",
+          "translatedQ": "डाटाबेस का मुख्य लक्ष्य क्या नहीं है?"
+        },
+        {
+          "question": "Who introduced the concept of Database Normalization?",
+          "options": [
+            "Edgar F. Codd",
+            "Donald Knuth",
+            "E.F. Codd",
+            "Niklaus Wirth"
+          ],
+          "answer": "Edgar F. Codd",
+          "translatedQ": "कौन है जो डाटाबेस की धारणा को सामान्य रूप से प्रस्तुत किया?"
+        },
+        {
+          "question": "How many normal forms can be achieved through normalization?",
+          "options": [
+            10,
+            7,
+            6,
+            8
+          ],
+          "answer": "8",
+          "translatedQ": "बिना सामान्य रूप के कितने सामान्य रूप हासिल किए जा सकते हैं?"
+        },
+        {
+          "question": "Which of these statements about normalization is incorrect?",
+          "options": [
+            "Normalization improves data integrity.",
+            "Normalization involves breaking down large tables into smaller ones.",
+            "Normalization requires all primary keys to uniquely identify records.",
+            "Normalization can eliminate duplicate values within a table."
+          ],
+          "answer": "Normalization eliminates duplicate values within a table.",
+          "translatedQ": "बिना सामान्य के बारे में इन कथनों में से कौन सा गलत है?"
+        },
+        {
+          "question": "In which year did Edgar F. Codd propose the concept of Database Normalization?",
+          "options": [
+            "1960s",
+            "1970s",
+            "1980s",
+            "1950s"
+          ],
+          "answer": "1970s",
+          "translatedQ": "कोरस ने कौनसे वर्ष में डाटाबेस की धारणा का प्रस्ताव प्रस्तुत किया?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it true that normalization helps reduce data redundancy?",
+          "answer": "True",
+          "translatedQ": "क्या यह सच है कि कोई सामान्य रूप से डेटा लालता को कम करने में मदद नहीं करता?"
+        },
+        {
+          "question": "Can normalization completely eliminate duplicate data across multiple tables?",
+          "answer": "False",
+          "translatedQ": "अनेक तालिकाओं पर दोहरे डाटा को पूरी तरह से मिटाने की कोशिश नहीं की जा सकती?"
+        },
+        {
+          "question": "Are there fewer than three normal forms possible for databases?",
+          "answer": "False",
+          "translatedQ": "डाटाबेस के लिए क्या तीन सामान्य फ़ॉर्मों से कम हैं?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain First normal form.",
+    "response": "प्रथम सामान्य रूप (1NF) डेटाबेस सामान्यीकरण का सबसे बुनियादी स्तर है जिसे अंग्रेजी कंप्यूटर वैज्ञानिक एडगर एफ. कॉड द्वारा परिभाषित किया गया है, जो संबंधपरक डेटाबेस के आविष्कारक थे। एक संबंध (या SQL में एक तालिका) को प्रथम सामान्य रूप में कहा जा सकता है यदि प्रत्येक फ़ील्ड परमाणु हो, जिसमें मूल्यों के एक सेट या एक नेस्टेड तालिका के बजाय एक एकल मान हो। दूसरे शब्दों में, एक संबंध प्रथम सामान्य रूप का अनुपालन करता है यदि कोई विशेषता डोमेन (किसी दिए गए कॉलम में अनुमत मूल्यों का सेट) में संबंध तत्वों के रूप में नहीं हैं। मानक SQL सहित अधिकांश संबंधपरक डेटाबेस प्रबंधन प्रणाली, टेबल-वैल्यूड कॉलम बनाने या उपयोग करने का समर्थन नहीं करते हैं, जिसका अर्थ है कि अधिकांश संबंधपरक डेटाबेस आवश्यकतानुसार प्रथम सामान्य रूप में होंगे। अन्यथा, 1NF में सामान्यीकरण में विदेशी कुंजियों का उपयोग करके एक-दूसरे से जुड़े अलग-अलग संबंधों में तोड़कर नेस्टेड संबंधों को समाप्त करना शामिल है। : 381 यह प्रक्रिया एक गैर-संबंधपरक (या NoSQL) डेटाबेस से डेटा को संबंधपरक डेटाबेस में ले जाने पर एक आवश्यक कदम है, जैसे कि एक पदानुक्रमित या दस्तावेज़-उन्मुख मॉडल का उपयोग करना।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Second normal form.",
+    "response": "द्वितीय सामान्य रूप (Second normal form, 2NF) डेटाबेस सामान्यीकरण का एक स्तर है जिसे अंग्रेजी कंप्यूटर वैज्ञानिक एडगर एफ. कॉड द्वारा परिभाषित किया गया है। एक संबंध (या SQL में एक तालिका) 2NF में होता है यदि वह प्रथम सामान्य रूप (1NF) में है और उसमें कोई आंशिक निर्भरता नहीं है। एक आंशिक निर्भरता तब होती है जब एक गैर-अभाज्य विशेषता (अर्थात, जो किसी भी उम्मीदवार कुंजी का हिस्सा नहीं है) केवल उम्मीदवार कुंजी बनाने वाले विशेषताओं के उचित उपसमुच्चय पर कार्यात्मक रूप से निर्भर होती है। 2NF में होने के लिए, एक संबंध में प्रत्येक गैर-अभाज्य विशेषता को प्रत्येक उम्मीदवार कुंजी के विशेषताओं के पूरे सेट पर निर्भर होना चाहिए। उदाहरण के लिए, {देश, जिला} समग्र कुंजी वाला एक संबंध 2NF का उल्लंघन करेगा यदि कोई ऐसी विशेषता जोड़ी जाती है जिसके मूल्यों का अर्थ उस देश और जिले दोनों पर निर्भर नहीं होता है जिस पर वे लागू होते हैं। एक कंट्रीलीडर विशेषता प्रत्येक देश के लिए विशिष्ट जानकारी प्रदान करेगी, लेकिन प्रत्येक जिले के लिए विशिष्ट नहीं होगी, और इसलिए समग्र कुंजी के केवल आधे हिस्से पर निर्भर करेगी। इसके कई नुकसान होंगे, जिसमें यह भी शामिल है कि किसी भी नेता को उनके देश में प्रत्येक जिले के लिए अनावश्यक रूप से दोहराया जाएगा।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Third normal form.",
+    "response": "तृतीय सामान्य रूप (Third normal form (3NF)) एक स्तर का डेटाबेस सामान्यीकरण है जिसे अंग्रेज़ी कंप्यूटर वैज्ञानिक एडगर एफ. कॉड द्वारा परिभाषित किया गया था। एक संबंध (या टेबल, एसक्यूएल में) तृतीय सामान्य रूप में तब होता है जब वह द्वितीय सामान्य रूप में हो और उसमें गैर-कुंजी निर्भरताएँ भी न हों, जिसका अर्थ है कि कोई भी गैर-प्रमुख विशेषता कार्यात्मक रूप से किसी अन्य गैर-प्रमुख विशेषता पर निर्भर नहीं है (अर्थात, उसमें किसी अन्य गैर-प्रमुख विशेषता के बारे में कोई तथ्य नहीं है)। दूसरे शब्दों में, प्रत्येक गैर-प्रमुख विशेषता को प्रत्येक उम्मीदवार कुंजी पर पूरी तरह से और गैर-संक्रामक रूप से निर्भर होना चाहिए। विलियम केंट ने 3NF को इस कथन के साथ संक्षेपित किया कि \"एक गैर-कुंजी फ़ील्ड को कुंजी, पूरी कुंजी के बारे में एक तथ्य प्रदान करना चाहिए, और कुंजी के अलावा कुछ नहीं\"। 3NF के उल्लंघन का एक उदाहरण PatientID, DoctorID और DoctorName विशेषताओं वाला एक Patient संबंध होगा, जिसमें DoctorName सबसे पहले और सबसे महत्वपूर्ण रूप से DoctorID पर निर्भर होगा और केवल कुंजी, PatientID पर संक्रामक रूप से निर्भर होगा (DoctorID की PatientID पर निर्भरता के माध्यम से)। इस तरह के डिज़ाइन के कारण एक डॉक्टर का नाम उनके प्रत्येक रोगी में अनावश्यक रूप से दोहराया जाएगा। 3NF के अनुरूप एक डेटाबेस डॉक्टरों के नामों को एक अलग Doctor संबंध में संग्रहीत करेगा जिसे Patient एक विदेशी कुंजी के माध्यम से संदर्भित कर सकता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "functional_dependency",
+    "prompt": "Explain Functional dependency.",
+    "response": "संबंधपरक डेटाबेस सिद्धांत में, एक फलनिक निर्भरता (functional dependency या FD) दो गुणधर्म समुच्चयों के बीच एक बाधा है, जिसके द्वारा एक समुच्चय (निर्धारक समुच्चय) के मान दूसरे समुच्चय (आश्रित समुच्चय) के मानों को निर्धारित करते हैं। एक निर्धारक समुच्चय X और एक आश्रित समुच्चय Y के बीच एक फलनिक निर्भरता को इस प्रकार वर्णित किया जा सकता है: दिए गए एक संबंध R और गुणधर्म समुच्चय X, Y ⊆ {\\displaystyle \\subseteq } R, तो X को फलनिक रूप से Y को निर्धारित करने वाला कहा जाता है (X → Y लिखा जाता है) यदि प्रत्येक X मान ठीक एक Y मान से जुड़ा हो। R को तब फलनिक निर्भरता X → Y को संतुष्ट करने वाला कहा जाता है। समकक्ष रूप से, प्रक्षेप Π X , Y R {\\displaystyle \\Pi _{X,Y}R} एक फलन है, अर्थात, Y, X का एक फलन है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a functional dependency represent in a relational database?",
+          "options": [
+            "a relationship between tables",
+            "a rule for data normalization",
+            "an operation performed on attributes",
+            "a constraint linking attributes"
+          ],
+          "answer": "a constraint linking attributes",
+          "translatedQ": "संबंधीय डाटाबेस में कार्यात्मक कार्रवाई किस बात का प्रतिनिधित्व करती है?"
+        },
+        {
+          "question": "Given a relation R and attribute sets X, Y ⊆ R, what condition determines X → Y?",
+          "options": [
+            "Y being independent of X",
+            "each X value being uniquely determined by Y",
+            "no common elements between X and Y",
+            "all combinations of X and Y exist"
+          ],
+          "answer": "each X value being uniquely determined by Y",
+          "translatedQ": "रिश्‍ते R और गुण सेट X, Y, YRY आर, कौन सी स्थिति को निर्धारित करता है XQXETERERSERERY और गुण सेट करता है?"
+        },
+        {
+          "question": "If X → Y in a relation R, which statement is true about the projection Π_X, Y R?",
+          "options": [
+            "Π_X, Y R is not a function",
+            "Π_X, Y R maps every element in R to at least one unique element",
+            "Π_X, Y R maps some elements in R to multiple elements",
+            "Π_X, Y R is a function"
+          ],
+          "answer": "Π_X, Y R is a function",
+          "translatedQ": "यदि XQQREPR एक संबंध में Y, जो सूची के बारे में सच है ... ... ... ... ... PR_X, Y?"
+        },
+        {
+          "question": "Which statement correctly describes the definition of a functional dependency X → Y?",
+          "options": [
+            "X depends on Y",
+            "Y depends on X",
+            "X determines all values of Y",
+            "Y determines all values of X"
+          ],
+          "answer": "X determines all values of Y",
+          "translatedQ": "कौन सा कथन सही रूप से एक कार्यान्वित XQEXX के परिभाषा का वर्णन करता है?"
+        },
+        {
+          "question": "Does R satisfy the functional dependency X → Y if there exists an instance where a single X value corresponds to more than one Y value?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "क्या इस कार्ययोग्य अधिकर XX को संतुष्ट करता है यदि वहाँ एक उदाहरण मौजूद है जहाँ एक एकल X मान एक से अधिक मूल्य के अनुरूप है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Functional dependencies always imply a direct mapping from X to Y.",
+          "answer": "True",
+          "translatedQ": "फंक्शनल निर्भरता हमेशा एक्स से Y के लिए एक प्रत्यक्ष लकीर का उल्लेख करता है."
+        },
+        {
+          "question": "A functional dependency implies that X and Y should never share any common values.",
+          "answer": "False",
+          "translatedQ": "एक कार्यात्मक सूचना सूचित करती है कि X और Y किसी भी सामान्य मूल्य को साझा कभी नहीं करना चाहिए."
+        },
+        {
+          "question": "The term 'functional' refers to the process of determining relationships between attributes in a table.",
+          "answer": "True",
+          "translatedQ": "शब्द 'फ़ैक्सल' तालिका में गुणों के बीच सम्बन्धों को निर्धारित करने की प्रक्रिया को सूचित करता है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "transaction",
+    "prompt": "Explain Transaction in DBMS.",
+    "response": "डेटाबेस लेनदेन कार्य की एक इकाई का प्रतीक है, जो डेटाबेस प्रबंधन प्रणाली (या समान प्रणाली) के भीतर एक डेटाबेस के खिलाफ किया जाता है, जो अन्य लेनदेन से स्वतंत्र एक सुसंगत और विश्वसनीय तरीके से व्यवहार किया जाता है। एक लेनदेन आम तौर पर किसी डेटाबेस में किसी भी परिवर्तन का प्रतिनिधित्व करता है। डेटाबेस वातावरण में लेनदेन के दो मुख्य उद्देश्य हैं: एक डेटाबेस प्रबंधन प्रणाली में, एक लेनदेन तर्क या कार्य की एक एकल इकाई है, जो कभी-कभी कई कार्यों से बनी होती है। एक डेटाबेस में एक सुसंगत मोड में किया गया कोई भी तार्किक गणना एक लेनदेन के रूप में जाना जाता है। एक उदाहरण एक बैंक खाते से दूसरे में स्थानांतरण है: पूर्ण लेनदेन के लिए एक खाते से स्थानांतरित की जाने वाली राशि को घटाने और उसी राशि को दूसरे में जोड़ने की आवश्यकता होती है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database transaction represent?",
+          "options": [
+            "A] Any operation within a database",
+            "B] Multiple changes in a single database",
+            "C] A single logical operation in a database",
+            "D] None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "डाटाबेस ट्रांजेक्शन क्या चित्रित करता है?"
+        },
+        {
+          "question": "Which purpose does a transaction serve in a database management system?",
+          "options": [
+            "A] To increase data redundancy",
+            "B] To enhance user experience",
+            "C] To reduce database complexity",
+            "D] Both B and C"
+          ],
+          "answer": "D",
+          "translatedQ": "एक ट्रांजेक्शन डाटाबेस प्रबंधन तंत्र में किस उद्देश्‍य से कार्य करता है?"
+        },
+        {
+          "question": "Inconsistent modes of logical calculations in databases are referred to as:",
+          "options": [
+            "A] Database inconsistencies",
+            "B] Transaction failures",
+            "C] Data corruption",
+            "D] None of the above"
+          ],
+          "answer": "A",
+          "translatedQ": "डाटाबेस में तार्किक गणना पद्धति का उल्लेख किया जाता है:"
+        },
+        {
+          "question": "A bank account transfer involves what type of transaction?",
+          "options": [
+            "A] Atomic transaction",
+            "B] Non-atomic transaction",
+            "C] Batch transaction",
+            "D] No transaction"
+          ],
+          "answer": "A",
+          "translatedQ": "बैंक खाते में किस तरह के व्यापार शामिल हैं?"
+        },
+        {
+          "question": "What is an atomic transaction?",
+          "options": [
+            "A] A transaction that can be partially completed",
+            "B] A series of related updates",
+            "C] An update with zero or more actions grouped together",
+            "D] None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "एक परमाणु व्यापार क्या है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible for a database to handle multiple concurrent transactions simultaneously?",
+          "answer": "True",
+          "translatedQ": "क्या यह डाटाबेस के लिए संभव है कि बहुत से संग्रह एक साथ मिलकर काम करें?"
+        },
+        {
+          "question": "Does every transaction require interaction with the database?",
+          "answer": "False",
+          "translatedQ": "क्या हर ट्रांजेक्शन को डाटाबेस से संपर्क करना चाहिए?"
+        },
+        {
+          "question": "Can transactions affect the entire database at once without breaking down into smaller parts?",
+          "answer": "True",
+          "translatedQ": "ट्रांजेक्शन सम्पूर्ण डाटाबेस को एक साथ छोटे भागों में तोड़ने के बिना एक साथ प्रभावित कर सकता है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "acid",
+    "prompt": "Explain ACID properties.",
+    "response": "कंप्यूटर विज्ञान में, ACID (एटॉमिसिटी, कंसिस्टेंसी, आइसोलेशन, ड्यूरेबिलिटी) डेटाबेस लेन-देन के गुणों का एक समूह है जो त्रुटियों, बिजली की विफलता और अन्य दुर्घटनाओं के बावजूद डेटा की वैधता की गारंटी देने के लिए है। उदाहरण के लिए, एक बैंक खाते से दूसरे में धन का हस्तांतरण, जिसमें एक खाते को डेबिट करना और दूसरे को क्रेडिट करना जैसे कई परिवर्तन शामिल हैं, एक एकल लेनदेन है। 1983 में, एंड्रियास रॉयटर और थियो हैर्डर ने ACID का संक्षिप्त नाम दिया, जो जिम ग्रे द्वारा पहले के काम पर आधारित था, जिसने एटॉमिसिटी, कंसिस्टेंसी और ड्यूरेबिलिटी का नाम दिया, लेकिन आइसोलेशन नहीं, जब लेनदेन अवधारणा को चित्रित किया। ये चार गुण लेनदेन प्रतिमान की प्रमुख गारंटी हैं, जिसने डेटाबेस सिस्टम में विकास के कई पहलुओं को प्रभावित किया है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'ACID' stand for?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "answer": "Atomicity",
+          "translatedQ": "शब्द 'CID' का क्या मतलब है?"
+        },
+        {
+          "question": "Who first proposed the idea of atomicity, consistency, and durability?",
+          "options": [
+            "Jim Gray",
+            "Andreas Reuter",
+            "Theo Härder",
+            "None of the above"
+          ],
+          "answer": "Jim Gray",
+          "translatedQ": "पहले किसने परमाणुता, सुसंगतता, और दृढ़ता के विचार का प्रस्ताव रखा?"
+        },
+        {
+          "question": "Which property ensures that all parts of a transaction are executed atomically?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "answer": "Atomicity",
+          "translatedQ": "कौन - सी संपत्ति निश्‍चित करती है कि लेन - देन के सभी भागों को परमाणु रूप से वितरित किया जाता है?"
+        },
+        {
+          "question": "According to the passage, what was the year Andreas Reuter and Theo Härder introduced the term ACID?",
+          "options": [
+            1982,
+            1983,
+            1984,
+            1985
+          ],
+          "answer": "1983",
+          "translatedQ": "इस आयत के मुताबिक, सन्‌ 1913 में आन्द्रे रीकर और डब्बर ने इस पद की शुरूआत एकCOND के नाम से की ।"
+        },
+        {
+          "question": "How many main guarantees do ACID properties provide for transactions?",
+          "options": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "answer": "3",
+          "translatedQ": "एक CIDA गुण लेन - देन के लिए कितना ज़रूरी है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Transactions with ACID properties can always be completed successfully.",
+          "answer": "False",
+          "translatedQ": "एक सीआईडी गुण के साथ लेन देन हमेशा सफलतापूर्वक पूर्ण किया जा सकता है."
+        },
+        {
+          "question": "All operations within a transaction need to be either committed or rolled back.",
+          "answer": "True",
+          "translatedQ": "एक ट्रांजेक्शन के भीतर सभी आपरेशनों को या तो किए जाने की जरूरत है या तो वापस फेंक दिया जाना है."
+        },
+        {
+          "question": "Data integrity is maintained even if there are system failures during the execution of a transaction.",
+          "answer": "True",
+          "translatedQ": "एक ट्रांजेक्शन के चलाने के दौरान यदि तंत्र असफल होते हैं तो भी डाटा खराई बनाए रखी जाती है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "general",
+    "prompt": "Explain Concurrency control.",
+    "response": "सूचना प्रौद्योगिकी और कंप्यूटर विज्ञान में, विशेष रूप से कंप्यूटर प्रोग्रामिंग, ऑपरेटिंग सिस्टम, मल्टीप्रोसेसर और डेटाबेस के क्षेत्र में, समवर्ती नियंत्रण यह सुनिश्चित करता है कि समवर्ती कार्यों के लिए सही परिणाम उत्पन्न हों, जबकि उन परिणामों को यथासंभव जल्दी प्राप्त किया जाए। कंप्यूटर सिस्टम, सॉफ्टवेयर और हार्डवेयर दोनों, मॉड्यूल, या घटकों से बने होते हैं। प्रत्येक घटक को सही ढंग से संचालित करने के लिए डिज़ाइन किया गया है, अर्थात, कुछ स्थिरता नियमों का पालन करने या पूरा करने के लिए। जब एक साथ काम करने वाले घटक संदेश भेजकर या एक्सेस किए गए डेटा (मेमोरी या स्टोरेज में) को साझा करके बातचीत करते हैं, तो एक निश्चित घटक की स्थिरता का उल्लंघन दूसरे घटक द्वारा किया जा सकता है। समवर्ती नियंत्रण का सामान्य क्षेत्र नियमों, विधियों, डिजाइन पद्धतियों और सिद्धांतों को प्रदान करता है ताकि एक साथ काम करने वाले घटकों की स्थिरता को बनाए रखा जा सके, जबकि बातचीत करते समय, और इस प्रकार पूरे सिस्टम की स्थिरता और शुद्धता। एक प्रणाली में समवर्ती नियंत्रण की शुरूआत का मतलब है ऑपरेशन बाधाओं को लागू करना जो आम तौर पर कुछ प्रदर्शन में कमी का परिणाम देते हैं। ऑपरेशन स्थिरता और शुद्धता को उचित स्तर से नीचे प्रदर्शन को कम किए बिना, यथासंभव अच्छी दक्षता के साथ प्राप्त किया जाना चाहिए। समवर्ती नियंत्रण को एक सरल अनुक्रमिक एल्गोरिथ्म की तुलना में एक समवर्ती एल्गोरिथ्म में महत्वपूर्ण अतिरिक्त जटिलता और ओवरहेड की आवश्यकता हो सकती है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a primary purpose of using memory paging?",
+          "options": [
+            "To increase the speed of data retrieval",
+            "To decrease the amount of available memory",
+            "To enhance the performance of programs running in memory",
+            "To improve memory access patterns"
+          ],
+          "answer": "To enhance the performance of programs running in memory"
+        },
+        {
+          "question": "Which of the following best describes the role of paging in operating systems?",
+          "options": [
+            "It allocates space for each process in main memory.",
+            "It manages the allocation and deallocation of disk space.",
+            "It ensures that all processes run simultaneously without interference.",
+            "It synchronizes disk reads and writes with CPU operations."
+          ],
+          "answer": "It manages the allocation and deallocation of disk space."
+        },
+        {
+          "question": "How does memory paging help manage memory fragmentation?",
+          "options": [
+            "By allowing continuous blocks of memory to be reused more efficiently.",
+            "By reducing the need for external storage devices.",
+            "By increasing the capacity of main memory.",
+            "Both A and C."
+          ],
+          "answer": "Both A and C."
+        },
+        {
+          "question": "Why might an operating system refer to memory paging as 'swapping'?",
+          "options": [
+            "Because it involves physically moving data between disks and main memory.",
+            "Because it requires frequent compacting of free memory regions.",
+            "Because it enables larger address spaces than physical memory allows.",
+            "None of the above."
+          ],
+          "answer": "Because it involves physically moving data between disks and main memory."
+        },
+        {
+          "question": "What does combining paging with other techniques like frame allocation and page reclamation achieve?",
+          "options": [
+            "Increases the overall memory usage beyond what is physically present",
+            "Ensures that all processes can execute concurrently without interruption",
+            "Reduces the time required for memory compaction",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Memory paging directly increases the speed of reading data from RAM.",
+          "answer": "False"
+        },
+        {
+          "question": "Operating systems exclusively use paging when dealing with large applications.",
+          "answer": "False"
+        },
+        {
+          "question": "Memory paging eliminates the necessity of using external storage devices.",
+          "answer": "True"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "indexing",
+    "prompt": "Explain Indexing in DBMS.",
+    "response": "एक डेटाबेस इंडेक्स एक डेटा संरचना है जो इंडेक्स डेटा संरचना को बनाए रखने के लिए अतिरिक्त राइट्स और स्टोरेज स्पेस की कीमत पर डेटाबेस टेबल पर डेटा पुनर्प्राप्ति कार्यों की गति में सुधार करती है। इंडेक्स का उपयोग डेटाबेस टेबल में प्रत्येक पंक्ति को हर बार एक्सेस किए जाने पर खोजे बिना डेटा को जल्दी से खोजने के लिए किया जाता है। इंडेक्स को डेटाबेस टेबल के एक या अधिक कॉलम का उपयोग करके बनाया जा सकता है, जो तेजी से रैंडम लुकअप और क्रमित रिकॉर्ड्स की कुशल एक्सेस दोनों के लिए आधार प्रदान करता है। एक इंडेक्स एक टेबल से डेटा के चयनित कॉलम की एक प्रति है, जिसे बहुत कुशल खोज को सक्षम करने के लिए डिज़ाइन किया गया है। एक इंडेक्स में आम तौर पर \"की\" या डेटा की मूल पंक्ति का सीधा लिंक शामिल होता है जिससे इसे कॉपी किया गया था, ताकि पूरी पंक्ति को कुशलतापूर्वक प्राप्त किया जा सके। कुछ डेटाबेस इंडेक्सिंग की शक्ति को उन कॉलम वैल्यू पर इंडेक्स बनाने की अनुमति देकर बढ़ाते हैं जिन्हें फ़ंक्शन या एक्सप्रेशन द्वारा ट्रांसफॉर्म किया गया है। उदाहरण के लिए, upper(last_name) पर एक इंडेक्स बनाया जा सकता है, जो इंडेक्स में last_name फ़ील्ड के केवल अपर-केस संस्करणों को संग्रहीत करेगा। एक अन्य विकल्प जो कभी-कभी समर्थित होता है, वह है आंशिक इंडेक्स का उपयोग, जहां इंडेक्स प्रविष्टियाँ केवल उन रिकॉर्ड के लिए बनाई जाती हैं जो कुछ सशर्त अभिव्यक्ति को संतुष्ट करते हैं। लचीलेपन का एक और पहलू उपयोगकर्ता द्वारा परिभाषित फ़ंक्शन के साथ-साथ बिल्ट-इन फ़ंक्शन के वर्गीकरण से बने एक्सप्रेशन पर इंडेक्सिंग की अनुमति देना है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does an index do?",
+          "options": [
+            "A) Increases memory usage",
+            "B) Speeds up data retrieval",
+            "C) Decreases storage capacity",
+            "D) Encrypts data"
+          ],
+          "answer": "B",
+          "translatedQ": "निर्देशिका क्या करती है?"
+        },
+        {
+          "question": "How many columns can be indexed simultaneously?",
+          "options": [
+            "A) One column",
+            "B) Two columns",
+            "C) Three columns",
+            "D) Multiple columns"
+          ],
+          "answer": "D",
+          "translatedQ": "कितने स्तम्भ एक साथ सूचीबद्ध किए जा सकते हैं?"
+        },
+        {
+          "question": "Can you create an index on multiple tables?",
+          "options": [
+            "A) Yes, but it's complex",
+            "B) No",
+            "C) Yes, with proper design",
+            "D) Sometimes yes, depending on DBMS support"
+          ],
+          "answer": "C",
+          "translatedQ": "आप अनेक तालिकाओं पर एक निर्देशिका बना सकते हैं?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Indexes always improve query performance.",
+          "answer": "False",
+          "translatedQ": "निर्देशिका हमेशा क्वैरी प्रदर्शन बेहतर होती है."
+        },
+        {
+          "question": "Partial indexes reduce storage space needed for indices.",
+          "answer": "True",
+          "translatedQ": "आंशिक इंडेक्सों में भंडार जगह को कम किया जा सकता है."
+        },
+        {
+          "question": "User-defined functions cannot be used to create indexes.",
+          "answer": "False",
+          "translatedQ": "उपयोक्ता पारिभाषित फ़ंक्शन सूची बनाने के लिए इस्तेमाल नहीं किया जा सकता."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "relational_model",
+    "prompt": "Explain Relational model.",
+    "response": "संबंधपरक मॉडल (रिलेशनल मॉडल) (आरएम) प्रथम-क्रम विधेय तर्क के अनुरूप एक संरचना और भाषा का उपयोग करके डेटा के प्रबंधन का एक दृष्टिकोण है, जिसे पहली बार 1969 में अंग्रेजी कंप्यूटर वैज्ञानिक एडगर एफ. कॉड द्वारा वर्णित किया गया था, जहां सभी डेटा को टुपल्स के संदर्भ में दर्शाया जाता है, जो संबंधों में समूहीकृत होते हैं। संबंधपरक मॉडल के संदर्भ में व्यवस्थित डेटाबेस एक संबंधपरक डेटाबेस है। संबंधपरक मॉडल का उद्देश्य डेटा और प्रश्नों को निर्दिष्ट करने के लिए एक घोषणात्मक विधि प्रदान करना है: उपयोगकर्ता सीधे बताते हैं कि डेटाबेस में क्या जानकारी है और वे इससे क्या जानकारी चाहते हैं, और डेटाबेस प्रबंधन प्रणाली सॉफ़्टवेयर को डेटा संग्रहीत करने के लिए डेटा संरचनाओं और प्रश्नों के उत्तर देने के लिए पुनर्प्राप्ति प्रक्रियाओं का वर्णन करने की देखभाल करने दें।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What was the year when the relational model was first described?",
+          "options": [
+            "1970",
+            "1980",
+            "1969",
+            "1950"
+          ],
+          "answer": "1969",
+          "translatedQ": "वह वर्ष क्या था जब सम्बन्धात्मक मॉडल का पहले वर्णन किया गया था?"
+        },
+        {
+          "question": "Who is credited as the inventor of the relational model?",
+          "options": [
+            "Edgar F. Codd",
+            "Noah Webster",
+            "Ada Lovelace",
+            "Charles Babbage"
+          ],
+          "answer": "Edgar F. Codd",
+          "translatedQ": "रिश्‍ते - मॉडल की सूची के तौर पर किसे श्रेय दिया जाता है?"
+        },
+        {
+          "question": "What does the term 'declarative method' refer to in the context of databases?",
+          "options": [
+            "Methodology for defining algorithms",
+            "Methodology for describing data structures",
+            "Methodology for executing queries",
+            "Methodology for manipulating objects"
+          ],
+          "answer": "Methodology for describing data structures",
+          "translatedQ": "वाक्यांश 'Enrrary विधि' डाटाबेस के संदर्भ में क्या संदर्भ है?"
+        },
+        {
+          "question": "Which type of database organization uses the relational model?",
+          "options": [
+            "Hierarchical Database",
+            "Network Database",
+            "Relational Database",
+            "Object-oriented Database"
+          ],
+          "answer": "Relational Database",
+          "translatedQ": "कौन सा डाटाबेस संगठन संबंधीय मॉडल प्रयोग करता है?"
+        },
+        {
+          "question": "What does the purpose of the relational model aim to achieve?",
+          "options": [
+            "Optimize query execution speed",
+            "Reduce data redundancy",
+            "Ensure data consistency across multiple systems",
+            "All of the above"
+          ],
+          "answer": "All of the above",
+          "translatedQ": "सम्बन्धात्मक मॉडल का उद्देश्‍य क्या हासिल करने का है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the relational model allow direct user input for specifying data and queries without any processing?",
+          "answer": "False",
+          "translatedQ": "क्या संबंध मॉडल सीधे उपयोगकर्ता को निर्देशित करता है कि वे डेटा और प्रक्रिया के बिना डेटा निर्धारित कर सकें?"
+        },
+        {
+          "question": "Can the relational model ensure the security of sensitive data within the database?",
+          "answer": "True",
+          "translatedQ": "संबंध मॉडल को डाटाबेस के भीतर संवेदनशील डाटा की सुरक्षा सुनिश्चित कर सकते हैं?"
+        },
+        {
+          "question": "Is the relational model compatible with other types of data models?",
+          "answer": "True",
+          "translatedQ": "क्या रिश्ता मॉडल डेटा मॉडल के अन्य प्रकार के साथ संगत है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "osi_model",
+    "prompt": "Explain OSI model.",
+    "response": "ओपन सिस्टम इंटरकनेक्शन (ओएसआई) मॉडल एक संदर्भ मॉडल है जिसे अंतर्राष्ट्रीय मानकीकरण संगठन (आईएसओ) द्वारा विकसित किया गया है जो \"सिस्टम इंटरकनेक्शन के उद्देश्य से मानकों के विकास के समन्वय के लिए एक सामान्य आधार प्रदान करता है।\" ओएसआई संदर्भ मॉडल में, एक संचार प्रणाली के घटकों को सात अमूर्त परतों में अलग किया गया है: भौतिक, डेटा लिंक, नेटवर्क, परिवहन, सत्र, प्रस्तुति और अनुप्रयोग।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'Open Systems Interconnection' refer to?",
+          "options": [
+            "A) A standard for internet communication",
+            "B) A physical layer component in an OSI model",
+            "C) A type of data encryption protocol",
+            "D) The ISO's approach to standardizing network protocols"
+          ],
+          "answer": "D",
+          "translatedQ": "शब्द 'फ़ाइल खोलें' इंटरेक्शन का उल्लेख क्या करता है?"
+        },
+        {
+          "question": "How many layers does the OSI model consist of?",
+          "options": [
+            "A) 6",
+            "B) 7",
+            "C) 8",
+            "D) 9"
+          ],
+          "answer": "B",
+          "translatedQ": "ओएसआई मॉडल कितनी परतों से बना है?"
+        },
+        {
+          "question": "Which layer of the OSI model deals with the conversion of information into a format suitable for transmission over a communications channel?",
+          "options": [
+            "A) Application Layer",
+            "B) Session Layer",
+            "C) Presentation Layer",
+            "D) Transport Layer"
+          ],
+          "answer": "C",
+          "translatedQ": "ओएसआई मॉडल की कौन सी परत एक संचार चैनल पर प्रेषण के लिए उपयुक्त प्रारूप में जानकारी के परिवर्तन के साथ व्यवहार करती है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the OSI model include a session layer?",
+          "answer": "True",
+          "translatedQ": "ओएसआई मॉडल में सत्र परत है?"
+        },
+        {
+          "question": "Is the Data Link layer part of the OSI model?",
+          "answer": "True",
+          "translatedQ": "ओएसआई मॉडल का डाटा लिंक परत है?"
+        },
+        {
+          "question": "In which layer would you find the concept of IP addresses?",
+          "answer": "True",
+          "translatedQ": "आपको IP पता की कौन सी परत मिलेगी?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "tcp_ip",
+    "prompt": "Explain TCP/IP model.",
+    "response": "इंटरनेट प्रोटोकॉल सूट, जिसे आमतौर पर टीसीपी/आईपी के रूप में जाना जाता है, इंटरनेट और समान कंप्यूटर नेटवर्क में उपयोग किए जाने वाले संचार प्रोटोकॉल को कार्यात्मक मानदंडों के अनुसार व्यवस्थित करने के लिए एक ढांचा है। सूट में मूलभूत प्रोटोकॉल ट्रांसमिशन कंट्रोल प्रोटोकॉल (टीसीपी), यूजर डेटाग्राम प्रोटोकॉल (यूडीपी) और इंटरनेट प्रोटोकॉल (आईपी) हैं। इस नेटवर्किंग मॉडल के शुरुआती संस्करणों को डिपार्टमेंट ऑफ डिफेंस (डीओडी) इंटरनेट आर्किटेक्चर मॉडल के रूप में जाना जाता था क्योंकि अनुसंधान और विकास को संयुक्त राज्य अमेरिका के रक्षा विभाग के रक्षा उन्नत अनुसंधान परियोजना एजेंसी (डीएआरपीए) द्वारा वित्त पोषित किया गया था। इंटरनेट प्रोटोकॉल सूट एंड-टू-एंड डेटा संचार प्रदान करता है जो निर्दिष्ट करता है कि डेटा को कैसे पैकेट, संबोधित, प्रसारित, रूट और प्राप्त किया जाना चाहिए। यह कार्यक्षमता चार अमूर्तता परतों में व्यवस्थित है, जो प्रत्येक प्रोटोकॉल के नेटवर्किंग के दायरे के अनुसार सभी संबंधित प्रोटोकॉल को वर्गीकृत करती है। किसी विशेष एप्लिकेशन के लिए परतों का एक कार्यान्वयन एक प्रोटोकॉल स्टैक बनाता है। सबसे कम से लेकर सबसे अधिक तक, परतें लिंक परत हैं, जिसमें डेटा के लिए संचार विधियां होती हैं जो एक एकल नेटवर्क खंड (लिंक) के भीतर रहती हैं; इंटरनेट परत, स्वतंत्र नेटवर्क के बीच इंटरनेटवर्किंग प्रदान करती है; परिवहन परत, होस्ट-टू-होस्ट संचार को संभालती है; और एप्लिकेशन परत, अनुप्रयोगों के लिए प्रक्रिया-से-प्रक्रिया डेटा विनिमय प्रदान करती है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the Internet protocol suite provide?",
+          "options": [
+            "A) Packetization",
+            "B) Addressing",
+            "C) Routing",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "इंटरनेट प्रोटोकॉल सूट क्या प्रदान करता है?"
+        },
+        {
+          "question": "How many layers does the Internet protocol suite consist of?",
+          "options": [
+            "A) 1",
+            "B) 2",
+            "C) 3",
+            "D) 4"
+          ],
+          "answer": "D",
+          "translatedQ": "इंटरनॆट प्रोटोकॉल सूट में कितनी परतों से जुड़े होते हैं?"
+        },
+        {
+          "question": "Which protocol is responsible for end-to-end data communication?",
+          "options": [
+            "A) TCP",
+            "B) UDP",
+            "C) IP",
+            "D) ICMP"
+          ],
+          "answer": "A",
+          "translatedQ": "कौन सा प्रोटोकॉल अंत में जानकारी संचार के लिए जिम्मेदार है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is the DARPA-funded Internet Architecture Model still relevant today?",
+          "answer": "True",
+          "translatedQ": "क्या आज भी डॉ."
+        },
+        {
+          "question": "Does the TCP/IP suite include only four protocols?",
+          "answer": "False",
+          "translatedQ": "क्या टीसीपी/P सूट में सिर्फ चार प्रोटोकॉल शामिल हैं?"
+        },
+        {
+          "question": "Are the link, internet, transport, and application layers part of the TCP/IP suite?",
+          "answer": "True",
+          "translatedQ": "लिंक, इंटरनेट, परिवहन, और अनुप्रयोग परतों के रूप में TCP/P सूट के भाग हैं?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "ip_address",
+    "prompt": "Explain IP address.",
+    "response": "एक इंटरनेट प्रोटोकॉल पता (आईपी पता) एक संख्यात्मक लेबल है, जैसे कि 192.0.2.1 या 2001:db8::42, जो एक कंप्यूटर नेटवर्क से जुड़े एक उपकरण को सौंपा जाता है जो संचार के लिए इंटरनेट प्रोटोकॉल का उपयोग करता है। आईपी पते दो मुख्य कार्य करते हैं: नेटवर्क इंटरफ़ेस पहचान, और स्थान पता। इंटरनेट प्रोटोकॉल संस्करण 4 (आईपीवी4) आईपी पते के लिए पहला स्टैंडअलोन विनिर्देश था, और 1983 से उपयोग में है। आईपीवी4 पते को 32-बिट संख्या के रूप में परिभाषित किया गया है, जो बाद में इंटरनेट के बढ़ने के साथ पर्याप्त पते प्रदान करने के लिए बहुत छोटा हो गया, जिससे 2010 के दशक में आईपीवी4 पते की समाप्ति हो गई। इसके नामित उत्तराधिकारी, आईपीवी6, आईपी पते के लिए 128 बिट का उपयोग करता है, जिससे इसे एक बड़ा पता स्थान मिलता है। हालांकि आईपीवी6 की तैनाती 2000 के दशक के मध्य से चल रही है, आईपीवी4 और आईपीवी6 दोनों का उपयोग अभी भी 2025 [अपडेट] तक साथ-साथ किया जाता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does an Internet Protocol address consist of?",
+          "options": [
+            "Binary digits",
+            "Hexadecimal numbers",
+            "Decimal numerals",
+            "Octal numerals"
+          ],
+          "answer": "Decimal numerals",
+          "translatedQ": "इंटरनॆट प्रोटोकॉल का एक पता क्या है?"
+        },
+        {
+          "question": "Which of the following is NOT true about IP addresses?",
+          "options": [
+            "IP addresses can be reused if they run out",
+            "IP addresses identify devices uniquely",
+            "IP addresses are assigned by local networks",
+            "IP addresses help locate hosts on the network"
+          ],
+          "answer": "IP addresses can be reused if they run out",
+          "translatedQ": "निम्न में से कौन सा IP पता के बारे में सही नहीं है?"
+        },
+        {
+          "question": "What did IPv4 become too small for after its initial use?",
+          "options": [
+            "Too big",
+            "Not enough",
+            "Just right",
+            "Still working fine"
+          ],
+          "answer": "Too big",
+          "translatedQ": "इसके प्रारंभिक प्रयोग के बाद यू.४ क्या बहुत छोटा हो गया?"
+        },
+        {
+          "question": "In what year did IPv6 deployment start?",
+          "options": [
+            "1990",
+            "2000",
+            "2010",
+            "2020"
+          ],
+          "answer": "2000",
+          "translatedQ": "यु. पू."
+        },
+        {
+          "question": "How many bits do IPv4 addresses originally use?",
+          "options": [
+            "32 bits",
+            "64 bits",
+            "128 bits",
+            "256 bits"
+          ],
+          "answer": "32 bits",
+          "translatedQ": "कितने बिट्स का पता प्रारंभ में ही इस्तेमाल किया जाता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is IPv6 designed specifically to replace IPv4?",
+          "answer": "True",
+          "translatedQ": "क्या वीवी6 ने खास तौर पर आईपीवी4 को प्रतिस्थापित किया है?"
+        },
+        {
+          "question": "Can IP addresses be assigned without running out of them?",
+          "answer": "False",
+          "translatedQ": "क्या आईपी पते को उनमें से बाहर चल रहे बिना आबंटित किया जा सकता है?"
+        },
+        {
+          "question": "Does IPv6 allow more unique addresses than IPv4?",
+          "answer": "True",
+          "translatedQ": "क्या आईपीवी६ ने आईपीस4 से ज़्यादा अद्वितीय पता दिया है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dns",
+    "prompt": "Explain DNS.",
+    "response": "डोमेन नेम सिस्टम (डीएनएस) एक श्रेणीबद्ध और वितरित नाम सेवा है जो इंटरनेट या अन्य इंटरनेट प्रोटोकॉल (आईपी) नेटवर्क पर कंप्यूटरों, सेवाओं और अन्य संसाधनों के लिए एक नामकरण प्रणाली प्रदान करती है। यह विभिन्न जानकारियों को डोमेन नामों (पहचान स्ट्रिंग्स) के साथ जोड़ती है जो प्रत्येक संबद्ध इकाई को सौंपे जाते हैं। सबसे प्रमुख रूप से, यह आसानी से याद किए जाने वाले डोमेन नामों को संख्यात्मक आईपी पतों में अनुवादित करता है जो अंतर्निहित नेटवर्क प्रोटोकॉल के साथ कंप्यूटर सेवाओं और उपकरणों का पता लगाने और पहचानने के लिए आवश्यक हैं। डोमेन नेम सिस्टम 1985 से इंटरनेट की कार्यक्षमता का एक अनिवार्य घटक रहा है। डोमेन नेम सिस्टम प्रत्येक डोमेन के लिए आधिकारिक नाम सर्वर नामित करके डोमेन नामों को असाइन करने और उन नामों को इंटरनेट संसाधनों में मैप करने की जिम्मेदारी सौंपता है। नेटवर्क प्रशासक अपने आवंटित नाम स्थान के सबडोमेन पर अधिकार अन्य नाम सर्वर को सौंप सकते हैं। यह तंत्र वितरित और दोष-सहिष्णु सेवा प्रदान करता है और इसे एक बड़े केंद्रीय डेटाबेस से बचने के लिए डिज़ाइन किया गया था। इसके अलावा, डीएनएस डेटाबेस सेवा की तकनीकी कार्यक्षमता को निर्दिष्ट करता है जो इसके मूल में है। यह डीएनएस प्रोटोकॉल को परिभाषित करता है, डीएनएस में उपयोग किए जाने वाले डेटा संरचनाओं और डेटा संचार एक्सचेंजों का एक विस्तृत विवरण, इंटरनेट प्रोटोकॉल सूट के भाग के रूप में।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the Domain Name System (DNS) provide?",
+          "options": [
+            "A) A centralized repository for all internet resources",
+            "B) An identification string for computers",
+            "C) A distributed and fault-tolerant name service",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "डोमेन नाम तंत्र क्या प्रदान करता है (DNS)?"
+        },
+        {
+          "question": "When translating a domain name into an IP address, what role does the DNS play?",
+          "options": [
+            "A) Assigns IP addresses to users",
+            "B) Converts human-readable names into binary code",
+            "C) Manages the allocation of domains globally",
+            "D) Provides a map from names to numbers"
+          ],
+          "answer": "D",
+          "translatedQ": "आईपी पता के किसी डोमेन नाम का अनुवाद करते समय, डीएनएस कौन - सी भूमिका अदा करता है?"
+        },
+        {
+          "question": "Who typically manages the delegation of authority over subdomains within a domain?",
+          "options": [
+            "A) Individual users",
+            "B) Local governments",
+            "C) Network administrators",
+            "D) International organizations"
+          ],
+          "answer": "C",
+          "translatedQ": "विशेष रूप से एक डोमेन के भीतर उपडोमेनों पर अधिकार के प्रतिनिधि का काम कौन करता है?"
+        },
+        {
+          "question": "Which statement accurately describes the purpose of the DNS protocol?",
+          "options": [
+            "A) To establish a direct connection between two computers",
+            "B) To convert domain names to numerical IP addresses",
+            "C) To ensure the security of user data",
+            "D) To control network traffic patterns"
+          ],
+          "answer": "B",
+          "translatedQ": "कौन - सा कथन डीएनएस प्रोटोकॉल के उद्देश्‍य का सही वर्णन करता है?"
+        },
+        {
+          "question": "How does the DNS achieve fault tolerance?",
+          "options": [
+            "A) By having multiple central databases",
+            "B) Through decentralized name server architectures",
+            "C) By limiting access to authorized systems only",
+            "D) None of the above"
+          ],
+          "answer": "B",
+          "translatedQ": "डीएनएस गलती माफ करने में कैसे कामयाब होता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "The DNS ensures that every website can be accessed using a unique domain name.",
+          "answer": "True",
+          "translatedQ": "डीएनएस यह सुनिश्चित करता है कि हर वेबसाइट को एक अद्वितीय डोमेन नाम के प्रयोग से एक्सेस किया जा सकता है."
+        },
+        {
+          "question": "Domain names cannot be translated into IP addresses.",
+          "answer": "False",
+          "translatedQ": "डोमेन नाम को आईपी पते में अनुवादित नहीं किया जा सकता."
+        },
+        {
+          "question": "Network administrators do not manage any delegated authority over subdomains.",
+          "answer": "False",
+          "translatedQ": "नेटवर्क प्रशासक सबडोमेन पर कोई प्रतिनिधित्व अधिकार प्रबंधित नहीं कर सकते."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "http",
+    "prompt": "Explain HTTP protocol.",
+    "response": "एचटीटीपी (HTTP) (हाइपरटेक्स्ट ट्रांसफर प्रोटोकॉल) वितरित, सहयोगात्मक, हाइपरमीडिया सूचना प्रणालियों के लिए इंटरनेट प्रोटोकॉल सूट में एक अनुप्रयोग परत प्रोटोकॉल है। एचटीटीपी वर्ल्ड वाइड वेब के लिए डेटा संचार का आधार है, जहां हाइपरटेक्स्ट दस्तावेजों में अन्य संसाधनों के हाइपरलिंक शामिल होते हैं जिन्हें उपयोगकर्ता आसानी से एक्सेस कर सकता है, उदाहरण के लिए माउस क्लिक करके या वेब ब्राउज़र में स्क्रीन पर टैप करके। एचटीटीपी क्लाइंट-सर्वर मॉडल में एक अनुरोध-प्रतिक्रिया प्रोटोकॉल है। एक लेनदेन क्लाइंट द्वारा सर्वर को अनुरोध सबमिट करने के साथ शुरू होता है, सर्वर अनुरोध को संतुष्ट करने का प्रयास करता है और क्लाइंट को एक प्रतिक्रिया देता है जो अनुरोध के निपटान का वर्णन करता है और वैकल्पिक रूप से एक अनुरोधित संसाधन जैसे कि एक एचटीएमएल दस्तावेज़ या अन्य सामग्री शामिल है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does HTTP stand for?",
+          "options": [
+            "A. Hypertext Transmission Protocol",
+            "B. Hyper-text Transfer Protocol",
+            "C. Hypertext Transfer Protocol",
+            "D. Hyper-text Transport Protocol"
+          ],
+          "answer": "C",
+          "translatedQ": "इसका क्या मतलब है?"
+        },
+        {
+          "question": "Which type of protocol is HTTP?",
+          "options": [
+            "A. Request-Response",
+            "B. Peer-to-Peer",
+            "C. Client-Server",
+            "D. None of the above"
+          ],
+          "answer": "A",
+          "translatedQ": "प्रोटोकॉल का कौन सा प्रकार है HTTP?"
+        },
+        {
+          "question": "In which mode does HTTP operate?",
+          "options": [
+            "A. Single-threaded",
+            "B. Asynchronous",
+            "C. Multithreaded",
+            "D. Non-blocking"
+          ],
+          "answer": "C",
+          "translatedQ": "कौनसे मोड में एचटीटीपी कार्य करता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is HTTP used only for transferring images?",
+          "answer": "False",
+          "translatedQ": "क्या छवि को स्थानांतरित करने के लिए एचटीटीपी इस्तेमाल किया जाता है?"
+        },
+        {
+          "question": "Can HTTP be used without any servers?",
+          "answer": "True",
+          "translatedQ": "कोई सर्वर के बिना एचटीटीपी इस्तेमाल किया जा सकता है?"
+        },
+        {
+          "question": "Is HTTP's primary function limited to fetching static files like HTML pages?",
+          "answer": "False",
+          "translatedQ": "क्या एचटीटीपी का प्राथमिक फंक्शन सिर्फ HTML पृष्ठ के रूप में स्थिर फ़ाइलों को लाने के लिए है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "algorithm",
+    "prompt": "Explain Algorithm.",
+    "response": "गणित और कंप्यूटर विज्ञान में, एल्गोरिथ्म (/ˈælɡərɪðəm/ ⓘ) गणितीय रूप से कठोर निर्देशों का एक परिमित अनुक्रम है, जो आमतौर पर विशिष्ट समस्याओं के एक वर्ग को हल करने या गणना करने के लिए उपयोग किया जाता है। एल्गोरिदम का उपयोग गणना और डेटा प्रोसेसिंग करने के लिए विनिर्देशों के रूप में किया जाता है। अधिक उन्नत एल्गोरिदम विभिन्न मार्गों के माध्यम से कोड निष्पादन को मोड़ने के लिए सशर्त का उपयोग कर सकते हैं (स्वचालित निर्णय लेने के रूप में संदर्भित) और वैध अनुमानों का अनुमान लगाते हैं (स्वचालित तर्क के रूप में संदर्भित)। इसके विपरीत, एक खोजपूर्ण समस्या को हल करने के लिए एक दृष्टिकोण है जिसमें अच्छी तरह से परिभाषित सही या इष्टतम परिणाम नहीं होते हैं। उदाहरण के लिए, हालांकि सोशल मीडिया सिफारिश प्रणाली को आमतौर पर \"एल्गोरिदम\" कहा जाता है, वे वास्तव में खोजपूर्ण पर निर्भर करते हैं क्योंकि कोई सही \"सही\" सिफारिश नहीं है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What distinguishes an algorithm from a heuristic?",
+          "options": [
+            "A) An algorithm always has a correct solution.",
+            "B) A heuristic guarantees efficient computation.",
+            "C) An algorithm specifies step-by-step instructions.",
+            "D) Heuristics are used for mathematical computations."
+          ],
+          "answer": "C",
+          "translatedQ": "कौन सा एक एल्गोरिथ्म को एक प्रेमी से अलग करता है?"
+        },
+        {
+          "question": "Which statement about algorithms is true?",
+          "options": [
+            "A) Algorithms cannot be used for optimization purposes.",
+            "B) Algorithms guarantee perfect results every time.",
+            "C) Heuristics ensure deterministic outcomes.",
+            "D) Conditions in algorithms determine automatic divergent paths."
+          ],
+          "answer": "D",
+          "translatedQ": "एल्गोरिथ्म के बारे में कौन - सा कथन सच है?"
+        },
+        {
+          "question": "How do algorithms differ from social media recommendation systems?",
+          "options": [
+            "A) Social media recommendations involve conditional paths.",
+            "B) Social media recommendations are purely heuristic-based.",
+            "C) Social media recommendations require definitive correctness.",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "सामाजिक मीडिया सिफारिश सिस्टमों से एल्गोरिथ्म कैसे अलग है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Are all algorithms deterministic?",
+          "answer": "False",
+          "translatedQ": "सभी एल्गोरिदम अनुमानित हैं?"
+        },
+        {
+          "question": "Can algorithms guarantee perfect performance?",
+          "answer": "False",
+          "translatedQ": "क्या एल्गोरिदम सही प्रदर्शन की गारंटी दे सकता है?"
+        },
+        {
+          "question": "Do algorithms need to follow logical steps?",
+          "answer": "True",
+          "translatedQ": "एल्गोरिथ्म तर्कसंगत कदमों का पालन करने की जरूरत है?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "binary_search",
+    "prompt": "Explain Binary search.",
+    "response": "कंप्यूटर विज्ञान में, बाइनरी सर्च (binary search), जिसे हाफ-इंटरवल सर्च (half-interval search), लॉगरिदमिक सर्च (logarithmic search) या बाइनरी चॉप (binary chop) भी कहा जाता है, एक खोज एल्गोरिथ्म है जो एक सॉर्टेड ऐरे (sorted array) के भीतर एक लक्ष्य मान की स्थिति को खोजता है। बाइनरी सर्च लक्ष्य मान की तुलना ऐरे के मध्य तत्व से करता है। यदि वे समान नहीं हैं, तो वह आधा भाग जिसमें लक्ष्य नहीं हो सकता है, हटा दिया जाता है और शेष आधे भाग पर खोज जारी रहती है, फिर से लक्ष्य मान की तुलना करने के लिए मध्य तत्व को लिया जाता है, और जब तक लक्ष्य मान नहीं मिल जाता तब तक इसे दोहराया जाता है। यदि खोज शेष आधे भाग के खाली होने के साथ समाप्त होती है, तो लक्ष्य ऐरे में नहीं है। बाइनरी सर्च सबसे खराब स्थिति में लॉगरिदमिक समय में चलता है, O ( log ⁡ n ) {\\displaystyle O(\\log n)} तुलना करता है, जहां n {\\displaystyle n} ऐरे में तत्वों की संख्या है। [a] बाइनरी सर्च छोटे ऐरे के अलावा रैखिक खोज की तुलना में तेज है। हालांकि, बाइनरी सर्च को लागू करने में सक्षम होने के लिए ऐरे को पहले सॉर्ट किया जाना चाहिए। तेज़ खोज के लिए डिज़ाइन किए गए विशेष डेटा संरचनाएं हैं, जैसे हैश टेबल, जिन्हें बाइनरी सर्च की तुलना में अधिक कुशलता से खोजा जा सकता है। हालांकि, बाइनरी सर्च का उपयोग समस्याओं की एक विस्तृत श्रृंखला को हल करने के लिए किया जा सकता है, जैसे कि लक्ष्य के सापेक्ष ऐरे में अगले-सबसे छोटे या अगले-सबसे बड़े तत्व को खोजना, भले ही यह ऐरे से अनुपस्थित हो।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Binary search is a sorting algorithm.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "द्विचर खोज एक छंटाई एल्गोरिथ्म है."
+        },
+        {
+          "question": "Binary search requires an unsorted array to work.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "बाइनरी खोज के लिए काम करने के लिए अ-शोषित सेना की आवश्यकता होती है."
+        },
+        {
+          "question": "The best scenario for using binary search involves an array of size 1024.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "बाइनरी खोज का उपयोग करने के लिए सबसे अच्छा दृश्‍य में 1024 आकार की एक सेना सम्मिलित है ।"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Binary search has better performance than linear search.",
+          "answer": "True",
+          "translatedQ": "बाइनरी खोज के लिए लीनियर खोज से बेहतर प्रदर्शन है."
+        },
+        {
+          "question": "Binary search only works with integer values.",
+          "answer": "False",
+          "translatedQ": "बाइनरी खोज सिर्फ पूर्णांक मानों के साथ काम करता है."
+        },
+        {
+          "question": "Binary search always returns the exact position of the target value.",
+          "answer": "False",
+          "translatedQ": "द्विचर सर्च हमेशा लक्ष्य मूल्य का सटीक स्थान बताता है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "linear_search",
+    "prompt": "Explain Linear search.",
+    "response": "कंप्यूटर विज्ञान में, रैखिक खोज या अनुक्रमिक खोज एक सूची के भीतर एक तत्व को खोजने की एक विधि है। यह एक मिलान मिलने तक या पूरी सूची को खोजे जाने तक सूची के प्रत्येक तत्व की क्रमिक रूप से जाँच करता है। रैखिक खोज सबसे खराब स्थिति में रैखिक समय में चलती है, और अधिकतम n तुलनाएँ करती है, जहाँ n सूची की लंबाई है। यदि प्रत्येक तत्व को समान रूप से खोजा जाने की संभावना है, तो रैखिक खोज में औसतन n+1/2 तुलनाएँ होती हैं, लेकिन औसत मामला प्रभावित हो सकता है यदि प्रत्येक तत्व के लिए खोज संभावनाएँ भिन्न होती हैं। रैखिक खोज शायद ही कभी व्यावहारिक होती है क्योंकि अन्य खोज एल्गोरिदम और योजनाएं, जैसे कि बाइनरी सर्च एल्गोरिथ्म और हैश टेबल, सभी के लिए छोटे सूचियों को छोड़कर काफी तेजी से खोज की अनुमति देती हैं।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does linear search do?",
+          "options": [
+            "A) Finds elements randomly.",
+            "B) Checks elements sequentially from start to end.",
+            "C) Uses probability-based searches.",
+            "D) Compares elements only once."
+          ],
+          "answer": "B",
+          "translatedQ": "लीनियर खोज क्या करती है?"
+        },
+        {
+          "question": "How many comparisons does linear search make in the worst-case scenario?",
+          "options": [
+            "A) Less than n.",
+            "B) Exactly n.",
+            "C) More than n.",
+            "D) At least n+1."
+          ],
+          "answer": "C",
+          "translatedQ": "किस तरह की तुलना में लीनियर खोज सबसे खराब स्थिति में होती है?"
+        },
+        {
+          "question": "If elements' search probabilities vary, how does this affect linear search's average case?",
+          "options": [
+            "A) Average case becomes less predictable.",
+            "B) Average case improves due to varied probabilities.",
+            "C) Average case stays constant.",
+            "D) No impact on average case."
+          ],
+          "answer": "A",
+          "translatedQ": "यदि तत्वों की खोज अलग होती है, तो कैसे यह लीनियर खोज के औसत मामले को प्रभावित करता है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Linear search always takes longer compared to more efficient search methods.",
+          "answer": "False",
+          "translatedQ": "रेखीय खोज की तुलना अधिक कुशल खोज पद्धति से की जाती है."
+        },
+        {
+          "question": "The best-known search algorithm uses fewer comparisons than linear search.",
+          "answer": "True",
+          "translatedQ": "सबसे प्रसिद्ध सर्च एल्गोरिदम लीनियर खोज से कम तुलना करता है."
+        },
+        {
+          "question": "Hash tables cannot efficiently handle large datasets better than linear search.",
+          "answer": "False",
+          "translatedQ": "हैश तालिका पूरी तरह से बड़े डेटासेट को हैंडल नहीं कर सकता हालॉकि लीनियर खोज से बेहतर है."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "big_o",
+    "prompt": "Explain Big O notation.",
+    "response": "बिग ओ नोटेशन एक गणितीय नोटेशन है जो किसी डोमेन पर एक फ़ंक्शन के अनुमानित आकार का वर्णन करता है। बिग ओ, जर्मन गणितज्ञों पॉल बाचमैन और एडमंड लैंडौ द्वारा आविष्कृत नोटेशन के एक परिवार का सदस्य है और इसे अन्य लोगों द्वारा विस्तारित किया गया है, जिसे सामूहिक रूप से बाचमैन-लैंडौ नोटेशन कहा जाता है। अक्षर O को बाचमैन द्वारा Ordnung के लिए चुना गया था, जिसका अर्थ है सन्निकटन का क्रम। कंप्यूटर विज्ञान में, बिग ओ नोटेशन का उपयोग एल्गोरिदम को वर्गीकृत करने के लिए किया जाता है कि उनके रन टाइम या स्पेस आवश्यकताएँ [a] इनपुट आकार बढ़ने पर कैसे बढ़ती हैं। विश्लेषणात्मक संख्या सिद्धांत में, बिग ओ नोटेशन का उपयोग अक्सर एक अंकगणितीय फ़ंक्शन के विकास पर सीमाओं को व्यक्त करने के लिए किया जाता है; एक प्रसिद्ध उदाहरण अभाज्य संख्या प्रमेय में शेष पद है। गणितीय विश्लेषण में, कलन सहित, बिग ओ नोटेशन का उपयोग एक पावर श्रृंखला को ट्रंक करते समय त्रुटि को बांधने और एक सरल फ़ंक्शन द्वारा एक वास्तविक या जटिल मूल्यवान फ़ंक्शन के सन्निकटन की गुणवत्ता को व्यक्त करने के लिए किया जाता है।",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does 'O' represent in Big O notation?",
+          "options": [
+            "Order of Approximation",
+            "Order of Complexity",
+            "Order of Error",
+            "Order of Growth"
+          ],
+          "answer": "Order of Approximation",
+          "translatedQ": "'O' बड़े ओ प्रतीक में क्या प्रतिनिधित्व करता है?"
+        },
+        {
+          "question": "In which field is Big O notation primarily applied?",
+          "options": [
+            "Computer Science",
+            "Mathematics",
+            "Physics",
+            "Economics"
+          ],
+          "answer": "Computer Science",
+          "translatedQ": "कौन सा क्षेत्र बड़ा ओइन्स मुख्य रूप से लागू होता है?"
+        },
+        {
+          "question": "Who first introduced the concept of Big O notation?",
+          "options": [
+            "Paul Bachmann",
+            "Edmund Landau",
+            "Both Paul Bachmann and Edmund Landau",
+            "Neither Paul Bachmann nor Edmund Landau"
+          ],
+          "answer": "Both Paul Bachmann and Edmund Landau",
+          "translatedQ": "पहली बार किसने बिग ओनो की धारणा का परिचय दिया?"
+        },
+        {
+          "question": "Which statement about Big O notation's usage in computer science is true?",
+          "options": [
+            "It measures memory usage only.",
+            "It always provides exact runtime estimates.",
+            "It categorizes algorithms based on complexity.",
+            "It is unrelated to algorithm complexity."
+          ],
+          "answer": "It categorizes algorithms based on complexity.",
+          "translatedQ": "कंप्यूटर विज्ञान में बड़े ओफ़ोइन का उपयोग करने के बारे में कौन सा कथन सही है?"
+        },
+        {
+          "question": "What does the letter 'o' signify in the context of the Prime Number Theorem?",
+          "options": [
+            "Order of Approximation",
+            "Order of Size",
+            "Order of Error",
+            "Order of Growth"
+          ],
+          "answer": "Order of Growth",
+          "translatedQ": "प्रधानमंत्री संख्या के संदर्भ में अक्षर 'ओ' का क्या मतलब है?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "The letter 'O' stands for Order of Growth in Big O notation.",
+          "answer": "True",
+          "translatedQ": "अक्षर 'O' बिग ओनो में वृद्धि के अनुक्रम के लिए खड़ा है."
+        },
+        {
+          "question": "Big O notation can be used in both mathematics and computer science.",
+          "answer": "True",
+          "translatedQ": "गणित और कंप्यूटर विज्ञान दोनों में बिग ओफ़ोइन का इस्तेमाल किया जा सकता है."
+        },
+        {
+          "question": "All arithmetic functions in math use Big O notation to express their growth rate.",
+          "answer": "False",
+          "translatedQ": "गणित में सभी गणित के कार्यों का उपयोग करने के लिए बड़े ओ अंक का उपयोग करें अपने विकास दर को व्यक्त करने के लिए."
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,1676 @@
+[
+  {
+    "topic": "deadlock",
+    "prompt": "Explain Deadlock in operating systems.",
+    "response": "ஒருங்கிணைந்த கணினி அமைப்பில், ஒரு குழுவில் உள்ள எந்த உறுப்பினரும் முன்னேற முடியாத எந்த சூழ்நிலையும் ஒரு முட்டுக்கட்டை ஆகும், ஏனெனில் ஒவ்வொருவரும் ஒரு செய்தியை அனுப்புவது அல்லது பொதுவாக, ஒரு பூட்டை விடுவிப்பது போன்ற நடவடிக்கைகளை எடுக்க மற்றொரு உறுப்பினருக்காக காத்திருக்கிறார்கள். பலமுறை செயலாக்க அமைப்புகள், இணையான கணினி மற்றும் விநியோகிக்கப்பட்ட அமைப்புகளில் முட்டுக்கட்டைகள் ஒரு பொதுவான பிரச்சனையாகும், ஏனெனில் இந்த சூழல்களில் அமைப்புகள் பெரும்பாலும் பகிரப்பட்ட ஆதாரங்களை நடுவர் செய்ய மற்றும் செயல்முறை ஒத்திசைவை செயல்படுத்த மென்பொருள் அல்லது வன்பொருள் பூட்டுகளைப் பயன்படுத்துகின்றன. ஒரு இயக்க முறைமையில், ஒரு செயல்முறை அல்லது நூல் ஒரு காத்திருப்பு நிலைக்குள் நுழையும்போது ஒரு முட்டுக்கட்டை ஏற்படுகிறது, ஏனெனில் கோரப்பட்ட கணினி ஆதாரம் மற்றொரு காத்திருப்பு செயல்முறையால் பிடித்து வைக்கப்பட்டுள்ளது, இது மற்றொரு காத்திருப்பு செயல்முறையால் பிடித்து வைக்கப்பட்டுள்ள மற்றொரு ஆதாரத்திற்காக காத்திருக்கிறது. ஒரு செயல்முறை அதன் நிலையை மாற்ற முடியாத நிலையில் இருந்தால், ஏனெனில் அது கோரிய ஆதாரங்கள் மற்றொரு செயல்முறையால் பயன்படுத்தப்படுகின்றன, அதுவும் காத்திருக்கிறது, பின்னர் அமைப்பு ஒரு முட்டுக்கட்டையில் இருப்பதாகக் கூறப்படுகிறது.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Deadlock involves multiple entities.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A",
+          "translatedQ": "முட்டுக்கட்டை என்பது பல நிறுவனங்களை உள்ளடக்கியது."
+        },
+        {
+          "question": "Deadlocks occur only in multi-threaded environments.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "பல-திரிடு சூழல்களில் மட்டுமே முட்டுக்கட்டைகள் ஏற்படுகின்றன."
+        },
+        {
+          "question": "The term 'deadlock' applies exclusively to processes in multiprocessor systems.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "'டெட்லாக்' என்ற சொல் பன்முறைச் செயலி அமைப்புகளில் உள்ள செயல்முறைகளுக்கு மட்டுமே பொருந்தும்."
+        },
+        {
+          "question": "In an operating system, a deadlock happens whenever a process requests two exclusive resources simultaneously.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரு இயக்க முறைமையில், ஒரு செயல்முறை ஒரே நேரத்தில் இரண்டு பிரத்தியேக ஆதாரங்களைக் கோரும் போதெல்லாம் ஒரு முட்டுக்கட்டை ஏற்படுகிறது."
+        },
+        {
+          "question": "If all processes in a system remain indefinitely unable to change their states due to resource constraints, they will always form a deadlock.",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரு அமைப்பில் உள்ள அனைத்து செயல்முறைகளும் வளக் கட்டுப்பாடுகள் காரணமாக அவற்றின் நிலைகளை மாற்ற முடியாத நிலையில் இருந்தால், அவை எப்போதும் ஒரு முட்டுக்கட்டையை உருவாக்கும்."
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Deadlocks are inevitable in large-scale distributed systems.",
+          "answer": "False",
+          "translatedQ": "பெரிய அளவிலான விநியோக அமைப்புகளில் முட்டுக்கட்டைகள் தவிர்க்க முடியாதவை."
+        },
+        {
+          "question": "Deadlocks can be avoided through proper management of system resources.",
+          "answer": "True",
+          "translatedQ": "கணினி வளங்களை சரியான முறையில் நிர்வகிப்பதன் மூலம் முட்டுக்கட்டைகளைத் தவிர்க்கலாம்."
+        },
+        {
+          "question": "A deadlock cannot happen if there are enough free resources available.",
+          "answer": "False",
+          "translatedQ": "போதுமான இலவச ஆதாரங்கள் இருந்தால் ஒரு முட்டுக்கட்டை ஏற்படாது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "starvation",
+    "prompt": "Explain Starvation in operating systems.",
+    "response": "கணினி அறிவியலில், வளப் பஞ்சம் என்பது ஒரு செயல்முறைக்குத் தேவையான வளங்கள் தொடர்ந்து மறுக்கப்படும் ஒரு சிக்கலாகும். இது ஒரு செயல்முறை அதன் வேலையைச் செய்வதற்குத் தேவையான வளங்கள் தொடர்ந்து மறுக்கப்படும் ஒரு நிகழ்வு ஆகும். ஒரு திட்டமிடல் அல்லது பரஸ்பர விலக்கல் வழிமுறையில் ஏற்படும் பிழைகள் காரணமாகப் பஞ்சம் ஏற்படலாம், ஆனால் வளக் கசிவுகளாலும் ஏற்படலாம், மேலும் ஃபோர்க் வெடிகுண்டு போன்ற சேவை மறுப்பு தாக்குதல் மூலம் வேண்டுமென்றே ஏற்படுத்தப்படலாம். ஒரு ஒரு நேரச் செயல்முறையில் பஞ்சம் சாத்தியமில்லாதபோது, அந்த வழிமுறை பஞ்சம் இல்லாதது, பூட்டுதல் இல்லாதது அல்லது வரையறுக்கப்பட்ட புறக்கணிப்பு கொண்டது என்று அழைக்கப்படுகிறது. இந்த பண்பு உயிர்ப்பின் ஒரு நிகழ்வு ஆகும், மேலும் இது எந்தவொரு பரஸ்பர விலக்கல் வழிமுறைக்கும் தேவையான இரண்டு தேவைகளில் ஒன்றாகும்; மற்றொன்று சரியான தன்மை. \"வரையறுக்கப்பட்ட புறக்கணிப்பு\" என்ற பெயர், வழிமுறையின் எந்தவொரு செயல்முறையும் (ஒரு நேரப் பகுதி) பகிரப்பட்ட வளத்திற்கான அணுகலைப் பெறுவதற்கு முன்பு ஒரு வரையறுக்கப்பட்ட எண்ணிக்கையிலான முறை புறக்கணிக்கப்படுகிறது என்று அர்த்தம்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does 'resource starvation' refer to in concurrent computing?",
+          "options": [
+            "A) A process running too fast",
+            "B) A process waiting indefinitely for resources",
+            "C) A process receiving too many resources",
+            "D) A process getting enough resources"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒருங்கிணைந்த கணினிச் செயல்பாட்டில் 'வளப் பஞ்சம்' எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "How can starvation be intentionally caused in a system?",
+          "options": [
+            "A) By increasing the resource availability",
+            "B) By launching multiple processes simultaneously",
+            "C) By implementing a deadlock prevention mechanism",
+            "D) By using a denial-of-service attack like a fork bomb"
+          ],
+          "answer": "D",
+          "translatedQ": "ஒரு அமைப்பில் பட்டினியை வேண்டுமென்றே எப்படி ஏற்படுத்த முடியும்?"
+        },
+        {
+          "question": "Which term describes a concurrency algorithm with the property that every process is bypassed at most a finite number of times before being granted access to the shared resource?",
+          "options": [
+            "A) Liveness",
+            "B) Correctness",
+            "C) Resource Leaks",
+            "D) Finite Bypass"
+          ],
+          "answer": "D",
+          "translatedQ": "ஒவ்வொரு செயல்முறையும் பகிரப்பட்ட வளத்திற்கான அணுகலைப் பெறுவதற்கு முன்பு அதிகபட்சம் ஒரு வரையறுக்கப்பட்ட எண்ணிக்கையிலான முறை மட்டுமே புறக்கணிக்கப்படும் பண்புடன் ஒரு கன்கரன்சி அல்காரிதத்தை எந்த சொல் விவரிக்கிறது?"
+        },
+        {
+          "question": "What does 'lockout-freedom' mean in the context of concurrent algorithms?",
+          "options": [
+            "A) No locks used in the algorithm",
+            "B) Locks removed from the codebase",
+            "C) Processes do not get locked out",
+            "D) Algorithm performance becomes faster due to fewer locks"
+          ],
+          "answer": "C",
+          "translatedQ": "ஒருங்கிணைந்த வழிமுறைகளின் சூழலில் 'பூட்டுதல்-சுதந்திரம்' என்றால் என்ன?"
+        },
+        {
+          "question": "If an algorithm has both 'liveness' and 'correctness', what additional property might it possess?",
+          "options": [
+            "A) Deadlocks",
+            "B) Stability",
+            "C) Finite Bypass",
+            "D) Safety"
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு வழிமுறை 'உயிர்' மற்றும் 'சரியான தன்மை' ஆகிய இரண்டையும் கொண்டிருந்தால், அது என்ன கூடுதல் பண்பைக் கொண்டிருக்கலாம்?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does a starvation-free algorithm guarantee that all processes will eventually receive their share of resources?",
+          "answer": "False",
+          "translatedQ": "ஒரு பட்டினி இல்லாத வழிமுறை அனைத்து செயல்முறைகளும் இறுதியில் அவற்றின் ஆதாரங்களைப் பெறும் என்று உத்தரவாதம் அளிக்கிறதா?"
+        },
+        {
+          "question": "Can resource leaks cause starvation in a system?",
+          "answer": "True",
+          "translatedQ": "ஒரு சிஸ்டம்ல ரிசோர்ஸ் லீக்ஸ் இருந்தா பட்டினி போகுமா?"
+        },
+        {
+          "question": "Is it possible for a single process to starve itself if the only available resource is shared among all processes?",
+          "answer": "True",
+          "translatedQ": "அனைத்து செயல்முறைகளுக்கும் ஒரே ஒரு வளம்தான் பகிர்ந்தளிக்கப்படும் என்றால், ஒரு செயல்முறை தன்னைத்தானே பட்டினி போடுவது சாத்தியமா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "paging",
+    "prompt": "Explain Paging in operating systems.",
+    "response": "கணினி இயக்க முறைமைகளில், நினைவகப் பற்றாக்குறை என்பது ஒரு நினைவக மேலாண்மைத் திட்டமாகும், இது ஒரு நிரலால் பயன்படுத்தப்படும் இயற்பியல் நினைவகத்தை தொடர்ச்சியாக இல்லாமல் இருக்க அனுமதிக்கிறது. இது நினைவகப் பிளவு சிக்கலைத் தவிர்க்கவும், பிளவு குறைப்பதற்கு சுருக்கத்தை தேவைப்படுவதையும் தவிர்க்க உதவுகிறது. பற்றாக்குறையைத் தவிர்க்க, பற்றாக்குறையைத் தீர்க்கும் நுட்பத்துடன் பற்றாக்குறை மேலாண்மை பெரும்பாலும் இணைக்கப்படுகிறது. முகவரி இடங்களின் மொத்த அளவு கணினியின் இயற்பியல் நினைவகத்தை மீற அனுமதிப்பதற்காக, பக்கச் சட்டங்களை ஒதுக்குதல் மற்றும் விடுவித்தல் மற்றும் பக்கங்களை சேமித்து இரண்டாம் நிலை சேமிப்பகத்திலிருந்து மீட்டெடுப்பது போன்ற தொடர்புடைய நுட்பத்துடன் பற்றாக்குறை மேலாண்மை பெரும்பாலும் இணைக்கப்படுகிறது. வரலாற்று காரணங்களுக்காக, இந்த நுட்பம் சில நேரங்களில் மாற்றுதல் என்று குறிப்பிடப்படுகிறது."
+  },
+  {
+    "topic": "process",
+    "prompt": "Explain Process in operating systems.",
+    "response": "கணினித் துறையில், ஒரு செயல்முறை என்பது ஒன்று அல்லது அதற்கு மேற்பட்ட திரெட்களால் இயக்கப்படும் ஒரு கணினி நிரலின் நிகழ்வு ஆகும். பலவிதமான செயல்முறை மாதிரிகள் உள்ளன, அவற்றில் சில எடை குறைந்தவை, ஆனால் கிட்டத்தட்ட அனைத்து செயல்முறைகளும் (முழு மெய்நிகர் இயந்திரங்கள் கூட) ஒரு இயக்க முறைமை (OS) செயல்முறையில் வேரூன்றி உள்ளன. இந்த இயக்க முறைமை நிரல் குறியீடு, ஒதுக்கப்பட்ட கணினி வளங்கள், இயற்பியல் மற்றும் தர்க்கரீதியான அணுகல் அனுமதிகள் மற்றும் செயலாக்க நடவடிக்கையைத் தொடங்க, கட்டுப்படுத்த மற்றும் ஒருங்கிணைக்க தரவு கட்டமைப்புகளை உள்ளடக்கியது. இயக்க முறைமையைப் பொறுத்து, ஒரு செயல்முறை பல திரெட்களால் உருவாக்கப்படலாம், அவை ஒரே நேரத்தில் அறிவுறுத்தல்களைச் செயல்படுத்துகின்றன. ஒரு கணினி நிரல் என்பது பொதுவாக வட்டில் உள்ள ஒரு கோப்பில் சேமிக்கப்படும் செயலற்ற அறிவுறுத்தல்களின் தொகுப்பாக இருக்கும்போது, ஒரு செயல்முறை என்பது வட்டில் இருந்து நினைவகத்திற்கு ஏற்றப்பட்ட பிறகு அந்த அறிவுறுத்தல்களைச் செயல்படுத்துவதாகும். ஒரே நிரலுடன் பல செயல்முறைகள் தொடர்புடையதாக இருக்கலாம்; உதாரணமாக, ஒரே நிரலின் பல நிகழ்வுகளைத் திறப்பது பெரும்பாலும் ஒன்றுக்கும் மேற்பட்ட செயல்முறைகள் இயக்கப்படுவதற்கு வழிவகுக்கிறது.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a process represent?",
+          "options": [
+            "A) A thread executing instructions",
+            "B) The program's source code",
+            "C) An isolated environment",
+            "D) Multiple instances of the same program"
+          ],
+          "answer": "D",
+          "translatedQ": "ஒரு செயல்முறை எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "How many types of process models exist according to the text?",
+          "options": [
+            "A) 1 type",
+            "B) 2 types",
+            "C) 3 types",
+            "D) 4 types"
+          ],
+          "answer": "A",
+          "translatedQ": "உரையின்படி எத்தனை வகையான செயல்முறை மாதிரிகள் உள்ளன?"
+        },
+        {
+          "question": "Which statement about processes and programs is true?",
+          "options": [
+            "A) Programs cannot run without processes",
+            "B) Processes can only occur within virtual machines",
+            "C) Programs store their instructions directly on disks",
+            "D) Processes load instructions from disks into memory before execution"
+          ],
+          "answer": "D",
+          "translatedQ": "செயல்முறைகள் மற்றும் நிரல்களைப் பற்றிய எந்தக் கூற்று சரியானது?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Processes are always lightweight.",
+          "answer": "False",
+          "translatedQ": "செயல்முறைகள் எப்போதும் இலகுவானவை."
+        },
+        {
+          "question": "All processes start as OS processes.",
+          "answer": "True",
+          "translatedQ": "அனைத்து செயல்முறைகளும் ஓஎஸ் செயல்முறைகளாகவே தொடங்குகின்றன."
+        },
+        {
+          "question": "Multiple instances of the same program open up new processes.",
+          "answer": "True",
+          "translatedQ": "ஒரே நிரலின் பல நிகழ்வுகள் புதிய செயல்முறைகளைத் திறக்கின்றன."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "cpu_scheduling",
+    "prompt": "Explain CPU scheduling.",
+    "response": "கணினித் துறையில், திட்டமிடல் என்பது பணிகளைச் செய்வதற்கு வளங்களை ஒதுக்கும் செயலாகும். அந்த வளங்கள் செயலிகள், பிணைய இணைப்புகள் அல்லது விரிவாக்க அட்டைகளாக இருக்கலாம். பணிகள் திரெட்கள், செயல்முறைகள் அல்லது தரவு ஓட்டங்களாக இருக்கலாம். திட்டமிடல் செயல்பாடு ஒரு திட்டமிடுபவர் எனப்படும் ஒரு பொறிமுறையால் மேற்கொள்ளப்படுகிறது. அனைத்து கணினி வளங்களையும் பிஸியாக வைத்திருக்கும் வகையில் (சுமை சமன்படுத்துதல் போன்றவை), பல பயனர்கள் கணினி வளங்களை திறம்படப் பகிர்ந்து கொள்ள அனுமதிக்கும் வகையில் அல்லது ஒரு குறிப்பிட்ட சேவை தரத்தை அடையும் வகையில் திட்டமிடுபவர்கள் வடிவமைக்கப்படுகிறார்கள்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'scheduling' refer to in computing?",
+          "options": [
+            "A. Assigning tasks to CPU",
+            "B. Allocating memory for programs",
+            "C. Managing disk I/O operations",
+            "D. All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "கணினித் துறையில் 'ஷெட்யூலிங்' என்ற சொல் எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Which of these is NOT typically considered a resource in computing?",
+          "options": [
+            "A. Memory",
+            "B. Network Bandwidth",
+            "C. Printer",
+            "D. Power Supply"
+          ],
+          "answer": "C",
+          "translatedQ": "கணினித் துறையில் இவற்றில் எது பொதுவாக ஒரு வளமாகக் கருதப்படுவதில்லை?"
+        },
+        {
+          "question": "What role does a scheduler play in managing computer resources?",
+          "options": [
+            "A. Allocating CPU time to tasks",
+            "B. Executing user commands directly",
+            "C. Encrypting data transmissions",
+            "D. Deciding which software applications to run first"
+          ],
+          "answer": "A",
+          "translatedQ": "கணினி வளங்களை நிர்வகிப்பதில் ஒரு திட்டமிடுபவர் என்ன பங்கு வகிக்கிறார்?"
+        },
+        {
+          "question": "How can schedulers help with load balancing?",
+          "options": [
+            "A. By reducing memory usage",
+            "B. By increasing processing speed",
+            "C. By ensuring no task goes unattended",
+            "D. By decreasing power consumption"
+          ],
+          "answer": "C",
+          "translatedQ": "சுமைச் சமன்பாட்டிற்கு திட்டமிடுபவர்கள் எவ்வாறு உதவ முடியும்?"
+        },
+        {
+          "question": "Is it possible for a scheduler to ensure all computer resources are utilized without any downtime?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A",
+          "translatedQ": "எந்த டவுன்டைம் இல்லாம எல்லா கம்ப்யூட்டர் ரிசோர்ஸும் யூஸ் பண்ற மாதிரி ஒரு ஷெட்யூலரால் பார்த்துக்க முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does a scheduler need to balance CPU utilization across all available cores?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரு திட்டமிடுபவர் அனைத்து மையங்களிலும் சிபியு பயன்பாட்டை சமநிலைப்படுத்த வேண்டுமா?"
+        },
+        {
+          "question": "Can different types of tasks benefit from being scheduled separately?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "B",
+          "translatedQ": "வெவ்வேறு வகையான பணிகளைத் தனித்தனியாக திட்டமிடுவதால் பலன் கிடைக்குமா?"
+        },
+        {
+          "question": "Are schedulers only used for controlling user access to system resources?",
+          "options": [
+            "A. False",
+            "B. True"
+          ],
+          "answer": "A",
+          "translatedQ": "திட்டமிடுபவர்கள் கணினி வளங்களுக்கான பயனர் அணுகலைக் கட்டுப்படுத்த மட்டுமே பயன்படுத்தப்படுகிறார்களா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "thread",
+    "prompt": "Explain Thread in operating systems.",
+    "response": "கணினி அறிவியலில், ஒரு செயல்முறைத் தொடர் என்பது ஒரு திட்டமிடுபவரால் தனித்தனியாக நிர்வகிக்கப்படக்கூடிய நிரலாக்கப்பட்ட கட்டளைகளின் மிகச்சிறிய வரிசையாகும். இது பொதுவாக இயக்க முறைமையின் ஒரு பகுதியாகும். பல சந்தர்ப்பங்களில், ஒரு செயல்முறைத் தொடர் ஒரு செயல்முறையின் ஒரு அங்கமாகும். ஒரு செயல்முறையின் பல செயல்முறைத் தொடர்கள் ஒரே நேரத்தில் செயல்படுத்தப்படலாம் (பன்முறைத் தொடர் திறன்கள் மூலம்), நினைவகம் போன்ற ஆதாரங்களைப் பகிர்ந்து கொள்ளலாம், அதே நேரத்தில் வெவ்வேறு செயல்முறைகள் இந்த ஆதாரங்களைப் பகிர்ந்து கொள்ளாது. குறிப்பாக, ஒரு செயல்முறையின் செயல்முறைத் தொடர்கள் அதன் இயக்கக்கூடிய குறியீடு மற்றும் அதன் மாறும் ஒதுக்கீடு செய்யப்பட்ட மாறிகள் மற்றும் செயல்முறைத் தொடர் அல்லாத உலகளாவிய மாறிகளின் மதிப்புகளை எந்த நேரத்திலும் பகிர்ந்து கொள்கின்றன.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does each thread of execution represent?",
+          "options": [
+            "A) A single line of code",
+            "B) A specific function call",
+            "C) An independent unit of program flow",
+            "D) A separate instance of an application"
+          ],
+          "answer": "C",
+          "translatedQ": "ஒவ்வொரு திரெட் எக்ஸிகியூஷனும் எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Threads in a process are generally",
+          "options": [
+            "A) Independent units of computation",
+            "B) Part of the same address space",
+            "C) Coherent with shared memory",
+            "D) Exclusive to individual processes"
+          ],
+          "answer": "A",
+          "translatedQ": "ஒரு செயல்முறையில் உள்ள திரெட்கள் பொதுவாக"
+        },
+        {
+          "question": "Which of the following best describes how threads share resources?",
+          "options": [
+            "A) They exclusively access all shared resources",
+            "B) They synchronize access to shared resources through locks",
+            "C) They never share resources",
+            "D) They communicate directly without using shared resources"
+          ],
+          "answer": "B",
+          "translatedQ": "பின்வருவனவற்றில் எது திரெட்கள் எவ்வாறு வளங்களைப் பகிர்ந்து கொள்கின்றன என்பதைச் சிறப்பாக விவரிக்கிறது?"
+        },
+        {
+          "question": "Is it possible for two threads within the same process to run simultaneously?",
+          "options": [
+            "A) No, because they cannot share memory",
+            "B) Yes, due to their ability to execute concurrently",
+            "C) Only under special circumstances like multithreading APIs",
+            "D) Only if both threads request exclusive access"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரே செயல்முறையில் இரண்டு திரெட்கள் ஒரே நேரத்தில் இயங்க முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Threads are always associated with a process.",
+          "answer": "True",
+          "translatedQ": "திரெட்கள் எப்போதும் ஒரு செயல்முறையுடன் தொடர்புடையவை."
+        },
+        {
+          "question": "Processes are the fundamental building blocks of concurrent programs.",
+          "answer": "False",
+          "translatedQ": "செயல்முறைகள் என்பது ஒரே நேரத்தில் இயங்கும் நிரல்களின் அடிப்படை கட்டுமானத் தொகுதிகள்."
+        },
+        {
+          "question": "Threads ensure data consistency across processes by synchronizing operations.",
+          "answer": "False",
+          "translatedQ": "செயல்பாடுகளை ஒத்திசைப்பதன் மூலம் செயல்முறைகளில் தரவு நிலைத்தன்மையை திரெட்கள் உறுதி செய்கின்றன."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "virtual_memory",
+    "prompt": "Explain Virtual memory.",
+    "response": "கணினித் துறையில், மெய்நிகர் நினைவகம் அல்லது மெய்நிகர் சேமிப்பு என்பது ஒரு நினைவக மேலாண்மை நுட்பத்தால் செயல்படுத்தப்படுகிறது. இது \"ஒரு குறிப்பிட்ட கணினியில் உண்மையில் கிடைக்கும் சேமிப்பக வளங்களின் ஒரு சிறந்த சுருக்கம்\" ஆகும். இது \"பயனர்களுக்கு ஒரு பெரிய (முதன்மை) நினைவகத்தின் மாயையை உருவாக்குகிறது\". கணினியின் இயக்க முறைமை, வன்பொருள் மற்றும் மென்பொருளின் கலவையைப் பயன்படுத்தி, ஒரு நிரலால் பயன்படுத்தப்படும் நினைவக முகவரிகளை, மெய்நிகர் முகவரிகள் என்று அழைக்கப்படும், கணினி நினைவகத்தில் உள்ள இயற்பியல் முகவரிகளாக மாற்றுகிறது. ஒரு செயல்முறை அல்லது பணியால் பார்க்கப்படும் முதன்மை சேமிப்பு, தொடர்ச்சியான முகவரி இடம் அல்லது தொடர்ச்சியான பிரிவுகளின் தொகுப்பாகத் தோன்றுகிறது. இயக்க முறைமை மெய்நிகர் முகவரி இடங்களையும், மெய்நிகர் நினைவகத்திற்கு உண்மையான நினைவகத்தை ஒதுக்குவதையும் நிர்வகிக்கிறது. CPU இல் உள்ள முகவரி மொழிபெயர்ப்பு வன்பொருள், பெரும்பாலும் நினைவக மேலாண்மை அலகு (MMU) என்று குறிப்பிடப்படுகிறது, இது மெய்நிகர் முகவரிகளை இயற்பியல் முகவரிகளாக தானாகவே மொழிபெயர்க்கிறது. இயக்க முறைமைக்குள் இருக்கும் மென்பொருள் இந்த திறன்களை விரிவாக்கலாம், உதாரணமாக, வட்டு சேமிப்பகத்தைப் பயன்படுத்தி, உண்மையான நினைவகத்தின் திறனை மீறும் ஒரு மெய்நிகர் முகவரி இடத்தை வழங்க முடியும், இதனால் கணினியில் இயற்பியல் ரீதியாக இருக்கும் நினைவகத்தை விட அதிகமான நினைவகத்தை குறிக்க முடியும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Virtual memory creates what for users?",
+          "options": [
+            "A) A smaller main memory",
+            "B) An idealized abstraction of available storage",
+            "C) Real memory directly accessible by programs",
+            "D) A larger main memory"
+          ],
+          "answer": "B",
+          "translatedQ": "மெய்நிகர் நினைவகம் பயனர்களுக்கு எதை உருவாக்குகிறது?"
+        },
+        {
+          "question": "What does the operating system map when mapping virtual addresses to physical addresses?",
+          "options": [
+            "A) Virtual memory to logical addresses",
+            "B) Physical addresses to logical addresses",
+            "C) Logical addresses to physical addresses",
+            "D) Main storage to virtual addresses"
+          ],
+          "answer": "C",
+          "translatedQ": "மெய்நிகர் முகவரிகளை இயற்பியல் முகவரிகளுடன் மேப்பிங் செய்யும் போது இயக்க முறைமை எதை மேப்பிங் செய்கிறது?"
+        },
+        {
+          "question": "Which component automatically translates virtual addresses to physical addresses?",
+          "options": [
+            "A) Disk storage",
+            "B) Memory Management Unit (MMU)",
+            "C) Central Processing Unit (CPU)",
+            "D) Operating System"
+          ],
+          "answer": "B",
+          "translatedQ": "எந்தக் கூறு தானாகவே மெய்நிகர் முகவரிகளை இயற்பியல் முகவரிகளாக மாற்றுகிறது?"
+        },
+        {
+          "question": "How does the operating system manage virtual address spaces?",
+          "options": [
+            "A) By limiting the size of the virtual address space",
+            "B) By assigning all memory to virtual memory",
+            "C) By allocating memory only to actual tasks",
+            "D) By creating a contiguous address space for each process"
+          ],
+          "answer": "D",
+          "translatedQ": "இயங்குதளம் மெய்நிகர் முகவரி இடங்களை எவ்வாறு நிர்வகிக்கிறது?"
+        },
+        {
+          "question": "Is it possible to exceed the capacity of real memory with virtual memory?",
+          "options": [
+            "A) No",
+            "B) Yes"
+          ],
+          "answer": "B",
+          "translatedQ": "மெய்நிகர் நினைவகத்துடன் உண்மையான நினைவகத்தின் திறனை மீற முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the concept of virtual memory allow processes to access more memory than is physically available?",
+          "answer": "True",
+          "translatedQ": "மெய்நிகர் நினைவகத்தின் கருத்து செயல்முறைகள் இயற்பியல் ரீதியாகக் கிடைக்கும் நினைவகத்தை விட அதிகமான நினைவகத்தை அணுக அனுமதிக்கிறதா?"
+        },
+        {
+          "question": "Can the operating system completely replace the need for physical memory entirely?",
+          "answer": "False",
+          "translatedQ": "இயக்க முறைமை முழுவதுமாக இயற்பியல் நினைவகத்தின் தேவையை முற்றிலுமாக மாற்ற முடியுமா?"
+        },
+        {
+          "question": "Is the memory management unit solely responsible for translating virtual addresses to physical addresses?",
+          "answer": "False",
+          "translatedQ": "மெமரி மேனேஜ்மென்ட் யூனிட் மட்டுமே மெய்நிகர் முகவரிகளை இயற்பியல் முகவரிகளாக மொழிபெயர்க்குமா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "thrashing",
+    "prompt": "Explain Thrashing.",
+    "response": "கணினி அறிவியலில், நினைவகப் பக்கமாக்கலுடன் ஒரு கணினியில் ஒரு கணினியின் உண்மையான நினைவக (ரேம்) வளங்கள் அதிகமாக அர்ப்பணிக்கப்படும்போது, ஒரு நிலையான நிலை பக்கமாக்கல் (மாற்றுதல், அதாவது ஒரு பக்கத்தை வட்டுக்கு நகர்த்துதல்) மற்றும் பக்கக் கோளாறுகளுக்கு வழிவகுக்கும்போது, பெரும்பாலான பயன்பாட்டு-நிலை செயலாக்கத்தை மெதுவாக்கும். இது கணினியின் செயல்திறனைத் தரமிறக்குகிறது அல்லது செயலிழக்கச் செய்கிறது. பயனர் சில இயங்கும் பயன்பாடுகளை மூடும் வரை அல்லது செயலில் உள்ள செயல்முறைகள் கூடுதல் மெய்நிகர் நினைவக வளங்களை விடுவிக்கும் வரை நிலைமை காலவரையின்றி தொடரலாம். துவக்கத்திற்குப் பிறகு, பெரும்பாலான நிரல்கள் நிரலுக்குத் தேவையான மொத்த நினைவகத்துடன் ஒப்பிடும்போது ஒரு சிறிய எண்ணிக்கையிலான குறியீடு மற்றும் தரவு பக்கங்களில் செயல்படுகின்றன. எந்த நேரத்திலும் அடிக்கடி அணுகப்படும் பக்கங்கள் வேலை செய்யும் தொகுப்பு என்று அழைக்கப்படுகின்றன, இது காலப்போக்கில் மாறக்கூடும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a characteristic feature of thrashing?",
+          "options": [
+            "A) A high level of CPU usage",
+            "B) Increased RAM usage",
+            "C) Constant paging/swapping",
+            "D) Decreased application performance"
+          ],
+          "answer": "C",
+          "translatedQ": "தாறுதல் என்பதன் சிறப்பியல்பு என்ன?"
+        },
+        {
+          "question": "Which statement best describes how thrashing affects the computer’s performance?",
+          "options": [
+            "A) Performance improves as more applications run simultaneously.",
+            "B) Performance decreases significantly due to continuous paging/swapping.",
+            "C) No impact on performance as it only happens rarely.",
+            "D) Thrashing leads to faster processing speeds."
+          ],
+          "answer": "B",
+          "translatedQ": "கணினியின் செயல்திறனைத் தாக்கிவிடும் வகையில் த்ராஷிங் எவ்வாறு செயல்படுகிறது என்பதை எந்தக் கூற்று மிகச் சரியாக விவரிக்கிறது?"
+        },
+        {
+          "question": "How does the working set of pages affect an application’s performance?",
+          "options": [
+            "A) It increases the speed by loading more pages into RAM",
+            "B) It has no effect on performance since all pages are loaded initially",
+            "C) It reduces performance because fewer pages are needed",
+            "D) It enhances performance by allowing efficient access to frequently used pages"
+          ],
+          "answer": "D",
+          "translatedQ": "பக்கங்களின் செயல் தொகுப்பு ஒரு பயன்பாட்டின் செயல்திறனை எவ்வாறு பாதிக்கிறது?"
+        },
+        {
+          "question": "After thrashing is detected, what action typically resolves the issue?",
+          "options": [
+            "A) Increasing the amount of RAM allocated",
+            "B) Removing unnecessary software from the system",
+            "C) Restarting the operating system",
+            "D) None of the above"
+          ],
+          "answer": "A",
+          "translatedQ": "அடிக்கப்படும்போது கண்டறியப்பட்டால், பொதுவாக என்ன நடவடிக்கை இந்த சிக்கலைத் தீர்க்கிறது?"
+        },
+        {
+          "question": "Which type of memory resource is involved in thrashing?",
+          "options": [
+            "A) Main Memory",
+            "B) Secondary Storage",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "answer": "C",
+          "translatedQ": "த்ராஷிங்கில் எந்த வகையான நினைவக வளங்கள் ஈடுபடுகின்றன?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible for a system without paging mechanisms to experience thrashing?",
+          "answer": "False",
+          "translatedQ": "பேஜிங் வழிமுறைகள் இல்லாத ஒரு அமைப்பு த்ராஷிங்கை அனுபவிக்க முடியுமா?"
+        },
+        {
+          "question": "Can increasing the number of processors help prevent thrashing?",
+          "answer": "True",
+          "translatedQ": "செயலிகளின் எண்ணிக்கையை அதிகரிப்பது த்ராஷிங்கைத் தடுக்க உதவுமா?"
+        },
+        {
+          "question": "Does thrashing occur exclusively during peak load times?",
+          "answer": "False",
+          "translatedQ": "அதிக சுமை உள்ள நேரங்களில் மட்டுமே த்ராஷிங் ஏற்படுமா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "context_switching",
+    "prompt": "Explain Context switching.",
+    "response": "கணினித் துறையில், சூழல் மாறுதல் என்பது ஒரு செயல்முறை அல்லது இழையின் நிலையை சேமித்து வைக்கும் செயல்முறையாகும், இதனால் அதை மீட்டெடுத்து பின்னர் மீண்டும் செயல்படுத்த முடியும், பின்னர் முன்பு சேமிக்கப்பட்ட வேறு நிலையை மீட்டெடுக்க முடியும். இது பல செயல்முறைகள் ஒரு மையச் செயலகத்தை (CPU) பகிர்ந்து கொள்ள அனுமதிக்கிறது, மேலும் இது பல நிரலாக்கம் அல்லது பல்பணி இயக்க முறைமையின் ஒரு முக்கிய அம்சமாகும். ஒரு பாரம்பரிய CPU இல், ஒவ்வொரு செயல்முறையும் - செயலாக்கத்தில் உள்ள ஒரு நிரல் - தரவை சேமிக்க மற்றும் இயங்கும் செயல்முறையின் தற்போதைய நிலையை வைத்திருக்க பல்வேறு CPU பதிவுகளைப் பயன்படுத்துகிறது. இருப்பினும், பல்பணி இயக்க முறைமையில், பல செயல்முறைகளை ஒரே நேரத்தில் செயல்படுத்த இயக்க முறைமை செயல்முறைகள் அல்லது இழைகளுக்கு இடையில் மாறுகிறது. ஒவ்வொரு மாறுதலுக்கும், இயக்க முறைமை தற்போது இயங்கும் செயல்முறையின் நிலையைச் சேமிக்க வேண்டும், அதைத் தொடர்ந்து அடுத்த செயல்முறை நிலையை ஏற்ற வேண்டும், இது CPU இல் இயங்கும். இயங்கும் செயல்முறையின் நிலையை சேமித்து, அடுத்த இயங்கும் செயல்முறையை ஏற்றும் செயல்பாடுகளின் இந்த வரிசை சூழல் மாறுதல் என்று அழைக்கப்படுகிறது. சூழல் மாறுதல் என்ற சொற்றொடரின் துல்லியமான பொருள் மாறுபடும். பல்பணி சூழலில், இது ஒரு பணியின் கணினி நிலையை சேமிக்கும் செயல்முறையைக் குறிக்கிறது, இதனால் பணியை நிறுத்திவிட்டு மற்றொரு பணியைத் தொடரலாம். ஒரு சூழல் மாறுதல் ஒரு குறுக்கீட்டின் விளைவாகவும் ஏற்படலாம், அதாவது ஒரு பணி வட்டு சேமிப்பகத்தை அணுக வேண்டியிருக்கும் போது, மற்ற பணிகளுக்கான CPU நேரத்தை விடுவிக்கிறது. சில இயக்க முறைமைகளுக்கு பயனர் முறை மற்றும் கர்னல் முறை பணிகளுக்கு இடையில் மாறவும் சூழல் மாறுதல் தேவைப்படுகிறது. சூழல் மாறுதல் செயல்முறை கணினி செயல்திறனில் எதிர்மறையான தாக்கத்தை ஏற்படுத்தக்கூடும். : 28"
+  },
+  {
+    "topic": "memory_management",
+    "prompt": "Explain Memory management.",
+    "response": "நினைவக மேலாண்மை (Memory management) என்பது கணினி நினைவகத்திற்குப் பயன்படுத்தப்படும் ஒரு வள மேலாண்மை முறையாகும். நினைவக மேலாண்மையின் இன்றியமையாத தேவை என்னவென்றால், நினைவகத்தின் பகுதிகளை நிரல்களின் கோரிக்கையின் பேரில் மாறும் வகையில் ஒதுக்கீடு செய்து, தேவைப்படாதபோது அதை மீண்டும் பயன்படுத்த விடுவதாகும். எந்தவொரு மேம்பட்ட கணினி அமைப்பிலும் இது மிகவும் முக்கியமானது, ஏனெனில் எந்த நேரத்திலும் ஒன்றுக்கும் மேற்பட்ட செயல்முறைகள் (மல்டிடாஸ்கிங்) நடைபெறலாம். நினைவக மேலாண்மையின் செயல்திறனை அதிகரிக்கும் பல முறைகள் கண்டுபிடிக்கப்பட்டுள்ளன. மெய்நிகர் நினைவக அமைப்புகள் ஒரு செயல்முறையால் பயன்படுத்தப்படும் நினைவக முகவரிகளை உண்மையான இயற்பியல் முகவரிகளிலிருந்து பிரிக்கின்றன, செயல்முறைகளை பிரிக்க அனுமதிக்கின்றன மற்றும் இரண்டாம் நிலை சேமிப்பகத்திற்கு பக்கமாக்குதல் அல்லது மாற்றுதல் மூலம் கிடைக்கும் RAM அளவைத் தாண்டி மெய்நிகர் முகவரி இடத்தின் அளவை அதிகரிக்கின்றன. மெய்நிகர் நினைவக மேலாளரின் தரம் ஒட்டுமொத்த கணினி செயல்திறனில் விரிவான விளைவை ஏற்படுத்தக்கூடும். கணினிக்கு உண்மையில் உள்ளதை விட அதிக நினைவகம் இருப்பதாகக் காட்ட இந்த அமைப்பு அனுமதிக்கிறது, இதனால் பல செயல்முறைகள் அதை பகிர்ந்து கொள்ள அனுமதிக்கிறது.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What is a key requirement of memory management in computer systems?",
+          "options": [
+            "A) Providing fixed-size partitions of memory for all processes.",
+            "B) Allocating memory only during program execution.",
+            "C) Allowing real-time response to hardware failures.",
+            "D) Ensuring efficient use of physical memory through techniques like paging and swapping."
+          ],
+          "answer": "D",
+          "translatedQ": "கணினி அமைப்புகளில் நினைவக மேலாண்மையின் முக்கியத் தேவை என்ன?"
+        },
+        {
+          "question": "Which method increases the size of a virtual address space beyond the available amount of RAM?",
+          "options": [
+            "A) Paging",
+            "B) Swapping",
+            "C) Both A and B",
+            "D) Neither A nor B"
+          ],
+          "answer": "C",
+          "translatedQ": "கிடைக்கக்கூடிய ரேம் அளவை மீறி ஒரு மெய்நிகர் முகவரி இடத்தின் அளவை எந்த முறை அதிகரிக்கிறது?"
+        },
+        {
+          "question": "How does a virtual memory system enhance multitasking capabilities?",
+          "options": [
+            "A) By synchronizing CPU access to both main memory and disk I/O simultaneously.",
+            "B) By providing exclusive access to each process's memory region.",
+            "C) By enabling multiple processes to run concurrently without interference.",
+            "D) None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு மெய்நிகர் நினைவக அமைப்பு பல்பணி திறன்களை எவ்வாறு மேம்படுத்துகிறது?"
+        },
+        {
+          "question": "What can affect the overall performance of a virtual memory system?",
+          "options": [
+            "A) The color depth of displayed images",
+            "B) The brand of computer components",
+            "C) The number of processes running in parallel",
+            "D) The resolution of screen displays"
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு மெய்நிகர் நினைவக அமைப்பின் ஒட்டுமொத்த செயல்திறனை எது பாதிக்கலாம்?"
+        },
+        {
+          "question": "Can multiple processes share memory efficiently with paging and swapping?",
+          "options": [
+            "A) No, because they interfere with each other's operations.",
+            "B) Yes, but only within the same partition.",
+            "C) Yes, effectively sharing memory resources across different processes.",
+            "D) Only theoretically possible with modern technology."
+          ],
+          "answer": "C",
+          "translatedQ": "பல்வேறு செயல்முறைகள், பக்கமாக்கல் மற்றும் மாற்றுதல் மூலம் திறம்பட நினைவகத்தைப் பகிர்ந்து கொள்ள முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Virtual memory increases the effective amount of memory available for multitasking.",
+          "answer": "True",
+          "translatedQ": "மெய்நிகர் நினைவகம் பல்பணிச் செயல்பாட்டிற்கு கிடைக்கும் நினைவகத்தின் பயனுள்ள அளவை அதிகரிக்கிறது."
+        },
+        {
+          "question": "Processes cannot run concurrently without coordination between them.",
+          "answer": "False",
+          "translatedQ": "செயல்முறைகளுக்கு இடையே ஒருங்கிணைப்பு இல்லாமல் அவை ஒரே நேரத்தில் இயங்க முடியாது."
+        },
+        {
+          "question": "All computer systems require explicit allocation and deallocation of memory.",
+          "answer": "False",
+          "translatedQ": "அனைத்து கணினி அமைப்புகளுக்கும் நினைவகத்தை வெளிப்படையாக ஒதுக்கீடு செய்வதும் அதை நீக்குவதும் தேவைப்படுகிறது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "database_management_system",
+    "prompt": "Explain Database management system.",
+    "response": "கணினித் துறையில் தரவுத்தளம் என்பது தரவு சேகரிப்பு மற்றும் பகுப்பாய்வு செய்வதற்காக, தரவு மேலாண்மை அமைப்பு (DBMS) எனப்படும் மென்பொருளைப் பயன்படுத்தி, இறுதிப் பயனர்கள், பயன்பாடுகள் மற்றும் தரவுத்தளத்துடன் தொடர்பு கொள்ளும் ஒரு ஒழுங்கமைக்கப்பட்ட தரவு அல்லது தரவு சேமிப்பகத்தின் ஒரு வகையாகும். தரவுத்தளத்தை நிர்வகிக்க வழங்கப்படும் முக்கிய வசதிகளையும் இந்த DBMS உள்ளடக்கியது. தரவுத்தளம், DBMS மற்றும் அதனுடன் தொடர்புடைய பயன்பாடுகளின் மொத்தத் தொகையை தரவுத்தள அமைப்பு என்று குறிப்பிடலாம். பெரும்பாலும் \"தரவுத்தளம்\" என்ற சொல் DBMS, தரவுத்தள அமைப்பு அல்லது தரவுத்தளத்துடன் தொடர்புடைய பயன்பாடு ஆகியவற்றைக் குறிக்கப் பயன்படுத்தப்படுகிறது. தரவு சேமிப்பு மற்றும் மீட்டெடுப்பு பரவலாகக் காணப்படுவதற்கு முன்பு, அட்டவணை அட்டைகள் பரந்த அளவிலான பயன்பாடுகள் மற்றும் சூழல்களில் தரவு சேமிப்பிற்காகப் பயன்படுத்தப்பட்டன: வீடுகளில் சமையல் குறிப்புகள், ஷாப்பிங் பட்டியல்கள், தொடர்புத் தகவல்கள் மற்றும் பிற நிறுவனத் தரவுகளைப் பதிவு செய்து சேமிக்க; வணிகத்தில் விளக்கக்காட்சி குறிப்புகள், திட்ட ஆராய்ச்சி மற்றும் குறிப்புகள் மற்றும் தொடர்புத் தகவல்களைப் பதிவு செய்ய; பள்ளிகளில் ஃபிளாஷ் கார்டுகள் அல்லது பிற காட்சி உதவிகளாக; மற்றும் கல்வி ஆராய்ச்சியில் நூற்பட்டியல் மேற்கோள்கள் அல்லது குறிப்புகள் போன்ற தரவுகளை ஒரு அட்டை கோப்பில் வைத்திருக்க. தொழில்முறை புத்தக அட்டவணை உருவாக்குபவர்கள் 1980கள் மற்றும் 1990களில் அட்டவணை மென்பொருளால் மாற்றப்படும் வரை புத்தக அட்டவணைகளை உருவாக்குவதில் அட்டவணை அட்டைகளைப் பயன்படுத்தினர்."
+  },
+  {
+    "topic": "types_of_databases",
+    "prompt": "Explain Types of databases.",
+    "response": "கணினித் துறையில் தரவுத்தளம் என்பது தரவு சேகரிப்பு மற்றும் பகுப்பாய்வு செய்வதற்காக, தரவு மேலாண்மை அமைப்பு (DBMS) எனப்படும் மென்பொருளைப் பயன்படுத்தி, இறுதிப் பயனர்கள், பயன்பாடுகள் மற்றும் தரவுத்தளத்துடன் தொடர்பு கொள்ளும் ஒரு ஒழுங்கமைக்கப்பட்ட தரவு அல்லது தரவு சேமிப்பகத்தின் ஒரு வகையாகும். தரவுத்தளத்தை நிர்வகிக்க வழங்கப்படும் முக்கிய வசதிகளையும் இந்த DBMS உள்ளடக்கியது. தரவுத்தளம், DBMS மற்றும் அதனுடன் தொடர்புடைய பயன்பாடுகளின் மொத்தத் தொகையை தரவுத்தள அமைப்பு என்று குறிப்பிடலாம். பெரும்பாலும் \"தரவுத்தளம்\" என்ற சொல் DBMS, தரவுத்தள அமைப்பு அல்லது தரவுத்தளத்துடன் தொடர்புடைய பயன்பாடு ஆகியவற்றைக் குறிக்கப் பயன்படுத்தப்படுகிறது. தரவு சேமிப்பு மற்றும் மீட்டெடுப்பு பரவலாகக் காணப்படுவதற்கு முன்பு, அட்டவணை அட்டைகள் பரந்த அளவிலான பயன்பாடுகள் மற்றும் சூழல்களில் தரவு சேமிப்பிற்காகப் பயன்படுத்தப்பட்டன: வீடுகளில் சமையல் குறிப்புகள், ஷாப்பிங் பட்டியல்கள், தொடர்புத் தகவல்கள் மற்றும் பிற நிறுவனத் தரவுகளைப் பதிவு செய்து சேமிக்க; வணிகத்தில் விளக்கக்காட்சி குறிப்புகள், திட்ட ஆராய்ச்சி மற்றும் குறிப்புகள் மற்றும் தொடர்புத் தகவல்களைப் பதிவு செய்ய; பள்ளிகளில் ஃபிளாஷ் கார்டுகள் அல்லது பிற காட்சி உதவிகளாக; மற்றும் கல்வி ஆராய்ச்சியில் நூற்பட்டியல் மேற்கோள்கள் அல்லது குறிப்புகள் போன்ற தரவுகளை ஒரு அட்டை கோப்பில் வைத்திருக்க. தொழில்முறை புத்தக அட்டவணை உருவாக்குபவர்கள் 1980கள் மற்றும் 1990களில் அட்டவணை மென்பொருளால் மாற்றப்படும் வரை புத்தக அட்டவணைகளை உருவாக்குவதில் அட்டவணை அட்டைகளைப் பயன்படுத்தினர்."
+  },
+  {
+    "topic": "advantages_of_dbms",
+    "prompt": "Explain Advantages of DBMS.",
+    "response": "கணினித் துறையில் தரவுத்தளம் என்பது தரவு சேகரிப்பு மற்றும் பகுப்பாய்வு செய்வதற்காக, தரவு மேலாண்மை அமைப்பு (DBMS) எனப்படும் மென்பொருளைப் பயன்படுத்தி, இறுதிப் பயனர்கள், பயன்பாடுகள் மற்றும் தரவுத்தளத்துடன் தொடர்பு கொள்ளும் ஒரு ஒழுங்கமைக்கப்பட்ட தரவு அல்லது தரவு சேமிப்பகத்தின் ஒரு வகையாகும். தரவுத்தளத்தை நிர்வகிக்க வழங்கப்படும் முக்கிய வசதிகளையும் இந்த DBMS உள்ளடக்கியது. தரவுத்தளம், DBMS மற்றும் அதனுடன் தொடர்புடைய பயன்பாடுகளின் மொத்தத் தொகையை தரவுத்தள அமைப்பு என்று குறிப்பிடலாம். பெரும்பாலும் \"தரவுத்தளம்\" என்ற சொல் DBMS, தரவுத்தள அமைப்பு அல்லது தரவுத்தளத்துடன் தொடர்புடைய பயன்பாடு ஆகியவற்றைக் குறிக்கப் பயன்படுத்தப்படுகிறது. தரவு சேமிப்பு மற்றும் மீட்டெடுப்பு பரவலாகக் காணப்படுவதற்கு முன்பு, அட்டவணை அட்டைகள் பரந்த அளவிலான பயன்பாடுகள் மற்றும் சூழல்களில் தரவு சேமிப்பிற்காகப் பயன்படுத்தப்பட்டன: வீடுகளில் சமையல் குறிப்புகள், ஷாப்பிங் பட்டியல்கள், தொடர்புத் தகவல்கள் மற்றும் பிற நிறுவனத் தரவுகளைப் பதிவு செய்து சேமிக்க; வணிகத்தில் விளக்கக்காட்சி குறிப்புகள், திட்ட ஆராய்ச்சி மற்றும் குறிப்புகள் மற்றும் தொடர்புத் தகவல்களைப் பதிவு செய்ய; பள்ளிகளில் ஃபிளாஷ் கார்டுகள் அல்லது பிற காட்சி உதவிகளாக; மற்றும் கல்வி ஆராய்ச்சியில் நூற்பட்டியல் மேற்கோள்கள் அல்லது குறிப்புகள் போன்ற தரவுகளை ஒரு அட்டை கோப்பில் வைத்திருக்க. தொழில்முறை புத்தக அட்டவணை உருவாக்குபவர்கள் 1980கள் மற்றும் 1990களில் அட்டவணை மென்பொருளால் மாற்றப்படும் வரை புத்தக அட்டவணைகளை உருவாக்குவதில் அட்டவணை அட்டைகளைப் பயன்படுத்தினர்."
+  },
+  {
+    "topic": "data_independence",
+    "prompt": "Explain Data independence.",
+    "response": "தரவு சுதந்திரம் என்பது ஒரு மையப்படுத்தப்பட்ட DBMS க்கு முக்கியமான தரவு வெளிப்படைத்தன்மையின் வகையாகும். தரவின் வரையறை மற்றும் அமைப்பில் செய்யப்படும் மாற்றங்களுக்கு பயனர் பயன்பாடுகளின் நோய் எதிர்ப்பு சக்தியைக் குறிக்கிறது. பயன்பாட்டு நிரல்கள், தரவு பிரதிநிதித்துவம் மற்றும் சேமிப்பகத்தின் விவரங்களுக்கு வெளிப்படுத்தப்படக்கூடாது. DBMS தரவின் சுருக்கமான பார்வையை வழங்குகிறது, இது அத்தகைய விவரங்களை மறைக்கிறது. தரவு சுதந்திரத்தில் இரண்டு வகைகள் உள்ளன: இயற்பியல் மற்றும் தர்க்கரீதியான தரவு சுதந்திரம்."
+  },
+  {
+    "topic": "primary_key",
+    "prompt": "Explain Primary key.",
+    "response": "தரவுத்தளங்களின் தொடர்பு மாதிரி அமைப்பில், முதன்மை விசை என்பது அட்டவணையில் உள்ள ஒவ்வொரு தனிப்பட்ட பதிவையும் நம்பகத்தன்மையுடன் அடையாளம் கண்டு வேறுபடுத்தக்கூடிய பண்புகளின் (பத்தி(கள்)) ஒரு நியமிக்கப்பட்ட தொகுப்பாகும். தரவுத்தளத்தை உருவாக்கியவர், அட்டவணையில் இருந்து ஏற்கனவே உள்ள தனித்துவமான பண்பு அல்லது பண்புகளின் கலவையை (இயற்கை விசை) அதன் முதன்மை விசையாகத் தேர்ந்தெடுக்கலாம், அல்லது இந்த நோக்கத்திற்காக மட்டுமே இருக்கும் ஒரு தனித்துவமான அடையாள எண்ணைக் கொண்ட ஒரு புதிய பண்பை உருவாக்கலாம் (மாற்று விசை). தேசிய அடையாள எண் பண்பு போன்ற ஒரு நபரின் பதிவுகளுக்கான தரவு அல்லது நிகழ்வு பதிவுகளுக்கான மிகத் துல்லியமான நேர முத்திரை பண்பு மற்றும் மிகத் துல்லியமான இருப்பிட பண்பு ஆகியவற்றின் கலவை போன்ற இயற்கை விசைகளின் எடுத்துக்காட்டுகள் பொருத்தமான முதன்மை விசைகளாக இருக்கலாம்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a primary key in the relational model of databases do?",
+          "options": [
+            "A) It ensures that every record has at least one attribute.",
+            "B) It uniquely identifies each record in a table without relying on another attribute.",
+            "C) It allows multiple records to share the same value.",
+            "D) It combines all records into a single entity."
+          ],
+          "answer": "B",
+          "translatedQ": "தரவுத்தளங்களின் தொடர்பு மாதிரியில் முதன்மை விசை என்ன செய்கிறது?"
+        },
+        {
+          "question": "Which of the following cannot serve as a primary key?",
+          "options": [
+            "A) A column containing a unique identifier.",
+            "B) An attribute that changes over time.",
+            "C) A combination of two distinct columns.",
+            "D) A constant value across all rows."
+          ],
+          "answer": "B",
+          "translatedQ": "பின்வருவனவற்றில் எது முதன்மைத் திறவுகோலாக இருக்க முடியாது?"
+        },
+        {
+          "question": "Natural keys in primary keys should ideally be:",
+          "options": [
+            "A) Derived from external sources.",
+            "B) Manually created by the developer.",
+            "C) Unique within the context of the table.",
+            "D) Always identical for every row."
+          ],
+          "answer": "C",
+          "translatedQ": "முதன்மைச் சுரங்களில் இயல்பான சுரங்கள் பின்வருமாறு இருக்க வேண்டும்:"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "A surrogate key is always more efficient than a natural key.",
+          "answer": "False",
+          "translatedQ": "ஒரு சாராக்கெட் கீ எப்போதும் ஒரு நேச்சுரல் கீயை விட திறமையானது."
+        },
+        {
+          "question": "Every table must have a primary key.",
+          "answer": "False",
+          "translatedQ": "ஒவ்வொரு அட்டவணைக்கும் ஒரு முதன்மை விசை இருக்க வேண்டும்."
+        },
+        {
+          "question": "The uniqueness of a natural key is guaranteed by default.",
+          "answer": "False",
+          "translatedQ": "இயற்கையான திறவுகோலின் தனித்துவம் இயல்பாகவே உத்தரவாதம் அளிக்கப்படுகிறது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "foreign_key",
+    "prompt": "Explain Foreign key.",
+    "response": "ஒரு வெளிநாட்டு விசை என்பது ஒரு அட்டவணையில் உள்ள பண்புகளின் தொகுப்பாகும், இது மற்றொரு அட்டவணையின் முதன்மை விசையைக் குறிக்கிறது, இந்த இரண்டு அட்டவணைகளையும் இணைக்கிறது. தொடர்புநிலை தரவுத்தளங்களின் சூழலில், ஒரு வெளிநாட்டு விசை ஒரு உள்ளடக்க சார்பு கட்டுப்பாட்டுக்கு உட்பட்டது, அதாவது ஒரு உறவு, R இல் உள்ள வெளிநாட்டு விசை பண்புகளைக் கொண்ட டப்பிள்கள் வேறு எந்த உறவிலும் (தனித்துவமாக இருக்க வேண்டிய அவசியமில்லை) இருக்க வேண்டும், S; மேலும் அந்த பண்புகள் S இல் ஒரு வேட்பாளர் விசையாகவும் இருக்க வேண்டும். வேறு வார்த்தைகளில் கூறுவதானால், ஒரு வெளிநாட்டு விசை என்பது ஒரு வேட்பாளர் விசையைக் குறிக்கும் பண்புகளின் தொகுப்பாகும். உதாரணமாக, TEAM எனப்படும் அட்டவணையில் MEMBER_NAME என்ற ஒரு பண்பு இருக்கலாம், இது PERSON அட்டவணையில் உள்ள PERSON_NAME என்ற வேட்பாளர் விசையைக் குறிக்கும் ஒரு வெளிநாட்டு விசை ஆகும். MEMBER_NAME ஒரு வெளிநாட்டு விசையாக இருப்பதால், TEAM இல் ஒரு உறுப்பினரின் பெயராக இருக்கும் எந்த மதிப்பும் PERSON அட்டவணையில் ஒரு நபரின் பெயராகவும் இருக்க வேண்டும்; வேறு வார்த்தைகளில் கூறுவதானால், TEAM இன் ஒவ்வொரு உறுப்பினரும் ஒரு நபராகவும் இருக்கிறார்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a foreign key refer to?",
+          "options": [
+            "A) A unique identifier within the same table",
+            "B) An attribute or combination of attributes from another table",
+            "C) Both B and C",
+            "D) None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "ஃபாரின் கீ எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Which of the following is true about the inclusion dependency constraint related to foreign keys?",
+          "options": [
+            "A) It ensures uniqueness across multiple relations",
+            "B) It restricts values to only existing entries in the referenced table",
+            "C) It requires all foreign key values to be present in both tables simultaneously",
+            "D) It allows for null values in the foreign key"
+          ],
+          "answer": "C",
+          "translatedQ": "ஃபாரின் கீ தொடர்பான இன்க்ளூஷன் டிபென்டன்சி கான்ஸ்ட்ரெயின்ட் பற்றி பின்வருவனவற்றில் எது உண்மை?"
+        },
+        {
+          "question": "In the context of TEAM and PERSON tables, what can we infer if TEAM has a MEMBER_NAME foreign key referring to PERSON_NAME?",
+          "options": [
+            "A) All members of TEAM are people",
+            "B) There is no relationship between TEAM and PERSON",
+            "C) Only some members of TEAM are people",
+            "D) The number of teams and persons is equal"
+          ],
+          "answer": "A",
+          "translatedQ": "TEAM மற்றும் PERSON அட்டவணைகளின் சூழலில், TEAM ஆனது PERSON_NAME ஐக் குறிப்பிடும் MEMBER_NAME வெளிநாட்டு திறவுகோலைக் கொண்டிருந்தால், நாம் என்ன ஊகிக்க முடியும்?"
+        },
+        {
+          "question": "How many types of constraints are mentioned in the given definition of foreign keys?",
+          "options": [
+            "A) One",
+            "B) Two",
+            "C) Three",
+            "D) Four"
+          ],
+          "answer": "B",
+          "translatedQ": "ஃபாரின் கீ-க்கான கொடுக்கப்பட்ட வரையறையில் எத்தனை வகையான கட்டுப்பாடுகள் குறிப்பிடப்பட்டுள்ளன?"
+        },
+        {
+          "question": "If a FOREIGN KEY in TABLE_A references a PRIMARY KEY in TABLE_B, what kind of constraint does this establish?",
+          "options": [
+            "A) Referential Integrity Constraint",
+            "B) Entity-Attribute-Value Mapping Constraint",
+            "C) Data Manipulation Language Constraint",
+            "D) Object-Oriented Programming Constraint"
+          ],
+          "answer": "A",
+          "translatedQ": "TABLE_A-இல் உள்ள ஒரு FOREIGN KEY, TABLE_B-இல் உள்ள PRIMARY KEY-ஐக் குறிப்பிட்டால், அது என்ன வகையான கட்டுப்பாட்டை நிறுவுகிறது?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it always necessary for a foreign key to reference a primary key?",
+          "answer": "False",
+          "translatedQ": "ஒரு வெளிநாட்டு விசை எப்போதும் ஒரு முதன்மை விசையைக் குறிக்க வேண்டுமா?"
+        },
+        {
+          "question": "Can a foreign key consist solely of non-candidate key attributes?",
+          "answer": "False",
+          "translatedQ": "ஒரு வெளிநாட்டு விசை, வேட்பாளர் அல்லாத விசை பண்புகளை மட்டுமே கொண்டிருக்க முடியுமா?"
+        },
+        {
+          "question": "Does the presence of a foreign key guarantee that there will be no NULL values in the referenced column?",
+          "answer": "True",
+          "translatedQ": "ஒரு வெளிநாட்டு விசை இருப்பதன் மூலம் குறிப்பிடப்பட்ட நெடுவரிசையில் பூஜ்ய மதிப்புகள் இருக்காது என்று உத்தரவாதம் அளிக்க முடியுமா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "candidate_key",
+    "prompt": "Explain Candidate key.",
+    "response": "ஒரு சார்புத் தரவுத்தளத்தின் வேட்பாளர் விசை அல்லது வெறுமனே விசை என்பது ஒவ்வொரு வரிசையிலும் தனித்துவமான மதிப்புகளின் கலவையைக் கொண்ட நெடுவரிசைகளின் எந்தவொரு தொகுப்பாகும், எந்தவொரு நெடுவரிசையையும் நீக்குவது மதிப்புகளின் நகல் சேர்க்கைகளை உருவாக்கக்கூடும் என்ற கூடுதல் கட்டுப்பாடுடன். ஒரு வேட்பாளர் விசை என்பது ஒரு குறைந்தபட்ச சூப்பர் விசை ஆகும், அதாவது, ஒரு சூப்பர் விசை சிறிய ஒன்றைக் கொண்டிருக்கவில்லை. எனவே, ஒரு தொடர்பு பல வேட்பாளர் விசைகளைக் கொண்டிருக்கலாம், ஒவ்வொன்றும் வெவ்வேறு எண்ணிக்கையிலான பண்புகளைக் கொண்டிருக்கும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What defines a candidate key?",
+          "options": [
+            "A. All non-prime attributes",
+            "B. A set of attributes where each value is unique for each row",
+            "C. The primary key only",
+            "D. A subset of all attributes"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரு வேட்பாளர் திறவுகோலை எது வரையறுக்கிறது?"
+        },
+        {
+          "question": "Which statement about a candidate key is true?",
+          "options": [
+            "A. It must be composed of more than two attributes.",
+            "B. Removing any attribute will result in duplicates.",
+            "C. There can be more than one candidate key for a relation.",
+            "D. A candidate key is always unique within a table."
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு வேட்பாளர் திறவுகோலைப் பற்றிய எந்தக் கூற்று சரியானது?"
+        },
+        {
+          "question": "In a relation with three attributes, how many candidate keys are possible?",
+          "options": [
+            "A. One",
+            "B. Two",
+            "C. Three",
+            "D. Four"
+          ],
+          "answer": "B",
+          "translatedQ": "மூன்று பண்புகளுடன் ஒரு உறவில், எத்தனை வேண்டிடப்படும் திறவுகோல்கள் சாத்தியமாகும்?"
+        },
+        {
+          "question": "Is it necessary to have a candidate key to ensure uniqueness of data in a relation?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "A",
+          "translatedQ": "ஒரு உறவில் தரவின் தனித்துவத்தை உறுதிப்படுத்த ஒரு வேட்பாளர் திறவுகோல் இருப்பது அவசியமா?"
+        },
+        {
+          "question": "Can a superkey without an attribute be considered a candidate key?",
+          "options": [
+            "A. Yes",
+            "B. No"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரு பண்புக்கூறு இல்லாத சூப்பர் கீயை ஒரு வேட்பாளர் கீயாகக் கருத முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "A candidate key is always a prime key.",
+          "answer": "False",
+          "translatedQ": "ஒரு வேட்பாளர் விசை எப்போதும் ஒரு முதன்மை விசை."
+        },
+        {
+          "question": "Removing any attribute from a candidate key cannot cause duplication.",
+          "answer": "True",
+          "translatedQ": "வேட்பாளர் சாவியிலிருந்து எந்தவொரு பண்பியல்பையும் நீக்குவது நகல் உருவாக்கத்தை ஏற்படுத்தாது."
+        },
+        {
+          "question": "There can be more than one candidate key for a relation.",
+          "answer": "True",
+          "translatedQ": "ஒரு தொடர்புக்கான ஒன்றுக்கு மேற்பட்ட வேட்பாளர் சாவிகள் இருக்கலாம்."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "super_key",
+    "prompt": "Explain Super key.",
+    "response": "தொடர்பு தரவு மாதிரியில், ஒரு சூப்பர் கீ என்பது ஒரு உறவின் ஒவ்வொரு டப்பிளையும் தனித்துவமாக அடையாளம் காணும் பண்புகளின் எந்தவொரு தொகுப்பாகும். சூப்பர் கீ மதிப்புகள் தனித்துவமானவை என்பதால், ஒரே சூப்பர் கீ மதிப்பைக் கொண்ட டப்பிள்கள் ஒரே மாதிரியான முக்கியமற்ற பண்புக்கூறு மதிப்புகளையும் கொண்டிருக்க வேண்டும். அதாவது, முக்கியமற்ற பண்புக்கூறுகள் சூப்பர் கீயை செயல்பாட்டு ரீதியாகச் சார்ந்துள்ளன. அனைத்து பண்புக்கூறுகளின் தொகுப்பும் எப்போதும் ஒரு சூப்பர் கீ ஆகும் (சாதாரண சூப்பர் கீ). ஒரு உறவில் உள்ள டப்பிள்கள் வரையறையின்படி தனித்துவமானவை, ஒவ்வொரு செயல்பாட்டிற்குப் பிறகும் நகல்கள் அகற்றப்படுகின்றன, எனவே அனைத்து பண்புக்கூறுகளின் தொகுப்பும் ஒவ்வொரு டப்பிளுக்கும் எப்போதும் தனித்துவமாக மதிப்பிடப்படுகிறது. ஒரு வேட்பாளர் கீ (அல்லது குறைந்தபட்ச சூப்பர் கீ) என்பது ஒரு பண்புக்கூறை அகற்றுவதன் மூலம் ஒரு எளிய சூப்பர் கீக்கு குறைக்க முடியாத ஒரு சூப்பர் கீ ஆகும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a superkey represent in the relational data model?",
+          "options": [
+            "A) Attributes",
+            "B) Data entries",
+            "C) Key attributes",
+            "D) Tuple identifiers"
+          ],
+          "answer": "D",
+          "translatedQ": "தொடர்பு தரவு மாதிரியில் சூப்பர் கீ எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Which of the following is always considered a superkey?",
+          "options": [
+            "A) A single attribute",
+            "B) Two or more attributes",
+            "C) A combination of two attributes",
+            "D) An empty set of attributes"
+          ],
+          "answer": "A",
+          "translatedQ": "பின்வருவனவற்றில் எது எப்போதும் சூப்பர் கீ என்று கருதப்படுகிறது?"
+        },
+        {
+          "question": "If a relation has a superkey consisting of three attributes, what is true about these attributes?",
+          "options": [
+            "A) They form a primary key.",
+            "B) They are not enough to identify a tuple.",
+            "C) They cannot be further simplified into another superkey.",
+            "D) They are not functionally dependent on each other."
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு தொடர்பு மூன்று பண்புகளைக் கொண்ட ஒரு சூப்பர் கீயைக் கொண்டிருந்தால், இந்த பண்புகளைப் பற்றி என்ன உண்மை?"
+        },
+        {
+          "question": "Can a relation's set of all attributes ever be considered a superkey?",
+          "options": [
+            "A) Yes",
+            "B) No"
+          ],
+          "answer": "A",
+          "translatedQ": "ஒரு உறவின் அனைத்து பண்புகளின் தொகுப்பையும் ஒரு சூப்பர் கீ என்று கருத முடியுமா?"
+        },
+        {
+          "question": "Is it possible to have a relation where duplicate tuples exist before operations like insertion, deletion, or update?",
+          "options": [
+            "A) Yes",
+            "B) No"
+          ],
+          "answer": "B",
+          "translatedQ": "உட்செலுத்துதல், நீக்குதல் அல்லது புதுப்பித்தல் போன்ற செயல்பாடுகளுக்கு முன்பு இரட்டைத் தொகுதிகள் இருக்கும் ஒரு உறவு இருக்க முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "All superkeys contain at least one non-key attribute.",
+          "answer": "True",
+          "translatedQ": "அனைத்து சூப்பர் கீக்களும் குறைந்தது ஒரு கீ அல்லாத பண்பியலைக் கொண்டிருக்கும்."
+        },
+        {
+          "question": "Every superkey can be derived from fewer attributes without losing its uniqueness.",
+          "answer": "False",
+          "translatedQ": "ஒவ்வொரு சூப்பர் கீயும் அதன் தனித்துவத்தை இழக்காமல் குறைவான பண்புகளிலிருந்து பெறப்படலாம்."
+        },
+        {
+          "question": "The total number of attributes in a relation is never a superkey.",
+          "answer": "True",
+          "translatedQ": "ஒரு உறவில் உள்ள மொத்த பண்புகளின் எண்ணிக்கை ஒருபோதும் ஒரு சூப்பர் கீ ஆக இருக்காது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "database_normalization",
+    "prompt": "Explain Database normalization.",
+    "response": "தரவுத்தள இயல்பாக்கம் என்பது ஒரு தொடர்பு தரவுத்தளத்தை இயல்புநிலை படிவங்களின் தொடருக்கு ஏற்ப கட்டமைக்கும் செயல்முறையாகும். இதன் நோக்கம் தரவு மிகைத்தன்மையை குறைத்து தரவு ஒருமைப்பாட்டை மேம்படுத்துவதாகும். இது முதன்முதலில் பிரிட்டிஷ் கணினி விஞ்ஞானி எட்கர் எஃப். காட் என்பவரால் அவரது தொடர்பு மாதிரிக்கு ஒரு பகுதியாக முன்மொழியப்பட்டது. இயல்பாக்கம் என்பது தரவுத்தளத்தின் நிரல்களை (பண்புகளை) மற்றும் அட்டவணைகளை (தொடர்புகளை) ஒழுங்கமைப்பதை உள்ளடக்கியது. இதன் மூலம் அவற்றின் சார்புகள் தரவுத்தள ஒருமைப்பாடு கட்டுப்பாடுகளால் சரியாக செயல்படுத்தப்படுவதை உறுதி செய்ய முடியும். இது சில முறையான விதிகளைப் பயன்படுத்துவதன் மூலம் நிறைவேற்றப்படுகிறது. இது ஒரு தொகுப்பு செயல்முறை (புதிய தரவுத்தள வடிவமைப்பை உருவாக்குதல்) அல்லது சிதைவு செயல்முறை (ஏற்கனவே உள்ள தரவுத்தள வடிவமைப்பை மேம்படுத்துதல்) மூலம் செய்யப்படுகிறது."
+  },
+  {
+    "topic": "first_normal_form",
+    "prompt": "Explain First normal form.",
+    "response": "முதல் இயல்பு நிலை (1NF) என்பது தரவுத்தள இயல்பாக்கத்தின் மிக அடிப்படையான நிலையாகும். இதை ஆங்கில கணினி விஞ்ஞானி எட்கர் எஃப். காட் என்பவர் வரையறுத்தார். இவர் தொடர்புநிலை தரவுத்தளத்தை கண்டுபிடித்தவர். ஒரு தொடர்பு (அல்லது SQL-ல் அட்டவணை) முதல் இயல்பு நிலையில் இருப்பதாகக் கூறப்படலாம், ஏனெனில் ஒவ்வொரு புலமும் அணுத்தன்மை கொண்டதாக இருக்க வேண்டும். அதாவது, அது ஒரு மதிப்பு அல்லது ஒரு நெஸ்டட் அட்டவணையை விட ஒரு தனி மதிப்பை மட்டுமே கொண்டிருக்க வேண்டும். வேறு வார்த்தைகளில் கூறுவதானால், எந்தவொரு பண்புக்கூறு களமும் (ஒரு குறிப்பிட்ட நெடுவரிசையில் அனுமதிக்கப்பட்ட மதிப்புகளின் தொகுப்பு) உறவுகளை உறுப்புகளாகக் கொண்டிருக்கவில்லை என்றால், ஒரு தொடர்பு முதல் இயல்பு நிலைக்கு இணங்குகிறது. நிலையான SQL உட்பட பெரும்பாலான தொடர்புநிலை தரவுத்தள மேலாண்மை அமைப்புகள் அட்டவணை-மதிப்பு நெடுவரிசைகளை உருவாக்குவதையோ அல்லது பயன்படுத்துவதையோ ஆதரிக்காது. இதன் பொருள் பெரும்பாலான தொடர்புநிலை தரவுத்தளங்கள் கட்டாயமாக முதல் இயல்பு நிலையில் இருக்கும். இல்லையெனில், 1NF-க்கு இயல்பாக்குதல் என்பது நெஸ்டட் உறவுகளை நீக்குவதை உள்ளடக்குகிறது. அவற்றை வெளிநாட்டு விசைகளைப் பயன்படுத்தி ஒன்றுக்கொன்று தொடர்புடைய தனித்தனி உறவுகளாக உடைக்க வேண்டும்.: 381 ஒரு படிநிலை அல்லது ஆவண-நோக்கு மாதிரியைப் பயன்படுத்தும் ஒரு தொடர்புநிலை அல்லாத (அல்லது NoSQL) தரவுத்தளத்திலிருந்து தரவை ஒரு தொடர்புநிலை தரவுத்தளத்திற்கு மாற்றும்போது இந்த செயல்முறை ஒரு தேவையான படியாகும்."
+  },
+  {
+    "topic": "second_normal_form",
+    "prompt": "Explain Second normal form.",
+    "response": "இரண்டாம் இயல்பு நிலை (2NF) என்பது ஆங்கில கணினி விஞ்ஞானி எட்கர் எஃப். காட் என்பவரால் வரையறுக்கப்பட்ட தரவுத்தள இயல்பாக்கத்தின் ஒரு நிலையாகும். ஒரு தொடர்பு (அல்லது SQL இல் ஒரு அட்டவணை) முதல் இயல்பு நிலையில் (1NF) இருந்தால் மற்றும் எந்தவொரு பகுதி சார்புகளையும் கொண்டிருக்கவில்லை என்றால், அது 2NF இல் உள்ளது. ஒரு பகுதி சார்பு என்பது ஒரு முதன்மை அல்லாத பண்பு (அதாவது, எந்தவொரு வேட்பாளர் திறவுகோலின் ஒரு பகுதியாக இல்லாத ஒன்று) ஒரு வேட்பாளர் திறவுகோலை உருவாக்கும் பண்புகளின் சரியான உட்கணத்தை மட்டுமே செயல்பாட்டு ரீதியாகச் சார்ந்திருக்கும்போது ஏற்படுகிறது. 2NF இல் இருக்க, ஒரு தொடர்பு ஒவ்வொரு முதன்மை அல்லாத பண்பும் ஒவ்வொரு வேட்பாளர் திறவுகோலின் முழு பண்புகளின் தொகுப்பைப் பொறுத்து இருக்க வேண்டும். உதாரணமாக, {நாடு, மாவட்டம்} என்ற கலப்பு திறவுகோலைக் கொண்ட ஒரு தொடர்பு, எந்தவொரு பண்பின் மதிப்புகளின் அர்த்தங்கள் அவை பொருந்தும் நாடு மற்றும் மாவட்டம் இரண்டையும் சார்ந்து இருக்கவில்லை என்றால், அது 2NF ஐ மீறும். ஒரு CountryLeader பண்பு ஒவ்வொரு நாட்டிற்கும் குறிப்பிட்ட தகவலை வழங்கும், ஆனால் ஒவ்வொரு மாவட்டத்திற்கும் குறிப்பிட்ட தகவலை வழங்காது, எனவே கலப்பு திறவுகோலின் பாதியை மட்டுமே சார்ந்து இருக்கும். இது பல குறைபாடுகளைக் கொண்டிருக்கும், எந்தவொரு தலைவரும் அவர்களின் நாட்டில் உள்ள ஒவ்வொரு மாவட்டத்திற்கும் தேவையற்ற முறையில் நகலெடுக்கப்படுவார் என்பது உட்பட."
+  },
+  {
+    "topic": "third_normal_form",
+    "prompt": "Explain Third normal form.",
+    "response": "மூன்றாம் இயல்பு நிலை (3NF) என்பது ஆங்கில கணினி விஞ்ஞானி எட்கர் எஃப். காட் என்பவரால் வரையறுக்கப்பட்ட தரவுத்தள இயல்புநிலையின் ஒரு நிலையாகும். ஒரு தொடர்பு (அல்லது அட்டவணை, SQL இல்) மூன்றாம் இயல்பு நிலையில் இருந்தால், அது இரண்டாம் இயல்பு நிலையில் இருந்தால் மட்டுமே அது மூன்றாம் இயல்பு நிலையில் இருக்கும். மேலும் அது முக்கியமற்ற சார்புகளைக் கொண்டிருக்கக்கூடாது, அதாவது எந்தவொரு முக்கியமற்ற பண்பும் மற்ற எந்தவொரு முக்கியமற்ற பண்பையும் செயல்பாட்டு ரீதியாகச் சார்ந்திருக்கக் கூடாது (அதாவது, அது பற்றிய ஒரு உண்மையை உள்ளடக்கியிருக்கக் கூடாது). வேறு வார்த்தைகளில் கூறுவதானால், ஒவ்வொரு முக்கியமற்ற பண்பும் ஒவ்வொரு வேட்பாளர் திறவுகோலை மட்டுமே சார்ந்திருக்க வேண்டும். வில்லியம் கென்ட் 3NF ஐ \"முக்கியமற்ற புலம் திறவுகோல், முழு திறவுகோல் மற்றும் திறவுகோலைத் தவிர வேறொன்றையும் வழங்கக்கூடாது\" என்ற கூற்றின் மூலம் சுருக்கமாகக் கூறினார். [citation needed] 3NF ஐ மீறுவதற்கான ஒரு உதாரணம், PatientID, DoctorID மற்றும் DoctorName ஆகிய பண்புகளைக் கொண்ட ஒரு Patient தொடர்பு ஆகும், இதில் DoctorName முதன்மையாக DoctorID ஐச் சார்ந்து இருக்கும், மேலும் திறவுகோலைச் சார்ந்து இருக்கும்போது, PatientID ஐச் சார்ந்து இருக்கும்போது மட்டுமே அது முக்கியமற்றதாக இருக்கும் (DoctorID இன் PatientID மீதான சார்பு வழியாக). இத்தகைய வடிவமைப்பு ஒரு மருத்துவரின் பெயர் அவர்களின் ஒவ்வொரு நோயாளிகளிடமும் தேவையற்ற முறையில் நகலெடுக்கப்படக் காரணமாகும். 3NF உடன் இணக்கமான ஒரு தரவுத்தளம் மருத்துவர்களின் பெயர்களை ஒரு தனி Doctor உறவில் சேமிக்கும், அதை Patient ஒரு வெளிநாட்டு திறவுகோல் மூலம் குறிப்பிட முடியும்."
+  },
+  {
+    "topic": "functional_dependency",
+    "prompt": "Explain Functional dependency.",
+    "response": "தொடர்புநிலை தரவுத்தளக் கோட்பாட்டில், ஒரு சார்பு சார்பு (Functional Dependency - FD) என்பது இரண்டு பண்புக்கூறு தொகுப்புகளுக்கு இடையிலான கட்டுப்பாடு ஆகும். இதில் ஒரு தொகுப்பில் உள்ள மதிப்புகள் (நிர்ணயிக்கும் தொகுதி) மற்ற தொகுப்பின் மதிப்புகளைத் (சார்பு தொகுதி) தீர்மானிக்கின்றன. ஒரு நிர்ணயிக்கும் தொகுதி X மற்றும் ஒரு சார்பு தொகுதி Y ஆகியவற்றுக்கு இடையேயான சார்பு சார்பு பின்வருமாறு விவரிக்கப்படலாம்: ஒரு தொடர்பு R மற்றும் பண்புக்கூறு தொகுதிகள் X, Y ⊆ {\\displaystyle \\subseteq } R கொடுக்கப்பட்டால், ஒவ்வொரு X மதிப்பும் சரியாக ஒரு Y மதிப்புடன் தொடர்புடையதாக இருந்தால், X ஆனது Y ஐச் சார்பாகத் தீர்மானிக்கிறது என்று கூறப்படுகிறது (X → Y என எழுதப்படுகிறது). அப்போது R ஆனது X → Y என்ற சார்பு சார்பை பூர்த்தி செய்கிறது என்று கூறப்படுகிறது. இதற்குச் சமமாக, Π X , Y R {\\displaystyle \\Pi _{X,Y}R} என்ற கணிப்பு ஒரு சார்பாகும், அதாவது Y என்பது X இன் சார்பாகும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a functional dependency represent in a relational database?",
+          "options": [
+            "a relationship between tables",
+            "a rule for data normalization",
+            "an operation performed on attributes",
+            "a constraint linking attributes"
+          ],
+          "answer": "a constraint linking attributes",
+          "translatedQ": "ஒரு சார்புநிலை தரவுத்தளத்தில் ஒரு செயல்பாடு சார்ந்த சார்புநிலை எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Given a relation R and attribute sets X, Y ⊆ R, what condition determines X → Y?",
+          "options": [
+            "Y being independent of X",
+            "each X value being uniquely determined by Y",
+            "no common elements between X and Y",
+            "all combinations of X and Y exist"
+          ],
+          "answer": "each X value being uniquely determined by Y",
+          "translatedQ": "ஒரு தொடர்பு R மற்றும் பண்புக்கூறு தொகுப்புகள் X, Y ⊆ R கொடுக்கப்பட்டால், X → Y என்பதை எந்த நிபந்தனை தீர்மானிக்கிறது?"
+        },
+        {
+          "question": "If X → Y in a relation R, which statement is true about the projection Π_X, Y R?",
+          "options": [
+            "Π_X, Y R is not a function",
+            "Π_X, Y R maps every element in R to at least one unique element",
+            "Π_X, Y R maps some elements in R to multiple elements",
+            "Π_X, Y R is a function"
+          ],
+          "answer": "Π_X, Y R is a function",
+          "translatedQ": "ஒரு தொடர்பு R-ல் X → Y என்றால், Π_X, Y R என்ற கணிதக் கூற்றைப் பற்றி எது உண்மை?"
+        },
+        {
+          "question": "Which statement correctly describes the definition of a functional dependency X → Y?",
+          "options": [
+            "X depends on Y",
+            "Y depends on X",
+            "X determines all values of Y",
+            "Y determines all values of X"
+          ],
+          "answer": "X determines all values of Y",
+          "translatedQ": "X → Y என்ற சார்பு சார்பின் வரையறையை எந்த கூற்று சரியாக விவரிக்கிறது?"
+        },
+        {
+          "question": "Does R satisfy the functional dependency X → Y if there exists an instance where a single X value corresponds to more than one Y value?",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "ஒரே X மதிப்பு ஒன்றுக்கும் மேற்பட்ட Y மதிப்புகளுக்கு ஒத்திருக்கும் ஒரு நிகழ்வு இருந்தால், R ஆனது X → Y என்ற சார்பு சார்பு சார்பை பூர்த்தி செய்யுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Functional dependencies always imply a direct mapping from X to Y.",
+          "answer": "True",
+          "translatedQ": "செயல்பாட்டு சார்புகள் எப்போதும் எக்ஸ்-லிருந்து ஒய்-க்கு நேரடி மேப்பிங்கை குறிக்கின்றன."
+        },
+        {
+          "question": "A functional dependency implies that X and Y should never share any common values.",
+          "answer": "False",
+          "translatedQ": "எக்ஸ் மற்றும் ஒய் எந்தவொரு பொதுவான மதிப்புகளையும் பகிர்ந்து கொள்ளக்கூடாது என்பதை ஒரு செயல்பாட்டு சார்பு குறிக்கிறது."
+        },
+        {
+          "question": "The term 'functional' refers to the process of determining relationships between attributes in a table.",
+          "answer": "True",
+          "translatedQ": "'செயல்பாடு' என்ற சொல் அட்டவணையில் உள்ள பண்புகளுக்கு இடையிலான தொடர்புகளைத் தீர்மானிக்கும் செயல்முறையைக் குறிக்கிறது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "transaction",
+    "prompt": "Explain Transaction in DBMS.",
+    "response": "தரவுத்தள பரிவர்த்தனை என்பது தரவுத்தள மேலாண்மை அமைப்புக்குள் (அல்லது அது போன்ற அமைப்புக்குள்) தரவுத்தளத்திற்கு எதிராக செய்யப்படும் ஒரு வேலையின் அலகு ஆகும். இது மற்ற பரிவர்த்தனைகளிலிருந்து சுயாதீனமாக ஒரு சீரான மற்றும் நம்பகமான முறையில் நடத்தப்படுகிறது. ஒரு பரிவர்த்தனை பொதுவாக தரவுத்தளத்தில் ஏற்படும் எந்தவொரு மாற்றத்தையும் குறிக்கிறது. தரவுத்தளச் சூழலில் பரிவர்த்தனைகள் இரண்டு முக்கிய நோக்கங்களைக் கொண்டுள்ளன: தரவுத்தள மேலாண்மை அமைப்பில், ஒரு பரிவர்த்தனை என்பது தர்க்கத்தின் அல்லது வேலையின் ஒரு அலகு ஆகும், சில நேரங்களில் பல செயல்பாடுகளால் ஆனது. தரவுத்தளத்தில் ஒரு நிலையான முறையில் செய்யப்படும் எந்தவொரு தர்க்கரீதியான கணக்கீடும் பரிவர்த்தனை என்று அழைக்கப்படுகிறது. ஒரு உதாரணம் ஒரு வங்கிக் கணக்கிலிருந்து மற்றொரு வங்கிக் கணக்கிற்கு பரிமாற்றம்: முழு பரிவர்த்தனைக்கும் ஒரு கணக்கிலிருந்து மாற்றப்பட வேண்டிய தொகையை கழித்து, அதே தொகையை மற்றொன்றுக்குச் சேர்க்க வேண்டும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does a database transaction represent?",
+          "options": [
+            "A] Any operation within a database",
+            "B] Multiple changes in a single database",
+            "C] A single logical operation in a database",
+            "D] None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "தரவுத்தள பரிவர்த்தனை எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Which purpose does a transaction serve in a database management system?",
+          "options": [
+            "A] To increase data redundancy",
+            "B] To enhance user experience",
+            "C] To reduce database complexity",
+            "D] Both B and C"
+          ],
+          "answer": "D",
+          "translatedQ": "தரவுத்தள மேலாண்மை அமைப்பில் ஒரு பரிவர்த்தனை எந்த நோக்கத்திற்காகப் பயன்படுகிறது?"
+        },
+        {
+          "question": "Inconsistent modes of logical calculations in databases are referred to as:",
+          "options": [
+            "A] Database inconsistencies",
+            "B] Transaction failures",
+            "C] Data corruption",
+            "D] None of the above"
+          ],
+          "answer": "A",
+          "translatedQ": "தரவுத்தளங்களில் உள்ள தர்க்கரீதியான கணக்கீடுகளின் முரண்பாடான முறைகள் எதைக் குறிக்கின்றன?"
+        },
+        {
+          "question": "A bank account transfer involves what type of transaction?",
+          "options": [
+            "A] Atomic transaction",
+            "B] Non-atomic transaction",
+            "C] Batch transaction",
+            "D] No transaction"
+          ],
+          "answer": "A",
+          "translatedQ": "வங்கி கணக்கு பரிமாற்றம் என்பது என்ன வகையான பரிமாற்றம்?"
+        },
+        {
+          "question": "What is an atomic transaction?",
+          "options": [
+            "A] A transaction that can be partially completed",
+            "B] A series of related updates",
+            "C] An update with zero or more actions grouped together",
+            "D] None of the above"
+          ],
+          "answer": "C",
+          "translatedQ": "அணு பரிவர்த்தனை என்றால் என்ன?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is it possible for a database to handle multiple concurrent transactions simultaneously?",
+          "answer": "True",
+          "translatedQ": "ஒரு தரவுத்தளம் ஒரே நேரத்தில் பல ஒரேநேர பரிவர்த்தனைகளைக் கையாள முடியுமா?"
+        },
+        {
+          "question": "Does every transaction require interaction with the database?",
+          "answer": "False",
+          "translatedQ": "ஒவ்வொரு பரிவர்த்தனைக்கும் தரவுத்தளத்துடன் தொடர்பு கொள்ள வேண்டுமா?"
+        },
+        {
+          "question": "Can transactions affect the entire database at once without breaking down into smaller parts?",
+          "answer": "True",
+          "translatedQ": "பரிவர்த்தனைகள் சிறிய பகுதிகளாகப் பிரிக்கப்படாமல் ஒரே நேரத்தில் முழு தரவுத்தளத்தையும் பாதிக்க முடியுமா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "acid_properties",
+    "prompt": "Explain ACID properties.",
+    "response": "கணினி அறிவியலில், ACID (அணுத்தன்மை, நிலைத்தன்மை, தனிமைப்படுத்தல், நீடித்து நிலைத்திருத்தல்) என்பது தரவு பரிவர்த்தனைகளின் பண்புகளின் தொகுப்பாகும். பிழைகள், மின்சாரத் தடங்கல்கள் மற்றும் பிற விபத்துகள் இருந்தபோதிலும் தரவு செல்லுபடியை உறுதி செய்வதற்காக இது வடிவமைக்கப்பட்டுள்ளது. உதாரணமாக, ஒரு வங்கிக் கணக்கிலிருந்து மற்றொரு வங்கிக் கணக்கிற்குப் பணம் பரிமாற்றம் செய்வது, ஒரு கணக்கிலிருந்து பணம் எடுப்பது மற்றும் மற்றொரு கணக்கிற்குப் பணம் செலுத்துவது போன்ற பல மாற்றங்களை உள்ளடக்கியது, இது ஒரு பரிவர்த்தனையாகும். 1983 ஆம் ஆண்டில், ஆண்ட்ரியாஸ் ராய்ட்டர் மற்றும் தியோ ஹார்டர் ஆகியோர் ACID என்ற சுருக்கெழுத்தை உருவாக்கினர். இதற்கு முன்னர் ஜிம் கிரே என்பவர் பரிவர்த்தனை கருத்தை விவரிக்கும்போது அணுத்தன்மை, நிலைத்தன்மை மற்றும் நீடித்து நிலைத்திருத்தல் ஆகியவற்றை பெயரிட்டார், ஆனால் தனிமைப்படுத்தலை அல்ல. இந்த நான்கு பண்புகளும் பரிவர்த்தனை முன்னுதாரணத்தின் முக்கிய உத்தரவாதங்களாகும், இது தரவுத்தள அமைப்புகளின் வளர்ச்சியின் பல அம்சங்களை பாதித்துள்ளது."
+  },
+  {
+    "topic": "concurrency_control",
+    "prompt": "Explain Concurrency control.",
+    "response": "தகவல் தொழில்நுட்பம் மற்றும் கணினி அறிவியலில், குறிப்பாக கணினி நிரலாக்கம், இயக்க முறைமைகள், பன்முறை செயலிகள் மற்றும் தரவுத்தளங்கள் போன்ற துறைகளில், ஒருங்கே இயங்கும் செயல்பாடுகளுக்கான சரியான முடிவுகள் உருவாக்கப்படுவதையும், அந்த முடிவுகள் கூடிய விரைவில் பெறப்படுவதையும் ஒருங்கே இயங்குதல் கட்டுப்பாடு உறுதி செய்கிறது. கணினி அமைப்புகள், மென்பொருள் மற்றும் வன்பொருள் ஆகிய இரண்டும் தொகுதிகள் அல்லது கூறுகளைக் கொண்டிருக்கின்றன. ஒவ்வொரு கூறுகளும் சரியாக இயங்குவதற்காக வடிவமைக்கப்பட்டுள்ளன, அதாவது சில நிலைத்தன்மை விதிகளுக்குக் கீழ்ப்படிவது அல்லது அவற்றை நிறைவேற்றுவது. ஒருங்கே இயங்கும் கூறுகள் செய்தி அனுப்புவதன் மூலமோ அல்லது அணுகப்பட்ட தரவைப் பகிர்வதன் மூலமோ (நினைவகத்தில் அல்லது சேமிப்பகத்தில்) தொடர்பு கொள்ளும்போது, ஒரு குறிப்பிட்ட கூறின் நிலைத்தன்மை மற்றொரு கூறால் மீறப்படலாம். ஒருங்கே இயங்குதல் கட்டுப்பாட்டின் பொதுவான பகுதி, ஒருங்கே இயங்கும் கூறுகளைப் பராமரிக்க விதிகள், முறைகள், வடிவமைப்பு வழிமுறைகள் மற்றும் கோட்பாடுகளை வழங்குகிறது. ஒருங்கே இயங்கும் கூறுகளின் நிலைத்தன்மையை பராமரிக்கவும், தொடர்பு கொள்ளும்போது முழு அமைப்பின் நிலைத்தன்மை மற்றும் சரியான தன்மையையும் பராமரிக்கவும் இது உதவுகிறது. ஒரு அமைப்பில் ஒருங்கே இயங்குதல் கட்டுப்பாட்டை அறிமுகப்படுத்துவது என்பது செயல்பாட்டு கட்டுப்பாடுகளைப் பயன்படுத்துவதாகும், இது பொதுவாக சில செயல்திறன் குறைப்புக்கு வழிவகுக்கிறது. செயல்பாட்டு நிலைத்தன்மை மற்றும் சரியான தன்மை ஆகியவை நியாயமான அளவை விட செயல்திறன் குறையாமல், முடிந்தவரை நல்ல செயல்திறனுடன் அடையப்பட வேண்டும். ஒருங்கே இயங்குதல் கட்டுப்பாடு ஒரு எளிய தொடர்ச்சியான வழிமுறையுடன் ஒப்பிடும்போது ஒரு ஒருங்கே இயங்கும் வழிமுறையில் குறிப்பிடத்தக்க கூடுதல் சிக்கல் மற்றும் மேல்நிலை தேவைப்படலாம்."
+  },
+  {
+    "topic": "indexing",
+    "prompt": "Explain Indexing in DBMS.",
+    "response": "ஒரு தரவுத்தள அட்டவணை என்பது ஒரு தரவு கட்டமைப்பாகும், இது அட்டவணை தரவு கட்டமைப்பைப் பராமரிக்க கூடுதல் எழுதுதல் மற்றும் சேமிப்பக இடத்தின் செலவில் தரவுத்தள அட்டவணையில் தரவு மீட்டெடுப்பு செயல்பாடுகளின் வேகத்தை மேம்படுத்துகிறது. ஒவ்வொரு முறையும் ஒரு தரவுத்தள அட்டவணையை அணுகும்போதும், ஒவ்வொரு வரிசையையும் தேட வேண்டிய அவசியமின்றி, தரவை விரைவாகக் கண்டறிய அட்டவணைகள் பயன்படுத்தப்படுகின்றன. ஒரு தரவுத்தள அட்டவணையின் ஒன்று அல்லது அதற்கு மேற்பட்ட நெடுவரிசைகளைப் பயன்படுத்தி அட்டவணைகள் உருவாக்கப்படலாம், இது விரைவான சீரற்ற தேடல்கள் மற்றும் வரிசைப்படுத்தப்பட்ட பதிவுகளின் திறமையான அணுகல் ஆகிய இரண்டிற்கும் அடிப்படையை வழங்குகிறது. ஒரு அட்டவணை, அட்டவணையில் இருந்து தேர்ந்தெடுக்கப்பட்ட தரவின் நெடுவரிசைகளின் நகலாகும், இது மிகவும் திறமையான தேடலை செயல்படுத்த வடிவமைக்கப்பட்டுள்ளது. ஒரு அட்டவணை பொதுவாக ஒரு \"விசை\" அல்லது அசல் வரிசையின் நேரடி இணைப்பை உள்ளடக்கியது, அதிலிருந்து அது நகலெடுக்கப்பட்டது, முழு வரிசையையும் திறமையாக மீட்டெடுக்க அனுமதிக்கிறது. சில தரவுத்தளங்கள், டெவலப்பர்கள் செயல்பாடுகள் அல்லது வெளிப்பாடுகளால் மாற்றப்பட்ட நெடுவரிசை மதிப்புகளில் அட்டவணைகளை உருவாக்க அனுமதிப்பதன் மூலம் அட்டவணைப்படுத்தலின் சக்தியை விரிவுபடுத்துகின்றன. உதாரணமாக, upper(last_name) இல் ஒரு அட்டவணை உருவாக்கப்படலாம், இது அட்டவணையில் last_name புலத்தின் பெரிய எழுத்து பதிப்புகளை மட்டுமே சேமிக்கும். மற்றொரு விருப்பம் சில நேரங்களில் ஆதரிக்கப்படுகிறது, அது பகுதி அட்டவணையைப் பயன்படுத்துவதாகும், அங்கு அட்டவணை உள்ளீடுகள் சில நிபந்தனை வெளிப்பாட்டை பூர்த்தி செய்யும் பதிவுகளுக்கு மட்டுமே உருவாக்கப்படுகின்றன. நெகிழ்வுத்தன்மையின் மற்றொரு அம்சம், பயனர் வரையறுத்த செயல்பாடுகள் மற்றும் உள்ளமைக்கப்பட்ட செயல்பாடுகளின் கலவையிலிருந்து உருவாக்கப்பட்ட வெளிப்பாடுகள் ஆகியவற்றில் அட்டவணைப்படுத்தலை அனுமதிப்பதாகும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does an index do?",
+          "options": [
+            "A) Increases memory usage",
+            "B) Speeds up data retrieval",
+            "C) Decreases storage capacity",
+            "D) Encrypts data"
+          ],
+          "answer": "B",
+          "translatedQ": "ஒரு சுட்டி என்ன செய்கிறது?"
+        },
+        {
+          "question": "How many columns can be indexed simultaneously?",
+          "options": [
+            "A) One column",
+            "B) Two columns",
+            "C) Three columns",
+            "D) Multiple columns"
+          ],
+          "answer": "D",
+          "translatedQ": "எத்தனை நிரல்களை ஒரே நேரத்தில் அட்டவணைப்படுத்த முடியும்?"
+        },
+        {
+          "question": "Can you create an index on multiple tables?",
+          "options": [
+            "A) Yes, but it's complex",
+            "B) No",
+            "C) Yes, with proper design",
+            "D) Sometimes yes, depending on DBMS support"
+          ],
+          "answer": "C",
+          "translatedQ": "பல அட்டவணைகளில் நீங்கள் ஒரு அட்டவணையை உருவாக்க முடியுமா?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Indexes always improve query performance.",
+          "answer": "False",
+          "translatedQ": "குறியீடுகள் எப்போதும் வினவல் செயல்திறனை மேம்படுத்துகின்றன."
+        },
+        {
+          "question": "Partial indexes reduce storage space needed for indices.",
+          "answer": "True",
+          "translatedQ": "பகுதி குறியீடுகள் குறியீடுகளுக்குத் தேவையான சேமிப்பக இடத்தைக் குறைக்கின்றன."
+        },
+        {
+          "question": "User-defined functions cannot be used to create indexes.",
+          "answer": "False",
+          "translatedQ": "பயனர் வரையறுத்த செயல்பாடுகளைக் கொண்டு அட்டவணைகளை உருவாக்க முடியாது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "relational_model",
+    "prompt": "Explain Relational model.",
+    "response": "தொடர்பு மாதிரி (Relational Model - RM) என்பது தரவுகளை நிர்வகிப்பதற்கான ஒரு அணுகுமுறை ஆகும். இது முதல்-வரிசை முகாந்திர தர்க்கத்துடன் (first-order predicate logic) ஒத்துப்போகும் ஒரு கட்டமைப்பு மற்றும் மொழியைப் பயன்படுத்துகிறது. இந்த முகாந்திர தர்க்கம் முதன்முதலில் 1969 ஆம் ஆண்டில் ஆங்கில கணினி விஞ்ஞானி எட்கர் எஃப். காட் என்பவரால் விவரிக்கப்பட்டது. இதில் அனைத்து தரவுகளும் தொடர்புகளாக தொகுக்கப்பட்ட துணுக்குகளின் (tuples) அடிப்படையில் குறிப்பிடப்படுகின்றன. தொடர்பு மாதிரியின் அடிப்படையில் ஒழுங்கமைக்கப்பட்ட தரவுத்தளம் ஒரு தொடர்பு தரவுத்தளம் ஆகும். தொடர்பு மாதிரியின் நோக்கம் தரவு மற்றும் வினவல்களைக் குறிப்பிடுவதற்கான ஒரு அறிவிப்பு முறையை வழங்குவதாகும்: பயனர்கள் தரவுத்தளம் என்ன தகவலைக் கொண்டுள்ளது மற்றும் அதிலிருந்து அவர்கள் என்ன தகவலை விரும்புகிறார்கள் என்பதை நேரடியாகக் கூறுகிறார்கள், மேலும் தரவு சேமிப்பிற்கான தரவு கட்டமைப்புகள் மற்றும் வினவல்களுக்கு பதிலளிப்பதற்கான மீட்டெடுப்பு நடைமுறைகளை விவரிப்பதை தரவுத்தள மேலாண்மை அமைப்பு மென்பொருள் கவனித்துக் கொள்ள அனுமதிக்கிறது.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What was the year when the relational model was first described?",
+          "options": [
+            "1970",
+            "1980",
+            "1969",
+            "1950"
+          ],
+          "answer": "1969",
+          "translatedQ": "தொடர்பு மாதிரி முதன்முதலில் விவரிக்கப்பட்ட ஆண்டு எது?"
+        },
+        {
+          "question": "Who is credited as the inventor of the relational model?",
+          "options": [
+            "Edgar F. Codd",
+            "Noah Webster",
+            "Ada Lovelace",
+            "Charles Babbage"
+          ],
+          "answer": "Edgar F. Codd",
+          "translatedQ": "தொடர்பு மாதிரி வடிவமைப்பை உருவாக்கியவர் யார்?"
+        },
+        {
+          "question": "What does the term 'declarative method' refer to in the context of databases?",
+          "options": [
+            "Methodology for defining algorithms",
+            "Methodology for describing data structures",
+            "Methodology for executing queries",
+            "Methodology for manipulating objects"
+          ],
+          "answer": "Methodology for describing data structures",
+          "translatedQ": "தரவுத்தளங்களின் சூழலில் 'உரைமுறை' என்ற சொல் எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "Which type of database organization uses the relational model?",
+          "options": [
+            "Hierarchical Database",
+            "Network Database",
+            "Relational Database",
+            "Object-oriented Database"
+          ],
+          "answer": "Relational Database",
+          "translatedQ": "எந்த வகையான தரவுத்தள அமைப்பு தொடர்பு மாதிரியைப் பயன்படுத்துகிறது?"
+        },
+        {
+          "question": "What does the purpose of the relational model aim to achieve?",
+          "options": [
+            "Optimize query execution speed",
+            "Reduce data redundancy",
+            "Ensure data consistency across multiple systems",
+            "All of the above"
+          ],
+          "answer": "All of the above",
+          "translatedQ": "தொடர்பு மாதிரி எதை அடைய முயல்கிறது?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the relational model allow direct user input for specifying data and queries without any processing?",
+          "answer": "False",
+          "translatedQ": "எந்தவிதமான செயலாக்கமும் இல்லாமல் தரவு மற்றும் வினவல்களைக் குறிப்பிடுவதற்கு, தொடர்பு மாதிரி நேரடி பயனர் உள்ளீட்டை அனுமதிக்கிறதா?"
+        },
+        {
+          "question": "Can the relational model ensure the security of sensitive data within the database?",
+          "answer": "True",
+          "translatedQ": "டேட்டாபேஸ்ல இருக்கிற முக்கியமான டேட்டாவ ரிலேஷனல் மாடல் பாதுகாப்பா இருக்குமா?"
+        },
+        {
+          "question": "Is the relational model compatible with other types of data models?",
+          "answer": "True",
+          "translatedQ": "தொடர்பு மாதிரி மற்ற தரவு மாதிரிகளுடன் இணக்கமாக உள்ளதா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "osi_model",
+    "prompt": "Explain OSI model.",
+    "response": "திறந்த அமைப்புகள் ஒன்றோடொன்று இணைத்தல் (Open Systems Interconnection (OSI)) என்பது தரநிலைகளை ஒன்றோடொன்று இணைப்பதற்கான ஒரு பொதுவான அடிப்படையை வழங்கும் ஒரு தரநிலை மாதிரி ஆகும். OSI தரநிலைகளில், ஒரு தகவல் தொடர்பு அமைப்பின் கூறுகள் ஏழு சுருக்க அடுக்குகளாக வேறுபடுத்தப்படுகின்றன: இயற்பியல், தரவு இணைப்பு, வலைப்பின்னல், போக்குவரத்து, அமர்வு, காட்சிப்படுத்தல் மற்றும் பயன்பாடு.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the term 'Open Systems Interconnection' refer to?",
+          "options": [
+            "A) A standard for internet communication",
+            "B) A physical layer component in an OSI model",
+            "C) A type of data encryption protocol",
+            "D) The ISO's approach to standardizing network protocols"
+          ],
+          "answer": "D",
+          "translatedQ": "'திறந்த அமைப்புகளின் ஒன்றிணைப்பு' என்ற சொல் எதைக் குறிக்கிறது?"
+        },
+        {
+          "question": "How many layers does the OSI model consist of?",
+          "options": [
+            "A) 6",
+            "B) 7",
+            "C) 8",
+            "D) 9"
+          ],
+          "answer": "B",
+          "translatedQ": "ஓஎஸ்ஐ மாடலில் எத்தனை அடுக்குகள் உள்ளன?"
+        },
+        {
+          "question": "Which layer of the OSI model deals with the conversion of information into a format suitable for transmission over a communications channel?",
+          "options": [
+            "A) Application Layer",
+            "B) Session Layer",
+            "C) Presentation Layer",
+            "D) Transport Layer"
+          ],
+          "answer": "C",
+          "translatedQ": "தகவல் பரிமாற்றத்திற்கான ஒரு அலைவரிசையில் தகவல்களை ஏற்ற வடிவமாக மாற்றுவது எங்கு நடைபெறுகிறது?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Does the OSI model include a session layer?",
+          "answer": "True",
+          "translatedQ": "ஓஎஸ்ஐ மாடலில் ஒரு அமர்வு அடுக்கு உள்ளதா?"
+        },
+        {
+          "question": "Is the Data Link layer part of the OSI model?",
+          "answer": "True",
+          "translatedQ": "தரவு இணைப்பு அடுக்கு என்பது ஒஎஸ்ஐ மாடலின் ஒரு பகுதியா?"
+        },
+        {
+          "question": "In which layer would you find the concept of IP addresses?",
+          "answer": "True",
+          "translatedQ": "ஐபி முகவரிகளின் கருத்தை நீங்கள் எந்த அடுக்கில் காணலாம்?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "tcp/ip_model",
+    "prompt": "Explain TCP/IP model.",
+    "response": "இணைய நெறிமுறைத் தொகுப்பு (Internet Protocol Suite) என்பது இணையம் மற்றும் இணையம் போன்ற கணினி வலையமைப்புகளில் பயன்படும் தகவல் தொடர்பு நெறிமுறைகளை, அவற்றின் செயல்பாட்டு அளவுகோல்களின்படி ஒழுங்குபடுத்தும் ஒரு கட்டமைப்பு ஆகும். இந்தத் தொகுப்பின் அடிப்படை நெறிமுறைகள் பரிமாற்றக் கட்டுப்பாட்டு நெறிமுறை (Transmission Control Protocol - TCP), பயனர் தரவுத் தொகுப்பு நெறிமுறை (User Datagram Protocol - UDP), மற்றும் இணைய நெறிமுறை (Internet Protocol - IP) ஆகும். இந்த வலையமைப்பு மாதிரியின் முந்தைய பதிப்புகள் அமெரிக்க பாதுகாப்புத் துறையின் (United States Department of Defense) பாதுகாப்பு மேம்பட்ட ஆராய்ச்சி திட்ட முகமையால் (Defense Advanced Research Projects Agency - DARPA) நிதி உதவி பெற்றதால், பாதுகாப்புத் துறை இணையக் கட்டமைப்பு மாதிரி (Department of Defense (DoD) Internet Architecture Model) என்று அழைக்கப்பட்டன. இணைய நெறிமுறைத் தொகுப்பு, தரவு எவ்வாறு பொதி செய்யப்பட வேண்டும், முகவரியிடப்பட வேண்டும், அனுப்பப்பட வேண்டும், வழிநடத்தப்பட வேண்டும் மற்றும் பெறப்பட வேண்டும் என்பதை வரையறுக்கும் இறுதி முதல் இறுதி வரையிலான தரவுத் தகவல்தொடர்புகளை வழங்குகிறது. இந்தச் செயல்பாடு நான்கு சுருக்க அடுக்குகளாக ஒழுங்கமைக்கப்பட்டுள்ளது, இது ஒவ்வொரு நெறிமுறையின் வலையமைப்பின் நோக்கத்தின்படி அனைத்து தொடர்புடைய நெறிமுறைகளையும் வகைப்படுத்துகிறது. ஒரு குறிப்பிட்ட பயன்பாட்டிற்கான அடுக்குகளின் ஒரு செயலாக்கம் ஒரு நெறிமுறை அடுக்கை உருவாக்குகிறது. கீழிருந்து மேலாக, அடுக்குகளாக இருப்பது இணைப்பு அடுக்கு (link layer), இது ஒரு ஒற்றை நெட்வொர்க் பிரிவுக்குள் இருக்கும் தரவுக்கான தகவல் தொடர்பு முறைகளைக் கொண்டுள்ளது (இணைப்பு); இணைய அடுக்கு (internet layer), இது சுயாதீன நெட்வொர்க்குகளுக்கு இடையே இணையப் பணியை வழங்குகிறது; போக்குவரத்து அடுக்கு (transport layer), இது ஹோஸ்டிலிருந்து ஹோஸ்டுக்கு தகவல் தொடர்பைக் கையாள்கிறது; மற்றும் பயன்பாட்டு அடுக்கு (application layer), இது பயன்பாடுகளுக்கான செயல்முறையிலிருந்து செயல்முறைக்கு தரவு பரிமாற்றத்தை வழங்குகிறது."
+  },
+  {
+    "topic": "ip_address",
+    "prompt": "Explain IP address.",
+    "response": "இணைய நெறிமுறை முகவரி (IP முகவரி) என்பது 192.0.2.1 அல்லது 2001:db8::42 போன்ற ஒரு எண் குறியீடு ஆகும். இது இணைய நெறிமுறையைப் பயன்படுத்தி ஒரு கணினி வலையமைப்பில் இணைக்கப்பட்டிருக்கும் ஒரு சாதனத்திற்கு ஒதுக்கப்படுகிறது. இணைய நெறிமுறை முகவரிகள் இரண்டு முக்கிய செயல்பாடுகளைச் செய்கின்றன: வலையமைப்பு இடைமுக அடையாளங்காட்டி மற்றும் இருப்பிட முகவரி. இணைய நெறிமுறை பதிப்பு 4 (IPv4) என்பது IP முகவரிக்கான முதல் தனித்தனி விவரக்குறிப்பாகும், மேலும் இது 1983 முதல் பயன்பாட்டில் உள்ளது. IPv4 முகவரிகள் 32-பிட் எண்ணாக வரையறுக்கப்பட்டுள்ளன, பின்னர் இணையம் வளர்ந்ததால் போதுமான முகவரிகளை வழங்க இது மிகவும் சிறியதாகிவிட்டது, இது 2010 களில் IPv4 முகவரி தீர்ந்து போனது. அதன் நியமிக்கப்பட்ட வாரிசான IPv6, IP முகவரிக்கான 128 பிட்களைப் பயன்படுத்துகிறது, இது ஒரு பெரிய முகவரி இடத்தை அளிக்கிறது. IPv6 பயன்பாடு 2000 களின் நடுப்பகுதியில் இருந்து நடந்து வந்தாலும், IPv4 மற்றும் IPv6 இரண்டும் 2025 வரை பக்கவாட்டில் பயன்படுத்தப்படுகின்றன.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does an Internet Protocol address consist of?",
+          "options": [
+            "Binary digits",
+            "Hexadecimal numbers",
+            "Decimal numerals",
+            "Octal numerals"
+          ],
+          "answer": "Decimal numerals",
+          "translatedQ": "இணைய நெறிமுறை முகவரி எதைக் கொண்டுள்ளது?"
+        },
+        {
+          "question": "Which of the following is NOT true about IP addresses?",
+          "options": [
+            "IP addresses can be reused if they run out",
+            "IP addresses identify devices uniquely",
+            "IP addresses are assigned by local networks",
+            "IP addresses help locate hosts on the network"
+          ],
+          "answer": "IP addresses can be reused if they run out",
+          "translatedQ": "பின்வருவனவற்றில் எது ஐபி முகவரிகள் பற்றி உண்மையல்ல?"
+        },
+        {
+          "question": "What did IPv4 become too small for after its initial use?",
+          "options": [
+            "Too big",
+            "Not enough",
+            "Just right",
+            "Still working fine"
+          ],
+          "answer": "Too big",
+          "translatedQ": "ஐபிவி4 அதன் ஆரம்ப பயன்பாட்டிற்குப் பிறகு எதற்கு மிகவும் சிறியதாக மாறியது?"
+        },
+        {
+          "question": "In what year did IPv6 deployment start?",
+          "options": [
+            "1990",
+            "2000",
+            "2010",
+            "2020"
+          ],
+          "answer": "2000",
+          "translatedQ": "IPv6 பயன்பாடு எந்த ஆண்டு தொடங்கியது?"
+        },
+        {
+          "question": "How many bits do IPv4 addresses originally use?",
+          "options": [
+            "32 bits",
+            "64 bits",
+            "128 bits",
+            "256 bits"
+          ],
+          "answer": "32 bits",
+          "translatedQ": "ஐபிவி4 முகவரிகள் முதலில் எத்தனை பிட்களைப் பயன்படுத்தின?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Is IPv6 designed specifically to replace IPv4?",
+          "answer": "True",
+          "translatedQ": "ஐபிவி6 ஐபிவி4 ஐ மாற்றுவதற்காகவே வடிவமைக்கப்பட்டதா?"
+        },
+        {
+          "question": "Can IP addresses be assigned without running out of them?",
+          "answer": "False",
+          "translatedQ": "ஐபி முகவரிகள் தீர்ந்து போகாமல் ஒதுக்க முடியுமா?"
+        },
+        {
+          "question": "Does IPv6 allow more unique addresses than IPv4?",
+          "answer": "True",
+          "translatedQ": "ஐபிவி6 ஐபிவி4ஐ விட அதிக தனித்துவமான முகவரிகளை அனுமதிக்கிறதா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "dns",
+    "prompt": "Explain DNS.",
+    "response": "டொமைன் பெயர் அமைப்பு (DNS) என்பது ஒரு படிநிலை மற்றும் பரவலாக்கப்பட்ட பெயர் சேவையாகும். இது இணையம் அல்லது பிற இணைய நெறிமுறை (IP) நெட்வொர்க்குகளில் உள்ள கணினிகள், சேவைகள் மற்றும் பிற ஆதாரங்களுக்கான பெயரிடும் முறையை வழங்குகிறது. இது தொடர்புடைய ஒவ்வொரு நிறுவனத்திற்கும் ஒதுக்கப்பட்ட டொமைன் பெயர்களுடன் (அடையாள சரங்கள்) பல்வேறு தகவல்களை தொடர்புபடுத்துகிறது. மிக முக்கியமாக, இது எளிதில் நினைவில் கொள்ளக்கூடிய டொமைன் பெயர்களை, கணினி சேவைகள் மற்றும் சாதனங்களைக் கண்டறிந்து அடையாளம் காண தேவையான எண் IP முகவரிகளாக மாற்றுகிறது. டொமைன் பெயர் அமைப்பு 1985 முதல் இணையத்தின் செயல்பாட்டின் ஒரு முக்கிய அங்கமாக இருந்து வருகிறது. டொமைன் பெயர் அமைப்பு, ஒவ்வொரு டொமைனுக்கும் அதிகாரப்பூர்வ பெயர் சேவையகங்களை நியமிப்பதன் மூலம் டொமைன் பெயர்களை ஒதுக்குவதையும், அந்த பெயர்களை இணைய ஆதாரங்களுக்கு மேப்பிங் செய்வதையும் பிரதிநிதித்துவப்படுத்துகிறது. நெட்வொர்க் நிர்வாகிகள், தங்களுக்கு ஒதுக்கப்பட்ட பெயர் இடத்தின் துணை டொமைன்களின் மீதுள்ள அதிகாரத்தை மற்ற பெயர் சேவையகங்களுக்கு மாற்றலாம். இந்த பொறிமுறையானது பரவலாக்கப்பட்ட மற்றும் பிழை-தாங்கும் சேவையை வழங்குகிறது, மேலும் இது ஒரு பெரிய மைய தரவுத்தளத்தைத் தவிர்ப்பதற்காக வடிவமைக்கப்பட்டது. கூடுதலாக, DNS அதன் மையத்தில் உள்ள தரவுத்தள சேவையின் தொழில்நுட்ப செயல்பாட்டை குறிப்பிடுகிறது. இது DNS நெறிமுறையை வரையறுக்கிறது, இது இணைய நெறிமுறை தொகுப்பின் ஒரு பகுதியாக DNS இல் பயன்படுத்தப்படும் தரவு கட்டமைப்புகள் மற்றும் தரவு தொடர்பு பரிமாற்றங்களின் விரிவான விவரக்குறிப்பாகும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does the Domain Name System (DNS) provide?",
+          "options": [
+            "A) A centralized repository for all internet resources",
+            "B) An identification string for computers",
+            "C) A distributed and fault-tolerant name service",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "டொமைன் பெயர் அமைப்பு (டிஎன்எஸ்) என்ன வழங்குகிறது?"
+        },
+        {
+          "question": "When translating a domain name into an IP address, what role does the DNS play?",
+          "options": [
+            "A) Assigns IP addresses to users",
+            "B) Converts human-readable names into binary code",
+            "C) Manages the allocation of domains globally",
+            "D) Provides a map from names to numbers"
+          ],
+          "answer": "D",
+          "translatedQ": "ஒரு டொமைன் பெயரை ஐபி முகவரியாக மாற்றும்போது, டிஎன்எஸ் என்ன பங்கு வகிக்கிறது?"
+        },
+        {
+          "question": "Who typically manages the delegation of authority over subdomains within a domain?",
+          "options": [
+            "A) Individual users",
+            "B) Local governments",
+            "C) Network administrators",
+            "D) International organizations"
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு களத்தின் கீழ் உள்ள துணை களங்களின் மீது அதிகாரப் பிரதிநிதித்துவத்தை பொதுவாக யார் நிர்வகிக்கிறார்கள்?"
+        },
+        {
+          "question": "Which statement accurately describes the purpose of the DNS protocol?",
+          "options": [
+            "A) To establish a direct connection between two computers",
+            "B) To convert domain names to numerical IP addresses",
+            "C) To ensure the security of user data",
+            "D) To control network traffic patterns"
+          ],
+          "answer": "B",
+          "translatedQ": "பின்வரும் கூற்றுகளில் எது டிஎன்எஸ் நெறிமுறையின் நோக்கத்தை துல்லியமாக விவரிக்கிறது?"
+        },
+        {
+          "question": "How does the DNS achieve fault tolerance?",
+          "options": [
+            "A) By having multiple central databases",
+            "B) Through decentralized name server architectures",
+            "C) By limiting access to authorized systems only",
+            "D) None of the above"
+          ],
+          "answer": "B",
+          "translatedQ": "டிஎன்எஸ் எவ்வாறு பிழை சகிப்புத்தன்மையை அடைகிறது?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "The DNS ensures that every website can be accessed using a unique domain name.",
+          "answer": "True",
+          "translatedQ": "ஒவ்வொரு வலைத்தளத்தையும் ஒரு தனித்துவமான டொமைன் பெயரைப் பயன்படுத்தி அணுக முடியும் என்பதை டிஎன்எஸ் உறுதி செய்கிறது."
+        },
+        {
+          "question": "Domain names cannot be translated into IP addresses.",
+          "answer": "False",
+          "translatedQ": "டொமைன் பெயர்களை ஐபி முகவரிகளாக மாற்ற முடியாது."
+        },
+        {
+          "question": "Network administrators do not manage any delegated authority over subdomains.",
+          "answer": "False",
+          "translatedQ": "வலைப்பின்னல் நிர்வாகிகள் துணை களங்கள் மீது எந்தவொரு ஒப்படைக்கப்பட்ட அதிகாரத்தையும் நிர்வகிப்பதில்லை."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "http_protocol",
+    "prompt": "Explain HTTP protocol.",
+    "response": "HTTP (Hypertext Transfer Protocol) என்பது பரவலாக்கப்பட்ட, கூட்டு, அதி ஊடகத் தகவல் அமைப்புகளுக்கான இணைய நெறிமுறைத் தொகுப்பில் உள்ள ஒரு பயன்பாட்டு அடுக்கு நெறிமுறையாகும். HTTP என்பது வேர்ல்டு வைடு வெப் தரவுத் தொடர்புகளின் அடித்தளமாகும், இதில் ஹைபர்டெக்ஸ்ட் ஆவணங்கள் பயனர்கள் எளிதாக அணுகக்கூடிய பிற ஆதாரங்களுக்கான ஹைபர்டெக்ஸ்ட்களை உள்ளடக்கியிருக்கும், உதாரணமாக மவுஸ் கிளிக் செய்வதன் மூலம் அல்லது வலை உலாவியில் திரையைத் தட்டுவதன் மூலம். HTTP என்பது கிளையன்ட்-சர்வர் மாதிரியில் உள்ள ஒரு கோரிக்கை-பதிலளிப்பு நெறிமுறையாகும். ஒரு பரிவர்த்தனை கிளையன்ட் சேவையகத்திற்கு ஒரு கோரிக்கையைச் சமர்ப்பிப்பதில் தொடங்குகிறது, சேவையகம் கோரிக்கையை பூர்த்தி செய்ய முயற்சிக்கிறது மற்றும் கோரிக்கையின் முடிவை விவரிக்கும் ஒரு பதிலை கிளையண்டிற்குத் திருப்பி அனுப்புகிறது, மேலும் HTML ஆவணம் அல்லது பிற உள்ளடக்கத்தைப் போன்ற கோரப்பட்ட ஆதாரத்தையும் விருப்பமாக கொண்டிருக்கும்."
+  },
+  {
+    "topic": "algorithm",
+    "prompt": "Explain Algorithm.",
+    "response": "கணிதம் மற்றும் கணினி அறிவியலில், ஒரு வழிமுறை (/ˈælɡərɪðəm/ ⓘ) என்பது கணித ரீதியாக கடுமையான அறிவுறுத்தல்களின் ஒரு வரையறுக்கப்பட்ட வரிசையாகும், இது பொதுவாக ஒரு குறிப்பிட்ட சிக்கல்களைத் தீர்க்க அல்லது ஒரு கணக்கீட்டைச் செய்யப் பயன்படுகிறது. வழிமுறைகள் கணக்கீடுகள் மற்றும் தரவு செயலாக்கத்தை மேற்கொள்வதற்கான விவரக்குறிப்புகளாகப் பயன்படுத்தப்படுகின்றன. மிகவும் மேம்பட்ட வழிமுறைகள் நிபந்தனைகளைப் பயன்படுத்தி பல்வேறு வழிகளில் நிரல் இயக்கத்தை திசை திருப்பலாம் (தானியங்கி முடிவெடுக்கும் முறை என்று குறிப்பிடப்படுகிறது) மற்றும் சரியான அனுமானங்களை (தானியங்கி பகுத்தறிவு என்று குறிப்பிடப்படுகிறது) பெறலாம். இதற்கு மாறாக, ஒரு ஹியூரிஸ்டிக் என்பது நன்கு வரையறுக்கப்பட்ட சரியான அல்லது உகந்த முடிவுகள் இல்லாத சிக்கல்களைத் தீர்ப்பதற்கான ஒரு அணுகுமுறையாகும். உதாரணமாக, சமூக ஊடக பரிந்துரை அமைப்புகள் பொதுவாக \"வழிமுறைகள்\" என்று அழைக்கப்பட்டாலும், அவை உண்மையில் ஹியூரிஸ்டிக்ஸ் மீது நம்பியுள்ளன, ஏனெனில் உண்மையில் \"சரியான\" பரிந்துரை எதுவும் இல்லை.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What distinguishes an algorithm from a heuristic?",
+          "options": [
+            "A) An algorithm always has a correct solution.",
+            "B) A heuristic guarantees efficient computation.",
+            "C) An algorithm specifies step-by-step instructions.",
+            "D) Heuristics are used for mathematical computations."
+          ],
+          "answer": "C",
+          "translatedQ": "ஒரு அல்காரிதத்தை ஒரு ஹியூரிஸ்டிக்கிலிருந்து வேறுபடுத்துவது எது?"
+        },
+        {
+          "question": "Which statement about algorithms is true?",
+          "options": [
+            "A) Algorithms cannot be used for optimization purposes.",
+            "B) Algorithms guarantee perfect results every time.",
+            "C) Heuristics ensure deterministic outcomes.",
+            "D) Conditions in algorithms determine automatic divergent paths."
+          ],
+          "answer": "D",
+          "translatedQ": "அல்காரிதம்களைப் பற்றி எந்தக் கூற்று சரியானது?"
+        },
+        {
+          "question": "How do algorithms differ from social media recommendation systems?",
+          "options": [
+            "A) Social media recommendations involve conditional paths.",
+            "B) Social media recommendations are purely heuristic-based.",
+            "C) Social media recommendations require definitive correctness.",
+            "D) All of the above"
+          ],
+          "answer": "D",
+          "translatedQ": "சமூக ஊடக பரிந்துரை அமைப்புகளிலிருந்து வழிமுறைகள் எவ்வாறு வேறுபடுகின்றன?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Are all algorithms deterministic?",
+          "answer": "False",
+          "translatedQ": "எல்லா வழிமுறைகளும் திட்டவட்டமானவையா?"
+        },
+        {
+          "question": "Can algorithms guarantee perfect performance?",
+          "answer": "False",
+          "translatedQ": "நிரல் வழிமுறைகளால் சரியான செயல்திறனை உறுதி செய்ய முடியுமா?"
+        },
+        {
+          "question": "Do algorithms need to follow logical steps?",
+          "answer": "True",
+          "translatedQ": "அல்காரிதம்கள் தர்க்கரீதியான படிகளைப் பின்பற்ற வேண்டுமா?"
+        }
+      ]
+    }
+  },
+  {
+    "topic": "binary_search",
+    "prompt": "Explain Binary search.",
+    "response": "கணினி அறிவியலில், இருமத் தேடல் (binary search) என்பது வரிசைப்படுத்தப்பட்ட அணியில் உள்ள இலக்கு மதிப்பின் நிலையை கண்டறியும் ஒரு தேடல் வழிமுறையாகும். இருமத் தேடல், அணியின் நடுவில் உள்ள உறுப்புடன் இலக்கு மதிப்பை ஒப்பிடுகிறது. அவை சமமாக இல்லாவிட்டால், இலக்கு இருக்க முடியாத பாதி நீக்கப்பட்டு, மீதமுள்ள பாதியில் தேடல் தொடர்கிறது, இலக்கு மதிப்பை ஒப்பிடுவதற்கு மீண்டும் நடு உறுப்பை எடுத்து, இலக்கு மதிப்பு கிடைக்கும் வரை மீண்டும் மீண்டும் செய்கிறது. தேடல் மீதமுள்ள பாதி காலியாக இருந்தால், இலக்கு அணியில் இல்லை. இருமத் தேடல் மோசமான நிலையில் மடக்கை நேரத்தில் இயங்குகிறது, O ( log ⁡ n ) {\\displaystyle O(\\log n)} ஒப்பீடுகளை செய்கிறது, இதில் n {\\displaystyle n} என்பது அணியில் உள்ள உறுப்புகளின் எண்ணிக்கை ஆகும்.[a] சிறிய அணிகளைத் தவிர, இருமத் தேடல் நேரியல் தேடலை விட வேகமானது. இருப்பினும், இருமத் தேடலைப் பயன்படுத்த, அணி முதலில் வரிசைப்படுத்தப்பட வேண்டும். இருமத் தேடலை விட திறமையாகத் தேடக்கூடிய ஹாஷ் அட்டவணைகள் போன்ற வேகமான தேடலுக்காக வடிவமைக்கப்பட்ட சிறப்பு தரவு கட்டமைப்புகள் உள்ளன. இருப்பினும், இருமத் தேடலைப் பயன்படுத்தி, அணியில் இல்லாதிருந்தாலும், இலக்குக்கு ஒப்பீட்டளவில் அணியில் உள்ள அடுத்த மிகச்சிறிய அல்லது அடுத்த பெரிய உறுப்பைக் கண்டறிவது போன்ற பரந்த அளவிலான சிக்கல்களைத் தீர்க்க முடியும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "Binary search is a sorting algorithm.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "பைனரி தேடல் என்பது ஒரு வரிசைப்படுத்தும் வழிமுறை."
+        },
+        {
+          "question": "Binary search requires an unsorted array to work.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "பைனரி தேடல் வேலை செய்ய வரிசைப்படுத்தப்படாத வரிசை தேவைப்படுகிறது."
+        },
+        {
+          "question": "The best scenario for using binary search involves an array of size 1024.",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "answer": "No",
+          "translatedQ": "பைனரி தேடலைப் பயன்படுத்துவதற்கான சிறந்த சூழ்நிலையில் 1024 அளவு கொண்ட ஒரு அணி இருக்கும்."
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Binary search has better performance than linear search.",
+          "answer": "True",
+          "translatedQ": "இரட்டைத் தேடல் நேரியல் தேடலை விட சிறந்த செயல்திறனைக் கொண்டுள்ளது."
+        },
+        {
+          "question": "Binary search only works with integer values.",
+          "answer": "False",
+          "translatedQ": "பைனரி தேடல் முழு எண் மதிப்புகளுடன் மட்டுமே வேலை செய்யும்."
+        },
+        {
+          "question": "Binary search always returns the exact position of the target value.",
+          "answer": "False",
+          "translatedQ": "பைனரி தேடல் எப்போதும் இலக்கு மதிப்பின் சரியான நிலையையே வழங்குகிறது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "linear_search",
+    "prompt": "Explain Linear search.",
+    "response": "கணினி அறிவியலில், நேரியல் தேடல் அல்லது தொடர் தேடல் என்பது ஒரு பட்டியலில் உள்ள ஒரு உறுப்பைக் கண்டுபிடிப்பதற்கான ஒரு முறையாகும். இது ஒரு பொருத்தம் கிடைக்கும் வரை அல்லது முழு பட்டியலும் தேடப்படும் வரை பட்டியலின் ஒவ்வொரு உறுப்பையும் தொடர்ச்சியாக சரிபார்க்கிறது. ஒரு நேரியல் தேடல் நேரியல் நேரத்தில் இயங்குகிறது, மோசமான நிலையில், அதிகபட்சமாக n ஒப்பீடுகளைச் செய்கிறது, இதில் n என்பது பட்டியலின் நீளம். ஒவ்வொரு உறுப்பும் சமமாகத் தேடப்பட வாய்ப்பிருந்தால், நேரியல் தேடல் சராசரியாக n+1/2 ஒப்பீடுகளைக் கொண்டுள்ளது, ஆனால் ஒவ்வொரு உறுப்புக்கான தேடல் நிகழ்தகவுகள் மாறுபடும் என்றால் சராசரி நிகழ்வு பாதிக்கப்படலாம். மற்ற தேடல் வழிமுறைகள் மற்றும் திட்டங்கள், பைனரி தேடல் வழிமுறை மற்றும் ஹாஷ் அட்டவணைகள் போன்றவை, குறுகிய பட்டியல்கள் தவிர மற்ற அனைத்திற்கும் கணிசமாக வேகமான தேடலை அனுமதிப்பதால் நேரியல் தேடல் அரிதாகவே நடைமுறைக்கு ஏற்றதாக இருக்கும்.",
+    "quiz": {
+      "mcq": [
+        {
+          "question": "What does linear search do?",
+          "options": [
+            "A) Finds elements randomly.",
+            "B) Checks elements sequentially from start to end.",
+            "C) Uses probability-based searches.",
+            "D) Compares elements only once."
+          ],
+          "answer": "B",
+          "translatedQ": "நேரியல் தேடல் என்ன செய்கிறது?"
+        },
+        {
+          "question": "How many comparisons does linear search make in the worst-case scenario?",
+          "options": [
+            "A) Less than n.",
+            "B) Exactly n.",
+            "C) More than n.",
+            "D) At least n+1."
+          ],
+          "answer": "C",
+          "translatedQ": "மிக மோசமான சூழ்நிலையில் நேரியல் தேடல் எத்தனை ஒப்பீடுகளைச் செய்கிறது?"
+        },
+        {
+          "question": "If elements' search probabilities vary, how does this affect linear search's average case?",
+          "options": [
+            "A) Average case becomes less predictable.",
+            "B) Average case improves due to varied probabilities.",
+            "C) Average case stays constant.",
+            "D) No impact on average case."
+          ],
+          "answer": "A",
+          "translatedQ": "உறுப்புகளின் தேடல் நிகழ்தகவுகள் மாறுபடும் என்றால், இது நேரியல் தேடலின் சராசரி நிகழ்வை எவ்வாறு பாதிக்கிறது?"
+        }
+      ],
+      "true_false": [
+        {
+          "question": "Linear search always takes longer compared to more efficient search methods.",
+          "answer": "False",
+          "translatedQ": "நேரியல் தேடல் எப்போதும் திறமையான தேடல் முறைகளுடன் ஒப்பிடும்போது அதிக நேரம் எடுக்கும்."
+        },
+        {
+          "question": "The best-known search algorithm uses fewer comparisons than linear search.",
+          "answer": "True",
+          "translatedQ": "மிகவும் பிரபலமான தேடல் வழிமுறை நேரியல் தேடலை விட குறைவான ஒப்பீடுகளைப் பயன்படுத்துகிறது."
+        },
+        {
+          "question": "Hash tables cannot efficiently handle large datasets better than linear search.",
+          "answer": "False",
+          "translatedQ": "ஹாஷ் அட்டவணைகள் பெரிய தரவுத் தொகுப்புகளை நேரியல் தேடலை விட திறமையாக கையாள முடியாது."
+        }
+      ]
+    }
+  },
+  {
+    "topic": "big_o_notation",
+    "prompt": "Explain Big O notation.",
+    "response": "பெரிய O குறியீடு என்பது ஒரு களத்தில் ஒரு சார்பின் தோராயமான அளவை விவரிக்கும் ஒரு கணித குறியீடு ஆகும். பெரிய O என்பது ஜெர்மன் கணிதவியலாளர்களான பால் பாக்மன் மற்றும் எட்மண்ட் லாண்டாவால் கண்டுபிடிக்கப்பட்ட குறியீடுகளின் குடும்பத்தின் ஒரு உறுப்பினர் ஆகும். இது மற்றவர்களால் விரிவாக்கப்பட்டது, இது கூட்டாக பாக்மன்-லாண்டாவ் குறியீடு என்று அழைக்கப்படுகிறது. O என்ற எழுத்து பாக்மனால் Ordnung என்பதைக் குறிக்கத் தேர்ந்தெடுக்கப்பட்டது, அதாவது தோராயத்தின் வரிசை. கணினி அறிவியலில், பெரிய O குறியீடு, உள்ளீட்டு அளவு அதிகரிக்கும்போது அவற்றின் இயக்க நேரம் அல்லது இடத் தேவைகள் எவ்வாறு வளர்கின்றன என்பதற்கேற்ப வழிமுறைகளை வகைப்படுத்தப் பயன்படுகிறது. பகுப்பாய்வு எண் கோட்பாட்டில், பெரிய O குறியீடு பெரும்பாலும் ஒரு எண்கணித சார்பின் வளர்ச்சியின் வரம்புகளை வெளிப்படுத்தப் பயன்படுகிறது; பகா எண் தேற்றத்தில் மீதமுள்ள உறுப்பு ஒரு நன்கு அறியப்பட்ட எடுத்துக்காட்டு. நுண்கணிதம் உட்பட கணித பகுப்பாய்வில், பவர் தொடரை வெட்டுக்கும்போது ஏற்படும் பிழையை கட்டுப்படுத்தவும், ஒரு எளிய சார்பால் ஒரு மெய் அல்லது சிக்கலான மதிப்புள்ள சார்பின் தோராயத்தின் தரத்தை வெளிப்படுத்தவும் பெரிய O குறியீடு பயன்படுத்தப்படுகிறது."
+  }
+]
